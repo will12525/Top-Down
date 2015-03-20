@@ -12,11 +12,14 @@ public:
     ~Model();
     // Is the game over?
     bool gameOver();
+<<<<<<< HEAD
     //which direction we are going
 	void go(Direction d);
 private:
 	int xOffset;
 	int yOffset;
+=======
+    // TODO: Put your stuff here
 	
 	void tick();
 	
@@ -24,6 +27,7 @@ private:
 	
 	
 	
+>>>>>>> cfc2dc3a9c16b82db575ab9f6bd658091d45276a
 };
 
 #endif
