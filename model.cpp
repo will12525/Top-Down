@@ -38,17 +38,14 @@ void Model::go(Direction d)
 	}
 	else if(d == ESCAPE)
 	{
-		xOffset++;
 		cout << "Debug: Escape" << endl;
 	}
 	else if(d == ENTER)
 	{
-		xOffset++;
 		cout << "Debug: Enter" << endl;
 	}
 	else if(d == SPACE)
 	{
-		xOffset++;
 		cout << "Debug: Space" << endl;
 	}
 }

@@ -45,13 +45,11 @@ void Controller::loop() {
                 case SDLK_UP:
                 case SDLK_LEFT:
                 case SDLK_RIGHT:
-                    model->go(direction[e.key.keysym.sym]);
 				case SDLK_ESCAPE:
-				//enter the menu
                 case SDLK_ENTER:
-				// confirm current choice
                 case SDLK_SPACE:
-				//somthing else
+					model->go(direction[e.key.keysym.sym]);
+
                 break;
                 default:
                 break;
