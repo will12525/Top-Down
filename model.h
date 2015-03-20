@@ -7,12 +7,19 @@ enum Direction { UP, DOWN, LEFT, RIGHT };
 class Model {
 public:
     // Constructor (instantiates object)
-    Model();
+    Model(int width, int height);
     // Destructor deletes all dynamically allocated stuff
     ~Model();
     // Is the game over?
     bool gameOver();
     // TODO: Put your stuff here
+	
+	void tick();
+	
+	
+	
+	
+	
 };
 
 #endif
