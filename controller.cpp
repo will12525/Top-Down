@@ -25,6 +25,11 @@ void Controller::loop() {
     direction[SDLK_DOWN] = DOWN;
     direction[SDLK_LEFT] = LEFT;
     direction[SDLK_RIGHT] = RIGHT;
+	direction[SDLK_ESCAPE] = ESC;
+	direction[SDLK_SPACE] = SPACE;
+	direction[SDLK_RETURN2] = RETURN;
+
+
 
     while(!model->gameOver()) {
         currentTime = SDL_GetTicks();
@@ -41,6 +46,12 @@ void Controller::loop() {
                 case SDLK_LEFT:
                 case SDLK_RIGHT:
 //                    model->go(direction[e.key.keysym.sym]);
+				case SDLK_ESCAPE:
+				//enter the menu
+                case SDLK_ENTER:
+				// confirm current choice
+                case SDLK_SPACE:
+				//somthing else
                 break;
                 default:
                 break;
