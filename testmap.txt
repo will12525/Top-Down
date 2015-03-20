@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="grass-tiles-2-small.png" tilewidth="32" tileheight="32">
+  <image source="../Pictures/tileset/grass-tiles-2-small.png" width="384" height="192"/>
+ </tileset>
+ <tileset firstgid="73" name="tree2-final.png" tilewidth="32" tileheight="32">
+  <image source="../Pictures/tileset/tree2-final.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="137" name="qubodup-bush_berries_0.png" tilewidth="32" tileheight="32">
+  <image source="../Pictures/tileset/qubodup-bush_berries_0.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="138" name="qubodup-bush_0.png" tilewidth="32" tileheight="32">
+  <image source="../Pictures/tileset/qubodup-bush_0.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="139" name="littleshrooms_0.png" tilewidth="32" tileheight="32">
+  <image source="../Pictures/tileset/littleshrooms_0.png" width="32" height="40"/>
+ </tileset>
+ <layer name="grass" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAMA6DWv+nZaDIOfpqkAAAAAAAAAAAAAACPZeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAjgPwTCcQ
+  </data>
+ </layer>
+ <layer name="not grass" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztl8lOVUEYBs/rAYogCgqi4MAsg0wCojgwPLYfiQsX90qbHG6q6aqkNvTJlz+5G2qs67rxOBEfxcdxMj6JU3Hsjveu4JtRbBDu7GN/Oj6NM/FZfB5n41x8UfBO2SDc2cf+yzgfF+KruBhfxzdxqeCdskG4s4/95fg2vovv44e4ElfjWsE7ZYNwZx/763Ejbsat+PHP3z/F/XgQD+NRPI6f494d713BN6PYINz5v/u37MTdIb/N9l/vXcE3o9gg3NnH/iBO4mk8i1/iefwav8WLgnfKBuHOPva/xx/xZ/wVL+NVvI43Be+UDcKdfewLjxpayyZktZZNyGqtkg3CnTYh6877akLa//stdUkNnftQe3zQfg2tVbJBuNMmZN1pE4rcLzV0r33O6l77nNW9JRuEO+1z1p32OetO+5x1p33OutM+Z91pnz8sWuqsGmips2pgqWuns2qgpc6qgZY6qwZa6qwauOja6awasLNEhmPTsbDpWNh0LGw6FjYdC5uOhU3HwqYT+Td2IAs7kIUdyMIOZGEHsrADWdiBLOxAkcHYfixsPxa2Hwvbj4Xtx8L2Y2H7sbD9RKQW7HAWdjgLO5yFHc7CDmdhh7Oww1nY4SLDsf9Y2H8s7D8W9h8L+4+F/cfC/mNh/4lILdjhLOxwFnY4CzuchR3Owg5nYYezsMNFRERERETa5DeXmsB6
+  </data>
+ </layer>
+ <layer name="bushes" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztmouOhCAMRfl99ac3JmvSdNryEGZZOCchoyjo9NoHzqQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM3H9NpgHNJkPNJkP9HhPZMMW+6JJOznbYdvvga3nAS3mgBpoHtBiLlr0QL+x1GpSey76tVFqtxobo8U7Sm2Nnb9L7zUh+r3jcrZl36icA59cqW8uzukLPtp2Pe1HvVWHF5tGzg91oMdc6FxCzJmD3jke8oywNfq94639roQv9cSqd3XuwM5/CzoAAMBMkJPK6FHz5o6Pfle2Cj2eWWsNwrqknl46eP3o8Ilnk15+0TpuR61G/jfk7e+3+t6se91Jt7fv00t/k/Xs7G3vmne8ZzFqpXPpOaM+ffz4bTtr0Wu+SDvdf4j+w2iXOOdIezD6GfT8y7O7PibbylzqU3I6263XOYMm9dDtTHtocSP1iOz1Ro9ormf/8RtLi0eP1SmtXU71WTKnHm9p6mkhNYhyyapI++V8pMRfLF+TaB3k+YfxKXXaodbyckdLvMppp7WQttfbUg85bif/0Hg2jZDnn6pP+4WMVVaO176xg3/cWDa2NCjxE237Z0wUx3J5Y/V1oRfTo+PeMW9u/UxHNZy37pD7K+txI59bqz/qizTR2umcncsxUoud6t2HR4+oFmrRQ4/V18nli2fcLmvBm9IYUFvzpmRrIft1nWutx7UWq8WsqEYpjUHPfmlu19fV+V3HJ51Lkjh/NXK1bUl/y5pEjpP9Vv0l87d+h1Bz3dnJ1e/ed7XWc7o/up63BpHnRLkld3//lRJ/H/F9Pfvm6i5rPNStPaI5LNt7mshxXl2+I178qn1eZYyyxnoxSx7bXY/c+q1Wj5uW/zvsrsMIdHzywPYAsDo/9FBGUg==
+  </data>
+ </layer>
+</map>
