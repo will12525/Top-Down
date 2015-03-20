@@ -13,14 +13,14 @@ public:
     // Is the game over?
     bool gameOver();
     //which direction we are going
-	void go(Direction d);
-private:
-	int xOffset;
-	int yOffset;
 	
 	void tick();
 	
 	
+	void go(Direction d);
+private:
+	int xOffset;
+	int yOffset;
 	
 	
 	

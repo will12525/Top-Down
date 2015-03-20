@@ -27,13 +27,7 @@ private:
 	
 	
 	
-=======
-    //which direction we are going
-	void go(Direction d);
-private:
-	int xOffset;
-	int yOffset;
->>>>>>> 17caa2b90bbcbc461d1d980a547af831a0cf16e3
+>>>>>>> cfc2dc3a9c16b82db575ab9f6bd658091d45276a
 };
 
 #endif
