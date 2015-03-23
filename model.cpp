@@ -1,14 +1,16 @@
-#include "model.h"
+#include "Model.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 
+
 using namespace std;
 
 // Constructor initializes the object
-Model::Model() {
+Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
+	loadTiles("C:/Users/lawrencew/Desktop");
 }
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
@@ -40,7 +42,7 @@ void Model::go(Direction d)
 	{
 		cout << "Debug: Escape" << endl;
 	}
-	else if(d == ENTER)
+	else if(d == RETURN)
 	{
 		cout << "Debug: Enter" << endl;
 	}
@@ -52,5 +54,9 @@ void Model::go(Direction d)
 
 bool Model::gameOver() {
     return false;
+}
+void Model::loadTiles(string path)
+{
+
 }
 

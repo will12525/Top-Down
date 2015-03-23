@@ -1,11 +1,42 @@
+#include <list>
+using namespace std;
+
 class Menu{
-	Menu(){
-		
-	}
-	public:
+	public: 
 	// navigate any list
-		
+	
+	virtual void up(){
+		//move up
+	}
+	virtual void down(){
+		//down
+	}
+	virtual void escape(){
+		escape
+	}
+	virtual void enter(){
+		//enter
+	}
+
+	void Navigate (Direction d)
+	{
+		if(d == UP){
+			up();
+		}
+		else if(d == DOWN){
+			down();
+		}
+		else if(d == ESCAPE){
+			escape();
+		}
+		else if(d == ENTER){
+			enter();
+		}
+	}
+	
 };
+
+
 
 class Start: public Menu{
 	Start(){
@@ -18,6 +49,7 @@ class Start: public Menu{
 	void load(){
 		
 	}
+
 };
 
 class InGame: public Menu{
@@ -29,6 +61,9 @@ class InGame: public Menu{
 		
 	}
 	void save(){
+		
+	}
+	void items(){
 		
 	}
 };
