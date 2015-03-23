@@ -3,12 +3,15 @@
 #include <ctime>
 #include <iostream>
 
+
 using namespace std;
 
 // Constructor initializes the object
-Model::Model() {
+Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
+	tiles = new vector<Tile>();
+	loadTiles("C://Users/lawrencew/Desktop");
 }
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
@@ -52,5 +55,9 @@ void Model::go(Direction d)
 
 bool Model::gameOver() {
     return false;
+}
+void Model::loadTiles(string path)
+{
+
 }
 
