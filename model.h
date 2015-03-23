@@ -1,5 +1,7 @@
 #ifndef _MODEL_H
 #define _MODEL_H
+#include "Tile.h"
+#include <string>
 
 enum Direction { UP, DOWN, LEFT, RIGHT, ESC, SPACE, RETURN};
 
@@ -21,7 +23,9 @@ public:
 private:
 	int xOffset;
 	int yOffset;
+	vector<Tile> tiles;
 	
+	void loadTiles(String path);
 	
 	
 };
