@@ -2,6 +2,7 @@
 #define _MODEL_H
 
 enum Direction { UP, DOWN, LEFT, RIGHT, ESC, SPACE, RETURN};
+enum State {MENU, GAME};
 
 // The model manages the state of the game
 class Model {

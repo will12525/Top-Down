@@ -28,7 +28,9 @@ void Controller::loop() {
 	direction[SDLK_ESCAPE] = ESC;
 	direction[SDLK_SPACE] = SPACE;
 	direction[SDLK_RETURN2] = RETURN;
+	State check = MENU;
 
+	
 
 
     while(!model->gameOver()) {
@@ -40,21 +42,34 @@ void Controller::loop() {
             case SDL_QUIT:
                 return;
             case SDL_KEYDOWN:
-                switch(e.key.keysym.sym) {
-                case SDLK_DOWN:
-                case SDLK_UP:
-                case SDLK_LEFT:
-                case SDLK_RIGHT:
-				case SDLK_ESCAPE:
-                case SDLK_ENTER:
-                case SDLK_SPACE:
-					model->go(direction[e.key.keysym.sym]);
+				if (check == GAME){
+					switch(e.key.keysym.sym) {
+					case SDLK_DOWN:
+					case SDLK_UP:
+					case SDLK_LEFT:
+					case SDLK_RIGHT:
+					case SDLK_ESCAPE:
+					case SDLK_ENTER:
+					case SDLK_SPACE:
+						model->go(direction[e.key.keysym.sym]);
+				}
+				else if(check == MENU){
+					switch(e.key.keysym.sym) {
+					case SDLK_DOWN:
+					case SDLK_UP:
+					case SDLK_LEFT:
+					case SDLK_RIGHT:
+					case SDLK_ESCAPE:
+					case SDLK_ENTER:
+					case SDLK_SPACE:
+						//call the move in menu stuff
+				}
 
                 break;
                 default:
                 break;
                 }
-            case SDL_MOUSEBUTTONDOWN:
+            case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
                 break;
             }
         }
