@@ -1,4 +1,5 @@
 #include "view.h"
+#include <iostream>
 
 using namespace std;
 
@@ -75,6 +76,7 @@ void View::show(Model * model) {
         0x00, 0x00, 0x00));
 
     // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
+	cout << "Rendering" << endl;
 
     SDL_UpdateWindowSurface(window);
 }

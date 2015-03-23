@@ -1,9 +1,13 @@
 #ifndef _MODEL_H
 #define _MODEL_H
+
 #include "Tile.h"
 #include <string>
+#include <vector>
 
-enum Direction { UP, DOWN, LEFT, RIGHT, ESC, SPACE, RETURN};
+using namespace std;
+
+enum Direction { UP, DOWN, LEFT, RIGHT, ESCAPE, SPACE, RETURN};
 
 // The model manages the state of the game
 class Model {
@@ -25,9 +29,8 @@ private:
 	int yOffset;
 	vector<Tile> tiles;
 	
-	void loadTiles(String path);
+	void loadTiles(string path);
 	
 	
 };
-
 #endif

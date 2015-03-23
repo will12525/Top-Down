@@ -4,7 +4,7 @@
 using namespace std;
 
 Controller::Controller() {
-    model = new Model();
+    model = new Model(50, 50);
     view = new View("Game", 1024, 768);
 }
 
@@ -25,7 +25,7 @@ void Controller::loop() {
     direction[SDLK_DOWN] = DOWN;
     direction[SDLK_LEFT] = LEFT;
     direction[SDLK_RIGHT] = RIGHT;
-	direction[SDLK_ESCAPE] = ESC;
+	direction[SDLK_ESCAPE] = ESCAPE;
 	direction[SDLK_SPACE] = SPACE;
 	direction[SDLK_RETURN2] = RETURN;
 
@@ -46,7 +46,7 @@ void Controller::loop() {
                 case SDLK_LEFT:
                 case SDLK_RIGHT:
 				case SDLK_ESCAPE:
-                case SDLK_ENTER:
+                case SDLK_RETURN:
                 case SDLK_SPACE:
 					model->go(direction[e.key.keysym.sym]);
 

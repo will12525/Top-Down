@@ -1,4 +1,4 @@
-#include "model.h"
+#include "Model.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -10,8 +10,7 @@ using namespace std;
 Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
-	tiles = new vector<Tile>();
-	loadTiles("C://Users/lawrencew/Desktop");
+	loadTiles("C:/Users/lawrencew/Desktop");
 }
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
@@ -43,7 +42,7 @@ void Model::go(Direction d)
 	{
 		cout << "Debug: Escape" << endl;
 	}
-	else if(d == ENTER)
+	else if(d == RETURN)
 	{
 		cout << "Debug: Enter" << endl;
 	}
