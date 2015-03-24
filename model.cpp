@@ -3,6 +3,8 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
+#include "GrassTile.cpp"
+#include "voidTile.cpp"
 
 using namespace std;
 
@@ -10,7 +12,7 @@ using namespace std;
 Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
-	loadTiles("C:/Users/lawrencew/Top-Down/testmap.txt");
+	loadTiles("testmap.txt");
 }
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
@@ -84,25 +86,23 @@ void Model::loadTiles(string path)
 				}
 				
 				char tileId=nextLine.at(k);
+				Tile * tile;
 				
 				switch(tileId)
 				{
 					case 1:
-						GrassTile grass = new GrassTile(xCoord,yCoord,1);
-						tiles.push_front(gras);
+						tile = new GrassTile(xCoord,yCoord,1);
+						tiles.push_back(*tile);
 						break;
 					default:
-						VoidTile voidTile = new VoidTile(xCoord,yCoord,0);
-						tiles.push_front(voidTile);
+						tile = new VoidTile(xCoord,yCoord,0);
+						tiles.push_back(*tile);
+						break;
 				}
 				xCoord++;
 			}
 			xCoord=0;
-			
-			
-		}
-		
-
+		}		
 		yCoord++;
 	
 		if(nextLine == "data")
