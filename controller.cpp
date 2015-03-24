@@ -28,7 +28,7 @@ void Controller::loop() {
 	direction[SDLK_ESCAPE] = ESCAPE;
 	direction[SDLK_SPACE] = SPACE;
 	direction[SDLK_RETURN2] = RETURN;
-	State check = MENU;
+	State check = GAME;
 
 	
 
@@ -86,8 +86,9 @@ void Controller::loop() {
           
         }
     
+	}
     // TODO: show something nice?
     view->show(model);
     SDL_Delay(3000);
-}
+
 }

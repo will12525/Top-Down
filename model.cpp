@@ -14,6 +14,15 @@ Model::Model(int width, int height) {
 	yOffset = 0;
 	loadTiles("testmap.txt");
 }
+int Model::getXOffset()
+{
+	return xOffset;
+}
+
+int Model::getYOffset()
+{
+	return yOffset;
+}
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
 }
