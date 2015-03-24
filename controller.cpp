@@ -34,10 +34,12 @@ void Controller::loop() {
 
 
     while(!model->gameOver()) {
+		
         currentTime = SDL_GetTicks();
         // Do stuff here to animate as necessary
         view->show(model);
-        if (SDL_PollEvent(&e) != 0) {
+        if (SDL_PollEvent(&e) != 0)
+		{
             switch (e.type)
 			{
 				case SDL_QUIT:
@@ -60,28 +62,32 @@ void Controller::loop() {
 					{
 						switch(e.key.keysym.sym)
 						{
-						case SDLK_DOWN:
-						case SDLK_UP:
-						case SDLK_LEFT:
-						case SDLK_RIGHT:
-						case SDLK_ESCAPE:
-						case SDLK_RETURN:
-						case SDLK_SPACE:
-							//call the move in menu stuff
-						}
+							case SDLK_DOWN:
+							case SDLK_UP:
+							case SDLK_LEFT:
+							case SDLK_RIGHT:
+							case SDLK_ESCAPE:
+							case SDLK_RETURN:
+							case SDLK_SPACE:
+								//call the move in menu stuff
+								//temp
+								break;
+						}    
 					}
+					
 
                 break;
                 default:
                 break;
 			case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
                 break;
-            }
+            
             }
           
         }
-    }
+    
     // TODO: show something nice?
     view->show(model);
     SDL_Delay(3000);
+}
 }
