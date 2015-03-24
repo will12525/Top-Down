@@ -33,11 +33,12 @@ void Controller::loop() {
 	
 
 
-    while(!model->gameOver()) {
-		
+    while(!model->gameOver())
+	{
         currentTime = SDL_GetTicks();
         // Do stuff here to animate as necessary
         view->show(model);
+		
         if (SDL_PollEvent(&e) != 0)
 		{
             switch (e.type)
@@ -57,6 +58,7 @@ void Controller::loop() {
 							case SDLK_SPACE:
 							model->go(direction[e.key.keysym.sym]);
 						}
+						break;
 					}
 					else if(check == MENU)
 					{
@@ -72,16 +74,14 @@ void Controller::loop() {
 								//call the move in menu stuff
 								//temp
 								break;
-						}    
+						}  
+						break;
 					}
-					
-
-                break;
-                default:
-                break;
-			case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
-                break;
-            
+			
+				case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
+					break;
+				default:
+					break;
             }
           
         }
