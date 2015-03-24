@@ -70,9 +70,13 @@ void Controller::loop() {
 							case SDLK_RETURN:
 							case SDLK_SPACE:
 								//call the move in menu stuff
+<<<<<<< HEAD
+						}
+=======
 								//temp
 								break;
 						}    
+>>>>>>> 1b087af24434d2723af95a7680956686ff4bfd28
 					}
 					
 
@@ -81,8 +85,13 @@ void Controller::loop() {
                 break;
 			case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
                 break;
+<<<<<<< HEAD
+            }
+            
+=======
             
             }
+>>>>>>> 1b087af24434d2723af95a7680956686ff4bfd28
           
         }
     
