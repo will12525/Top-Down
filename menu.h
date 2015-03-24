@@ -1,6 +1,11 @@
 #include <list>
 using namespace std;
 
+struct item{
+	//
+	//
+};
+
 class Menu{
 	public: 
 	// navigate any list
