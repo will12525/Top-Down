@@ -10,7 +10,12 @@ using namespace std;
 Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
-	loadTiles("C:/Users/lawrencew/Top-Down/testmap.txt");
+<<<<<<< HEAD
+	tiles = new vector<Tile>();
+	loadTiles("C:/Users/lawrencew/Top-Down.txt");
+=======
+	loadTiles("C:/Users/lawrencew/Desktop");
+>>>>>>> 627f16d465e538247cc2832072eb964d05bfa8e4
 }
 // Destructor deletes dynamically allocated memory
 Model::~Model() {

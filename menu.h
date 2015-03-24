@@ -3,12 +3,11 @@ class Menu{
 		
 	}
 	public:
-	//navigate any menu (wasd)
-	//select (enter)
+	// navigate any list
 		
 };
 
-class Start{
+class Start: public Menu{
 	Start(){
 		
 	}
@@ -21,7 +20,7 @@ class Start{
 	}
 };
 
-class InGame{
+class InGame: public Menu{
 	InGame(){
 		
 	}

@@ -1,7 +1,18 @@
 #ifndef _MODEL_H
 #define _MODEL_H
 
+<<<<<<< HEAD
+#include "Tile.h"
+#include <string>
+#include <vector>
+
+using namespace std;
+
+enum Direction { UP, DOWN, LEFT, RIGHT, ESCAPE, SPACE, RETURN};
+=======
 enum Direction { UP, DOWN, LEFT, RIGHT, ESC, SPACE, RETURN};
+enum State {MENU, GAME};
+>>>>>>> f8fb590f1edf239c164a52a4dbec77eb3ad58d5d
 
 // The model manages the state of the game
 class Model {
@@ -12,22 +23,19 @@ public:
     ~Model();
     // Is the game over?
     bool gameOver();
-<<<<<<< HEAD
-    // TODO: Put your stuff here
+    //which direction we are going
 	
 	void tick();
 	
 	
-	
-	
-	
-=======
-    //which direction we are going
 	void go(Direction d);
 private:
 	int xOffset;
 	int yOffset;
->>>>>>> 17caa2b90bbcbc461d1d980a547af831a0cf16e3
+	vector<Tile> tiles;
+	
+	void loadTiles(string path);
+	
+	
 };
-
 #endif

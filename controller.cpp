@@ -4,7 +4,7 @@
 using namespace std;
 
 Controller::Controller() {
-    model = new Model();
+    model = new Model(50, 50);
     view = new View("Game", 1024, 768);
 }
 
@@ -25,10 +25,12 @@ void Controller::loop() {
     direction[SDLK_DOWN] = DOWN;
     direction[SDLK_LEFT] = LEFT;
     direction[SDLK_RIGHT] = RIGHT;
-	direction[SDLK_ESCAPE] = ESC;
+	direction[SDLK_ESCAPE] = ESCAPE;
 	direction[SDLK_SPACE] = SPACE;
 	direction[SDLK_RETURN2] = RETURN;
+	State check = MENU;
 
+	
 
 
     while(!model->gameOver()) {
@@ -36,29 +38,47 @@ void Controller::loop() {
         // Do stuff here to animate as necessary
         view->show(model);
         if (SDL_PollEvent(&e) != 0) {
-            switch (e.type) {
-            case SDL_QUIT:
-                return;
-            case SDL_KEYDOWN:
-                switch(e.key.keysym.sym) {
-                case SDLK_DOWN:
-                case SDLK_UP:
-                case SDLK_LEFT:
-                case SDLK_RIGHT:
-                    model->go(direction[e.key.keysym.sym]);
-				case SDLK_ESCAPE:
-				//enter the menu
-                case SDLK_ENTER:
-				// confirm current choice
-                case SDLK_SPACE:
-				//somthing else
+            switch (e.type)
+			{
+				case SDL_QUIT:
+					return;
+				case SDL_KEYDOWN:
+					if (check == GAME){
+						switch(e.key.keysym.sym)
+						{
+							case SDLK_DOWN:
+							case SDLK_UP:
+							case SDLK_LEFT:
+							case SDLK_RIGHT:
+							case SDLK_ESCAPE:
+							case SDLK_RETURN:
+							case SDLK_SPACE:
+							model->go(direction[e.key.keysym.sym]);
+						}
+					}
+					else if(check == MENU)
+					{
+						switch(e.key.keysym.sym)
+						{
+						case SDLK_DOWN:
+						case SDLK_UP:
+						case SDLK_LEFT:
+						case SDLK_RIGHT:
+						case SDLK_ESCAPE:
+						case SDLK_RETURN:
+						case SDLK_SPACE:
+							//call the move in menu stuff
+						}
+					}
+
                 break;
                 default:
                 break;
-                }
-            case SDL_MOUSEBUTTONDOWN:
+			case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
                 break;
             }
+            }
+          
         }
     }
     // TODO: show something nice?
