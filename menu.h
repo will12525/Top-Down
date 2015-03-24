@@ -1,9 +1,11 @@
 #include <list>
 using namespace std;
 
+enum 
+
 struct item{
-	//
-	//
+	string label;
+	void (*function)();//function pointer
 };
 
 class Menu{
@@ -17,7 +19,7 @@ class Menu{
 		//down
 	}
 	virtual void escape(){
-		escape
+		//escape
 	}
 	virtual void enter(){
 		//enter
@@ -45,31 +47,14 @@ class Menu{
 
 class Start: public Menu{
 	Start(){
-		
+		item start[]
+		//initialize to array location of zero
 	}
-	public:
-	void start(){
-		
-	}
-	void load(){
-		
-	}
-
 };
 
 class InGame: public Menu{
 	InGame(){
-		
-	}
-	public:
-	void quit(){
-		
-	}
-	void save(){
-		
-	}
-	void items(){
-		
+		// array of items 
 	}
 };
 

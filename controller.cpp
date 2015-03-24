@@ -60,14 +60,14 @@ void Controller::loop() {
 					{
 						switch(e.key.keysym.sym)
 						{
-						case SDLK_DOWN:
-						case SDLK_UP:
-						case SDLK_LEFT:
-						case SDLK_RIGHT:
-						case SDLK_ESCAPE:
-						case SDLK_RETURN:
-						case SDLK_SPACE:
-							//call the move in menu stuff
+							case SDLK_DOWN:
+							case SDLK_UP:
+							case SDLK_LEFT:
+							case SDLK_RIGHT:
+							case SDLK_ESCAPE:
+							case SDLK_RETURN:
+							case SDLK_SPACE:
+								//call the move in menu stuff
 						}
 					}
 
@@ -77,7 +77,7 @@ void Controller::loop() {
 			case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
                 break;
             }
-            }
+            
           
         }
     }
