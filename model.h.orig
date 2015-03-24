@@ -1,14 +1,18 @@
 #ifndef _MODEL_H
 #define _MODEL_H
 
+<<<<<<< HEAD
 #include "Tile.h"
-#include <vector>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 enum Direction { UP, DOWN, LEFT, RIGHT, ESCAPE, SPACE, RETURN};
+=======
+enum Direction { UP, DOWN, LEFT, RIGHT, ESC, SPACE, RETURN};
 enum State {MENU, GAME};
+>>>>>>> f8fb590f1edf239c164a52a4dbec77eb3ad58d5d
 
 // The model manages the state of the game
 class Model {
