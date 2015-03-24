@@ -61,10 +61,14 @@ void Model::loadTiles(string path)
 	tileFile.open(path);
 	string nextLine="";
 	bool readTiles=false;
+	int yCoord=0;
+	int xCoord=0;
 	while(nextLine>>tileFile)
 	{
+		
 		if(readTiles)
 		{
+	
 			if(strcmp(nextLine,"")==0)
 			{
 				readTiles=false;
@@ -77,17 +81,33 @@ void Model::loadTiles(string path)
 				{
 					continue;
 				}
+				
 				char tileId=nextLine.at(k);
+				
+				switch(tileId)
+				{
+					case 1:
+						GrassTile grass = new GrassTile(xCoord,yCoord,1);
+						tiles.push_front(gras);
+						break;
+					default:
+						VoidTile voidTile = new VoidTile(xCoord,yCoord,0);
+						tiles.push_front(voidTile);
+				}
+				xCoord++;
 			}
+			xCoord=0;
 			
 			
 		}
 		
-	
-		if(strcmp(nextLine,"data=")==0)
+		yCoord++;
+		if((strcmp(nextLine,"data=")==0)&&!readTiles)
 		{
 			readTiles=true;
+			yCoord=0;
 		}
+		
 	}
 }
 
