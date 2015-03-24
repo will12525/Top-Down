@@ -58,18 +58,19 @@ bool Model::gameOver() {
 void Model::loadTiles(string path)
 {
 	ifstream tileFile;
-	tileFile.open(path);
+	tileFile.open(path.c_str());
 	string nextLine="";
 	bool readTiles=false;
+
 	int yCoord=0;
 	int xCoord=0;
-	while(nextLine>>tileFile)
+
+	while(tileFile >> nextLine)
 	{
 		
 		if(readTiles)
 		{
-	
-			if(strcmp(nextLine,"")==0)
+			if(nextLine == "")
 			{
 				readTiles=false;
 				continue;
@@ -101,8 +102,11 @@ void Model::loadTiles(string path)
 			
 		}
 		
+
 		yCoord++;
-		if((strcmp(nextLine,"data=")==0)&&!readTiles)
+	
+		if(nextLine == "data")
+
 		{
 			readTiles=true;
 			yCoord=0;
