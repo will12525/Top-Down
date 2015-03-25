@@ -10,7 +10,9 @@ public:
 	
 	int getY();
 	
-	int getID();
+	int getID() {
+		return id;
+	}
 	
 	int setID(int idnum);
 protected:

@@ -24,6 +24,7 @@ public:
 	
 	int getXOffset();
 	int getYOffset();
+	vector<Tile> getTiles();
 private:
 	int xOffset;
 	int yOffset;
