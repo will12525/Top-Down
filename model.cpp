@@ -104,6 +104,7 @@ void Model::loadTiles(string path)
 					case 1:
 						tile = new GrassTile(xCoord,yCoord,1);
 						tiles.push_back(*tile);
+						cout<<"created grass tile"<<endl;
 						break;
 					default:
 						tile = new VoidTile(xCoord,yCoord,0);
