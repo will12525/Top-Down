@@ -94,7 +94,8 @@ void Model::loadTiles(string path)
 					continue;
 				}
 				
-				char tileId=nextLine.at(k);
+				char tileIdC=nextLine.at(k);
+				int tileId=(int)tileIdC;
 				Tile * tile;
 				
 				switch(tileId)
