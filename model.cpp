@@ -83,6 +83,7 @@ void Model::loadTiles(string path)
 		{
 			if(nextLine == "")
 			{
+			return;
 				readTiles=false;
 				continue;
 			}
@@ -116,7 +117,6 @@ void Model::loadTiles(string path)
 		yCoord++;
 	
 		if(nextLine == "data")
-
 		{
 			readTiles=true;
 			yCoord=0;
