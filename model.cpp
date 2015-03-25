@@ -3,6 +3,8 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
+#include "GrassTile.cpp"
+#include "voidTile.cpp"
 
 using namespace std;
 
@@ -10,7 +12,7 @@ using namespace std;
 Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
-	loadTiles("C:/Users/lawrencew/Top-Down/testmap.txt");
+	loadTiles("testmap.txt");
 }
 int Model::getXOffset()
 {
@@ -75,12 +77,18 @@ void Model::loadTiles(string path)
 	tileFile.open(path.c_str());
 	string nextLine="";
 	bool readTiles=false;
+
+	int yCoord=0;
+	int xCoord=0;
+
 	while(tileFile >> nextLine)
 	{
+		
 		if(readTiles)
 		{
 			if(nextLine == "")
 			{
+			return;
 				readTiles=false;
 				continue;
 			}
@@ -91,17 +99,34 @@ void Model::loadTiles(string path)
 				{
 					continue;
 				}
-				char tileId=nextLine.at(k);
+				
+				char tileIdC=nextLine.at(k);
+				int tileId=(int)tileIdC;
+				Tile * tile;
+				
+				switch(tileId)
+				{
+					case 1:
+						tile = new GrassTile(xCoord,yCoord,1);
+						tiles.push_back(*tile);
+						break;
+					default:
+						tile = new VoidTile(xCoord,yCoord,0);
+						tiles.push_back(*tile);
+						break;
+				}
+				xCoord++;
 			}
-			
-			
-		}
-		
+			xCoord=0;
+		}		
+		yCoord++;
 	
 		if(nextLine == "data")
 		{
 			readTiles=true;
+			yCoord=0;
 		}
+		
 	}
 }
 

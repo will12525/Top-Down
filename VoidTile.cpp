@@ -1,9 +1,9 @@
 #include "Tile.h"
-#include <string>
-class GrassTile : public Tile
+
+class VoidTile : public Tile
 {
 public:
-	GrassTile(int xCoord,int yCoord,int id)
+	VoidTile(int xCoord,int yCoord,int id)
 	{
 		x = xCoord;
 		y=yCoord;
