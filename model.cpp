@@ -21,6 +21,11 @@ int Model::getYOffset()
 {
 	return yOffset;
 }
+
+vector<Tile> Model::getTiles()
+{
+	return tiles;
+}
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
 }
