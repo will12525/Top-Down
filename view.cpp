@@ -1,5 +1,6 @@
 #include "view.h"
 #include <iostream>
+#include "Tile.h"
 
 using namespace std;
 
@@ -71,16 +72,19 @@ SDL_Surface* View::load(char * path) {
 }
 
 void View::show(Model * model) {
+	vector<Tile> tiles = model->getTiles();
 
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
         0x00, 0x00, 0x00));
 
     // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
-	cout << "Rendering" << endl;
+	cout << "Rendering " << tiles.size() << " tiles" << endl;
 	
-	for(int i = 0; i < model->getTiles().size(); i++)
+	Tile t;
+	for(int i = 0; i < tiles.size(); i++)
 	{
-		cout << model->getTiles()[i].getID();
+		t = tiles[i];
+		cout << t.getID() << endl;
 	}
 
     SDL_UpdateWindowSurface(window);

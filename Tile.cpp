@@ -17,10 +17,7 @@ int Tile::getY()
 	return y;
 }
 	
-int Tile::getID()
-{
-	return id;
-}
+
 int Tile::setID(int idnum)
 {
 	id = idnum;
