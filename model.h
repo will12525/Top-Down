@@ -19,12 +19,12 @@ public:
     ~Model();
     // Is the game over?
     bool gameOver();
-    //which direction we are going
-	
 	void tick();
-	
-	
 	void go(Direction d);
+	
+	int getXOffset();
+	int getYOffset();
+	vector<Tile> getTiles();
 private:
 	int xOffset;
 	int yOffset;

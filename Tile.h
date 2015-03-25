@@ -4,15 +4,18 @@
 class Tile
 {
 public:
+	Tile() {}
 	Tile(int xcoord, int ycoord, int idnum);
 	int getX();
 	
 	int getY();
 	
-	int getID();
+	int getID() {
+		return id;
+	}
 	
 	int setID(int idnum);
-private:
+protected:
 	int x, y, id;
 
 };
