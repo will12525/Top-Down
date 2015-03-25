@@ -1,4 +1,5 @@
 #include "Model.h"
+#include "menu.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
