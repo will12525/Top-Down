@@ -1,9 +1,11 @@
-#ifndef _MODEL_H
-#define _MODEL_H
-
 #include "Tile.h"
 #include <vector>
 #include <string>
+
+#ifndef _MODEL_H
+#define _MODEL_H
+
+
 
 using namespace std;
 

@@ -1,9 +1,10 @@
-#ifndef _CONTROLLER_H
-#define _CONTROLLER_H
 #include "model.h"
 #include "menu.h"
 #include "view.h"
 
+
+#ifndef _CONTROLLER_H
+#define _CONTROLLER_H
 
 // Handle input
 class Controller {
@@ -18,6 +19,6 @@ private:
 	InGameScreen * ingamescreen;
 	Menu * menu;
     View * view;
-	#include "globalobjects.h"// weird this has to go here
+	Model * model;
 };
 #endif

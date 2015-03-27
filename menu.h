@@ -1,8 +1,10 @@
+#include "model.h"
+#include <iostream>
+
 #ifndef _MENU_H
 #define _MENU_H
 
-#include "model.h"
-#include <iostream>
+
 using namespace std; 
 
 
