@@ -8,7 +8,7 @@
 using namespace std;
 
 enum Direction { UP, DOWN, LEFT, RIGHT, ESCAPE, SPACE, RETURN};
-enum State {MENU, GAME};
+enum State {START, LOAD, GAMEM, PLAY};
 
 // The model manages the state of the game
 class Model {
