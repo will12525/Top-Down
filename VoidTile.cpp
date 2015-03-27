@@ -1,5 +1,5 @@
 #include "Tile.h"
-
+#include <string>
 class VoidTile : public Tile
 {
 public:
