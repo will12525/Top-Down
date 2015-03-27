@@ -28,7 +28,7 @@ void Controller::loop() {
 	direction[SDLK_ESCAPE] = ESCAPE;
 	direction[SDLK_SPACE] = SPACE;
 	direction[SDLK_RETURN2] = RETURN;
-	State check = GAME;
+	
 
 	
 
@@ -46,7 +46,7 @@ void Controller::loop() {
 				case SDL_QUIT:
 					return;
 				case SDL_KEYDOWN:
-					if (check == GAME){
+					if (model->check == GAME){
 						switch(e.key.keysym.sym)
 						{
 							case SDLK_DOWN:
@@ -60,7 +60,7 @@ void Controller::loop() {
 						}
 						break;
 					}
-					else if(check == MENU)
+					else if(model->check == MENU)
 					{
 						switch(e.key.keysym.sym)
 						{
