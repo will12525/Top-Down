@@ -88,9 +88,14 @@ void Model::loadTiles(string path)
 		
 		if(readTiles)
 		{
-			if(nextLine == "")
+			
+			if(nextLine == "[layer]")
 			{
-			return;
+				
+				cout<<"empty line, creation limited to first layer for now."<<endl;
+				cout<<"Created "<<tiles.size()<<" tiles" <<endl;
+				//remove return to allow all layers
+				return;
 				readTiles=false;
 				continue;
 			}
@@ -101,11 +106,26 @@ void Model::loadTiles(string path)
 				{
 					continue;
 				}
-				
-				char tileIdC=nextLine.at(k);
-				int tileId=(int)tileIdC;
+				int tileId=0;
+				string holder="";
+				for(int j=k;j<nextLine.length();j++)
+				{
+					if(nextLine.at(j)==',')
+					{
+						k=j;
+						break;
+					}
+					
+					holder=holder+nextLine.at(j);
+					
+				}
+				tileId=atoi(holder.c_str());
+	
 				Tile * tile;
 				
+				//to create a new tile, create the class for it by using the GrassTile
+				//or VoidTile class as a template then create a switch with its case
+				//referring to the id number saved on the text document.
 				switch(tileId)
 				{
 					case 1:
@@ -123,12 +143,14 @@ void Model::loadTiles(string path)
 		}		
 		yCoord++;
 	
-		if(nextLine == "data")
+		if(nextLine == "data=")
 		{
+		
 			readTiles=true;
 			yCoord=0;
 		}
 		
 	}
+	exit(1);
 }
 

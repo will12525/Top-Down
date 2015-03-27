@@ -78,13 +78,13 @@ void View::show(Model * model) {
         0x00, 0x00, 0x00));
 
     // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
-	cout << "Rendering " << tiles.size() << " tiles" << endl;
+	//cout << "Rendering " << tiles.size() << " tiles" << endl;
 	
 	Tile t;
 	for(int i = 0; i < tiles.size(); i++)
 	{
 		t = tiles[i];
-		cout << t.getID() << endl;
+	//	cout << t.getID() << endl;
 	}
 
     SDL_UpdateWindowSurface(window);
