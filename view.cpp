@@ -1,6 +1,7 @@
 #include "view.h"
 #include <iostream>
 #include "Tile.h"
+#include <string>
 
 using namespace std;
 
@@ -55,10 +56,10 @@ View::~View() {
 /**
  *  Load an image from a file to a SDL_Surface
  */
-SDL_Surface* View::load(char * path) {
+SDL_Surface* View::load(string path) {
     // Load image
     SDL_Surface* optimizedSurface = NULL;
-    SDL_Surface* loadedSurface = IMG_Load( path );
+    SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
     if( loadedSurface == NULL ) {
         return NULL;
     }
@@ -84,7 +85,12 @@ void View::show(Model * model) {
 	for(int i = 0; i < tiles.size(); i++)
 	{
 		t = tiles[i];
-	//	cout << t.getID() << endl;
+		//render tile
+		
+		//SDL_Surface * image = load(t.getPath());
+		
+		cout << t.getPath() << endl;
+		
 	}
 
     SDL_UpdateWindowSurface(window);
