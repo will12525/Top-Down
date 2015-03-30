@@ -43,7 +43,9 @@ View::View(string title, int width, int height) {
 //       Mix_PlayMusic( music, -1 );
 //    }
 //    food = Mix_LoadWAV("assets/yummy.wav");
-    font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 28 );
+    font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 24 );
+	text_color={255,255,255};
+	text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
 
 }
 
@@ -75,8 +77,7 @@ SDL_Surface* View::load(string path) {
 void View::show(Model * model) {
 	vector<Tile> tiles = model->getTiles();
 
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
-        0x00, 0x00, 0x00));
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
 	SDL_Surface * tile1 = load("tileset/1.png");
 	
@@ -99,4 +100,16 @@ void View::show(Model * model) {
 	} 
 
     SDL_UpdateWindowSurface(window);
+}
+
+void View::write(){
+	// Clear the screen
+      SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
+      
+	//aply text
+	SDL_BlitSurface(text, NULL, screen, NULL);
+	
+        //Update the display
+      
+	SDL_UpdateWindowSurface(window);
 }

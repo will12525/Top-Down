@@ -54,7 +54,12 @@ void Controller::loop() {
 	{
         currentTime = SDL_GetTicks();
         // Do stuff here to animate as necessary
+		if (model->check==PLAY){
         view->show(model);
+		}
+		else{
+		view->write();
+		}
 		
         if (SDL_PollEvent(&e) != 0)
 		{
