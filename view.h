@@ -4,12 +4,14 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
+
 #include "model.h"
 #include <map>
 #include <string>
 
 #ifndef _VIEW_H
 #define _VIEW_H
+
 
 // Show (output) the state of the model
 class View {

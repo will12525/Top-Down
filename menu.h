@@ -1,35 +1,38 @@
+#include "model.h"
+#include <iostream>
+
+#ifndef _MENU_H
+#define _MENU_H
+
+
 using namespace std; 
+
 
 class Menu{
 	public: 
 	// navigate any list
 	
 	virtual void up(){
-		//move up
+		//increment the location 
 	}
 	virtual void down(){
-		//down
-	}
-	virtual void escape(){
-		//escape
+		//decrement the location 
 	}
 	virtual void enter(){
-		//enter
+		//run code at corrent location 
 	}
 
-	void Navigate (Direction d)
+	void navigate (Direction d)
 	{
 		if(d == UP){
-			up();
+			//up();
+			cout << "Debug: Up" << endl;
 		}
 		else if(d == DOWN){
-			down();
-		}
-		else if(d == ESCAPE){
-			escape();
+			cout << "Debug: Down" << endl;
 		}
 		else if(d == RETURN){
-			enter();
+			cout << "Debug: Return" << endl;
 		}
 	}
 	
@@ -41,16 +44,8 @@ class MenuItem {
 	virtual void doThing();
 };
 
-class Quit : public MenuItem {
-	Quit() {
-		label = "QUIT";
-	}
-	virtual void doThing() {
-		//exit(0);
-	}
-};
-
 class Load : public MenuItem {
+	public:
 	Load() {
 		label = "LOAD";
 	}
@@ -60,6 +55,7 @@ class Load : public MenuItem {
 };
 
 class File : public MenuItem {
+	public:
 	File() {
 		label = "FILE";
 	}
@@ -69,6 +65,7 @@ class File : public MenuItem {
 };
 
 class NewGame : public MenuItem {
+	public:
 	NewGame() {
 		label = "NEW GAME";
 	}
@@ -78,6 +75,7 @@ class NewGame : public MenuItem {
 };
 
 class SaveGame : public MenuItem {
+	public:
 	SaveGame() {
 		label = "SAVE GAME";
 	}
@@ -87,11 +85,11 @@ class SaveGame : public MenuItem {
 };
 
 class ExitGame : public MenuItem {
+	public:
 	ExitGame() {
 		label = "Exit GAME";
 	}
 	virtual void doThing() {
-		//exit(0);
 	}
 };
 
@@ -99,28 +97,23 @@ class ExitGame : public MenuItem {
 
 
 class StartScreen: public Menu{
+	public:
 	StartScreen(){
 		start [0]=load;
-		start [1]=quit;
 	}
-	public:
 	void loadfun(){
 		//switch to load menu
 	}
-	void quitfun(){
-		//exit game;
-	}
-	MenuItem load;
-	MenuItem quit;
+	Load load;
 	MenuItem start[2];
 };
 
 class LoadScreen: public Menu{
+	public:
 	LoadScreen(){
 		start [0]=file;
 		start [1]=new_game;
 	}
-	public:
 	void filefun(){
 		//switch state from MENU to GAME
 	}
@@ -128,29 +121,29 @@ class LoadScreen: public Menu{
 		//newgame begins
 	}
 	
-	MenuItem file;
-	MenuItem new_game;
+	File file;
+	NewGame new_game;
 	MenuItem start[2];
 };
 
 class InGameScreen: public Menu{
+	public:
 	InGameScreen(){
 		ingame[0]=save;
 		ingame[1]=exit;
 	}
-	public:
 	void savefun(){
 		
 	}
 	void exitfun(){
 		
 	}
-	MenuItem save;
-	MenuItem exit;
+	SaveGame save;
+	ExitGame exit;
 	MenuItem ingame[2];
 };
 
-
+#endif
 
 
 

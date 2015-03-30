@@ -27,7 +27,7 @@ void Controller::loop() {
     direction[SDLK_RIGHT] = RIGHT;
 	direction[SDLK_ESCAPE] = ESCAPE;
 	direction[SDLK_SPACE] = SPACE;
-	direction[SDLK_RETURN2] = RETURN;
+	direction[SDLK_RETURN] = RETURN;
 	
 
 	
@@ -46,33 +46,61 @@ void Controller::loop() {
 				case SDL_QUIT:
 					return;
 				case SDL_KEYDOWN:
-					if (model->check == GAME){
+					if (model->check == PLAY){
 						switch(e.key.keysym.sym)
 						{
 							case SDLK_DOWN:
 							case SDLK_UP:
 							case SDLK_LEFT:
 							case SDLK_RIGHT:
-							case SDLK_ESCAPE:
 							case SDLK_RETURN:
 							case SDLK_SPACE:
-							model->go(direction[e.key.keysym.sym]);
+								model->go(direction[e.key.keysym.sym]);
+								break;
+							case SDLK_ESCAPE:
+								model->check=GAMEM;
+								break;
 						}
 						break;
 					}
-					else if(model->check == MENU)
+					else if(model->check == START)
 					{
 						switch(e.key.keysym.sym)
 						{
 							case SDLK_DOWN:
 							case SDLK_UP:
-							case SDLK_LEFT:
-							case SDLK_RIGHT:
-							case SDLK_ESCAPE:
 							case SDLK_RETURN:
-							case SDLK_SPACE:
-								//call the move in menu stuff
-								//temp
+								startscreen->navigate(direction[e.key.keysym.sym]);
+								break;
+							case SDLK_ESCAPE:
+								return;
+								break;
+						}  
+						break;
+					}
+					else if(model->check == LOAD)
+					{
+						switch(e.key.keysym.sym)
+						{
+							case SDLK_DOWN:
+							case SDLK_UP:
+							case SDLK_RETURN:
+								loadscreen->navigate(direction[e.key.keysym.sym]);
+								break;
+							case SDLK_ESCAPE:
+								model->check=START;
+								break;
+						}  
+						break;
+					}
+					else if(model->check == GAMEM)
+					{
+						switch(e.key.keysym.sym)
+						{
+							case SDLK_DOWN:
+							case SDLK_UP:
+							case SDLK_RETURN:
+								loadscreen->navigate(direction[e.key.keysym.sym]);
 								break;
 						}  
 						break;
