@@ -38,22 +38,22 @@ void Model::go(Direction d)
 {
 	if(d == UP)
 	{
-		yOffset--;
+		yOffset++;
 		cout << "Debug: Up" << endl;
 	}
 	else if(d == DOWN)
 	{
-		yOffset++;
+		yOffset--;
 		cout << "Debug: Down" << endl;
 	}
 	else if(d == LEFT)
 	{
-		xOffset--;
+		xOffset++;
 		cout << "Debug: Left" << endl;
 	}
 	else if(d == RIGHT)
 	{
-		xOffset++;
+		xOffset--;
 		cout << "Debug: Right" << endl;
 	}
 	else if(d == ESCAPE)
