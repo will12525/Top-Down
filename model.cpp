@@ -91,7 +91,6 @@ void Model::loadTiles(string path)
 			
 			if(nextLine == "[layer]")
 			{
-				
 				cout<<"empty line, creation limited to first layer for now."<<endl;
 				cout<<"Created "<<tiles.size()<<" tiles" <<endl;
 				//remove return to allow all layers
@@ -151,6 +150,6 @@ void Model::loadTiles(string path)
 		}
 		
 	}
-	exit(1);
+	
 }
 
