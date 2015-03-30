@@ -1,5 +1,4 @@
-#include "Model.h"
-#include "menu.h"
+#include "model.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -85,10 +84,10 @@ void Model::loadTiles(string path)
 
 	while(tileFile >> nextLine)
 	{
-		
+
 		if(readTiles)
 		{
-			
+
 			if(nextLine == "[layer]")
 			{
 				cout<<"empty line, creation limited to first layer for now."<<endl;
@@ -98,7 +97,7 @@ void Model::loadTiles(string path)
 				readTiles=false;
 				continue;
 			}
-			
+
 			for(int k=0;k<nextLine.length();k++)
 			{
 				if(nextLine.at(k)==',')
@@ -114,14 +113,14 @@ void Model::loadTiles(string path)
 						k=j;
 						break;
 					}
-					
+
 					holder=holder+nextLine.at(j);
-					
+
 				}
 				tileId=atoi(holder.c_str());
-	
+
 				Tile * tile;
-				
+
 				//to create a new tile, create the class for it by using the GrassTile
 				//or VoidTile class as a template then create a switch with its case
 				//referring to the id number saved on the text document.
@@ -139,17 +138,16 @@ void Model::loadTiles(string path)
 				xCoord++;
 			}
 			xCoord=0;
-		}		
+		}
 		yCoord++;
-	
+
 		if(nextLine == "data=")
 		{
-		
+
 			readTiles=true;
 			yCoord=0;
 		}
-		
-	}
-	
-}
 
+	}
+
+}

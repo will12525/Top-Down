@@ -11,7 +11,7 @@ Tile::Tile(int xcoord, int ycoord, int idnum)
 	id = idnum;
 }
 
-	
+
 
 int Tile::setID(int idnum)
 {

@@ -4,12 +4,12 @@
 using namespace std;
 
 Controller::Controller() {
-    model = Model::getInstance();
-    view = new View("Game", 1024, 768);
+  model = Model::getInstance();
+  view = new View("Game", 1024, 768);
 	menu = new Menu();
-	startscreen =new StartScreen();
-	loadscreen= new LoadScreen();
-	ingamescreen = new InGameScreen();
+	startscreen =StartScreen::getInstance();
+	loadscreen= LoadScreen::getInstance();
+	ingamescreen = InGameScreen::getInstance();
 	load=new Load();
 	file=new File();
 	newgame=new NewGame();
@@ -18,8 +18,8 @@ Controller::Controller() {
 }
 
 Controller::~Controller() {
-    delete model;
-    delete view;
+  delete model;
+  delete view;
 	delete startscreen;
 	delete loadscreen;
 	delete ingamescreen;
@@ -42,9 +42,9 @@ void Controller::loop() {
     direction[SDLK_DOWN] = DOWN;
     direction[SDLK_LEFT] = LEFT;
     direction[SDLK_RIGHT] = RIGHT;
-	direction[SDLK_ESCAPE] = ESCAPE;
-	direction[SDLK_SPACE] = SPACE;
-	direction[SDLK_RETURN] = RETURN;
+    direction[SDLK_ESCAPE] = ESCAPE;
+	  direction[SDLK_SPACE] = SPACE;
+  	direction[SDLK_RETURN] = RETURN;
 
 
 

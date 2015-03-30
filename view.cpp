@@ -3,6 +3,7 @@
 #include "Tile.h"
 #include <string>
 
+
 using namespace std;
 
 // Initialize SDL
@@ -67,10 +68,10 @@ SDL_Surface* View::load(string path) {
     }
     // Convert surface to screen format
     optimizedSurface = SDL_ConvertSurface( loadedSurface, screen->format, 0 );
-    
+
     // Get rid of old loaded surface
     SDL_FreeSurface( loadedSurface );
-    
+
     return optimizedSurface;
 }
 
@@ -80,12 +81,12 @@ void View::show(Model * model) {
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
 	SDL_Surface * tile1 = load("tileset/1.png");
-	
+
 	for(int i = 0; i < tiles.size(); i++)
 	{
 		Tile t = tiles[i];
 		//render tile
-		
+
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x = 0;
@@ -95,9 +96,9 @@ void View::show(Model * model) {
 		destination.x = t.getX() * 64 + model->getXOffset();
 		destination.y = t.getY() * 64 + model->getYOffset();
 		SDL_BlitSurface( tile1, &source, screen, &destination );
-		
-		
-	} 
+
+
+	}
 
     SDL_UpdateWindowSurface(window);
 }
@@ -105,11 +106,11 @@ void View::show(Model * model) {
 void View::write(){
 	// Clear the screen
       SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
-      
+
 	//aply text
 	SDL_BlitSurface(text, NULL, screen, NULL);
-	
-        //Update the display
-      
+
+
+
 	SDL_UpdateWindowSurface(window);
 }

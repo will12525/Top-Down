@@ -1,4 +1,5 @@
 #include "Tile.h"
+
 #include <vector>
 #include <string>
 
@@ -15,7 +16,7 @@ enum State {START, LOAD, GAMEM, PLAY};
 // The model manages the state of the game
 class Model {
 public:
-	static Model* getInstance(){
+		static Model* getInstance(){
 		static Model* model=new Model(50, 50);
 		return model;
 	}
@@ -25,7 +26,7 @@ public:
     bool gameOver();
 	void tick();
 	void go(Direction d);
-	
+
 	int getXOffset();
 	int getYOffset();
 	vector<Tile> getTiles();
@@ -36,9 +37,9 @@ private:
 	int xOffset;
 	int yOffset;
 	vector<Tile> tiles;
-	
+
 	void loadTiles(string path);
-	
-	
+
+
 };
 #endif
