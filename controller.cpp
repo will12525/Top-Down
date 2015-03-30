@@ -45,9 +45,9 @@ void Controller::loop() {
 	direction[SDLK_ESCAPE] = ESCAPE;
 	direction[SDLK_SPACE] = SPACE;
 	direction[SDLK_RETURN] = RETURN;
-	
 
-	
+
+
 
 
     while(!model->gameOver())
@@ -60,7 +60,7 @@ void Controller::loop() {
 		else{
 		view->write();
 		}
-		
+
         if (SDL_PollEvent(&e) != 0)
 		{
             switch (e.type)
@@ -97,7 +97,7 @@ void Controller::loop() {
 							case SDLK_ESCAPE:
 								return;
 								break;
-						}  
+						}
 						break;
 					}
 					else if(model->check == LOAD)
@@ -112,7 +112,7 @@ void Controller::loop() {
 							case SDLK_ESCAPE:
 								model->check=START;
 								break;
-						}  
+						}
 						break;
 					}
 					else if(model->check == GAMEM)
@@ -124,18 +124,18 @@ void Controller::loop() {
 							case SDLK_RETURN:
 								loadscreen->navigate(direction[e.key.keysym.sym]);
 								break;
-						}  
+						}
 						break;
 					}
-			
+
 				case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
 					break;
 				default:
 					break;
             }
-          
+
         }
-    
+
 	}
     // TODO: show something nice?
     view->show(model);
