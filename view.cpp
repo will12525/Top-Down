@@ -78,28 +78,25 @@ void View::show(Model * model) {
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
         0x00, 0x00, 0x00));
 
-    // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
-	//cout << "Rendering " << tiles.size() << " tiles" << endl;
+	SDL_Surface * tile1 = load("tileset/1.png");
 	
-	Tile t;
 	for(int i = 0; i < tiles.size(); i++)
 	{
-		t = tiles[i];
+		Tile t = tiles[i];
 		//render tile
 		
-		SDL_Surface * image = load(t.getPath());
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x = 0;
 		source.y = 0;
 		source.w = 64;
 		source.h = 64;
-		destination.y = 0;
-		destination.x = 0;
-		SDL_BlitSurface( image, &source, screen, &destination );
+		destination.x = t.getX() * 64 + model->getXOffset();
+		destination.y = t.getY() * 64 + model->getYOffset();
+		SDL_BlitSurface( tile1, &source, screen, &destination );
 		
 		
-	}
+	} 
 
     SDL_UpdateWindowSurface(window);
 }
