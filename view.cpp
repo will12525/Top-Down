@@ -87,9 +87,17 @@ void View::show(Model * model) {
 		t = tiles[i];
 		//render tile
 		
-		//SDL_Surface * image = load(t.getPath());
+		SDL_Surface * image = load(t.getPath());
+		SDL_Rect source;
+		SDL_Rect destination;
+		source.x = 0;
+		source.y = 0;
+		source.w = 64;
+		source.h = 64;
+		destination.y = 0;
+		destination.x = 0;
+		SDL_BlitSurface( image, &source, screen, &destination );
 		
-		cout << t.getPath() << endl;
 		
 	}
 
