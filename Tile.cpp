@@ -1,5 +1,8 @@
 #include "Tile.h"
+#include <string>
 using namespace std;
+
+
 
 Tile::Tile(int xcoord, int ycoord, int idnum)
 {
@@ -7,15 +10,7 @@ Tile::Tile(int xcoord, int ycoord, int idnum)
 	y = ycoord;
 	id = idnum;
 }
-int Tile::getX()
-{
-	return x;
-}
 
-int Tile::getY()
-{
-	return y;
-}
 	
 
 int Tile::setID(int idnum)

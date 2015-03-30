@@ -1,6 +1,7 @@
 #include "view.h"
 #include <iostream>
 #include "Tile.h"
+#include <string>
 
 using namespace std;
 
@@ -55,10 +56,10 @@ View::~View() {
 /**
  *  Load an image from a file to a SDL_Surface
  */
-SDL_Surface* View::load(char * path) {
+SDL_Surface* View::load(string path) {
     // Load image
     SDL_Surface* optimizedSurface = NULL;
-    SDL_Surface* loadedSurface = IMG_Load( path );
+    SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
     if( loadedSurface == NULL ) {
         return NULL;
     }
@@ -77,15 +78,25 @@ void View::show(Model * model) {
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
         0x00, 0x00, 0x00));
 
-    // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
-	//cout << "Rendering " << tiles.size() << " tiles" << endl;
+	SDL_Surface * tile1 = load("tileset/1.png");
 	
-	Tile t;
 	for(int i = 0; i < tiles.size(); i++)
 	{
-		t = tiles[i];
-	//	cout << t.getID() << endl;
-	}
+		Tile t = tiles[i];
+		//render tile
+		
+		SDL_Rect source;
+		SDL_Rect destination;
+		source.x = 0;
+		source.y = 0;
+		source.w = 64;
+		source.h = 64;
+		destination.x = t.getX() * 64 + model->getXOffset();
+		destination.y = t.getY() * 64 + model->getYOffset();
+		SDL_BlitSurface( tile1, &source, screen, &destination );
+		
+		
+	} 
 
     SDL_UpdateWindowSurface(window);
 }
