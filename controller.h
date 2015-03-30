@@ -20,5 +20,10 @@ private:
 	Menu * menu;
     View * view;
 	Model * model;
+	Load*load;
+	File *file;
+	NewGame*newgame;
+	SaveGame *savegame;
+	ExitGame * exitgame;
 };
 #endif

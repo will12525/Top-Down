@@ -19,7 +19,9 @@ class Menu{
 		//decrement the location 
 	}
 	virtual void enter(){
+		cout << "enter stuff: Return" << endl;
 		//run code at corrent location 
+		Model::getInstance()->check=PLAY;
 	}
 
 	void navigate (Direction d)
@@ -33,6 +35,7 @@ class Menu{
 		}
 		else if(d == RETURN){
 			cout << "Debug: Return" << endl;
+			enter();
 		}
 	}
 	
@@ -40,8 +43,10 @@ class Menu{
 
 class MenuItem {
 	public:
+	MenuItem(){}
+	~MenuItem(){}
 	string label;
-	virtual void doThing();
+	virtual void doThing(){}
 };
 
 class Load : public MenuItem {
@@ -92,6 +97,8 @@ class ExitGame : public MenuItem {
 	virtual void doThing() {
 	}
 };
+
+
 
 
 

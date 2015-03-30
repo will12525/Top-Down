@@ -4,13 +4,30 @@
 using namespace std;
 
 Controller::Controller() {
-    model = new Model(50, 50);
+    model = Model::getInstance();
     view = new View("Game", 1024, 768);
+	menu = new Menu();
+	startscreen =new StartScreen();
+	loadscreen= new LoadScreen();
+	ingamescreen = new InGameScreen();
+	load=new Load();
+	file=new File();
+	newgame=new NewGame();
+	savegame=new SaveGame();
+	exitgame=new ExitGame();
 }
 
 Controller::~Controller() {
     delete model;
     delete view;
+	delete startscreen;
+	delete loadscreen;
+	delete ingamescreen;
+	delete newgame;
+	delete savegame;
+	delete exitgame;
+	delete load;
+	delete file;
 }
 /**
 References:
