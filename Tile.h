@@ -8,16 +8,26 @@ class Tile
 public:
 	Tile() {}
 	Tile(int xcoord, int ycoord, int idnum);
-	int getX();
-	
-	int getY();
-	
-	string getPath();
-	
+
+	string getPath()
+	{
+		return path;
+	}
+
 	int getID() {
 		return id;
 	}
-	
+
+	int getX()
+	{
+		return x;
+	}
+
+	int getY()
+	{
+		return y;
+	}
+
 	int setID(int idnum);
 protected:
 	int x, y, id;

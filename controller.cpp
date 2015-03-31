@@ -4,13 +4,34 @@
 using namespace std;
 
 Controller::Controller() {
-    model = new Model(50, 50);
-    view = new View("Game", 1024, 768);
+  model = Model::getInstance();
+  view = new View("Game", 1024, 768);
+	menu = new Menu();
+	startscreen =StartScreen::getInstance();
+	loadscreen= LoadScreen::getInstance();
+	ingamescreen = InGameScreen::getInstance();
+  /*
+	load=new Load();
+	file=new File();
+	newgame=new NewGame();
+	savegame=new SaveGame();
+	exitgame=new ExitGame();
+  */
 }
 
 Controller::~Controller() {
-    delete model;
-    delete view;
+  delete model;
+  delete view;
+	delete startscreen;
+	delete loadscreen;
+	delete ingamescreen;
+  /*
+	delete newgame;
+	delete savegame;
+	delete exitgame;
+	delete load;
+	delete file;
+  */
 }
 /**
 References:
@@ -25,20 +46,25 @@ void Controller::loop() {
     direction[SDLK_DOWN] = DOWN;
     direction[SDLK_LEFT] = LEFT;
     direction[SDLK_RIGHT] = RIGHT;
-	direction[SDLK_ESCAPE] = ESCAPE;
-	direction[SDLK_SPACE] = SPACE;
-	direction[SDLK_RETURN] = RETURN;
-	
+    direction[SDLK_ESCAPE] = ESCAPE;
+	  direction[SDLK_SPACE] = SPACE;
+  	direction[SDLK_RETURN] = RETURN;
 
-	
+
+
 
 
     while(!model->gameOver())
 	{
         currentTime = SDL_GetTicks();
         // Do stuff here to animate as necessary
+		if (model->check==PLAY){
         view->show(model);
-		
+		}
+		else{
+		view->write();
+		}
+
         if (SDL_PollEvent(&e) != 0)
 		{
             switch (e.type)
@@ -75,7 +101,7 @@ void Controller::loop() {
 							case SDLK_ESCAPE:
 								return;
 								break;
-						}  
+						}
 						break;
 					}
 					else if(model->check == LOAD)
@@ -90,7 +116,7 @@ void Controller::loop() {
 							case SDLK_ESCAPE:
 								model->check=START;
 								break;
-						}  
+						}
 						break;
 					}
 					else if(model->check == GAMEM)
@@ -102,18 +128,18 @@ void Controller::loop() {
 							case SDLK_RETURN:
 								loadscreen->navigate(direction[e.key.keysym.sym]);
 								break;
-						}  
+						}
 						break;
 					}
-			
+
 				case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
 					break;
 				default:
 					break;
             }
-          
+
         }
-    
+
 	}
     // TODO: show something nice?
     view->show(model);

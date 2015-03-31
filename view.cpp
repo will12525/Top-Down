@@ -1,6 +1,8 @@
 #include "view.h"
 #include <iostream>
 #include "Tile.h"
+#include "menu.h"
+#include <string>
 
 using namespace std;
 
@@ -42,7 +44,9 @@ View::View(string title, int width, int height) {
 //       Mix_PlayMusic( music, -1 );
 //    }
 //    food = Mix_LoadWAV("assets/yummy.wav");
-    font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 28 );
+    font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 24 );
+	  text_color={255,255,255};
+	  text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
 
 }
 
@@ -55,37 +59,83 @@ View::~View() {
 /**
  *  Load an image from a file to a SDL_Surface
  */
-SDL_Surface* View::load(char * path) {
+SDL_Surface* View::load(string path) {
     // Load image
     SDL_Surface* optimizedSurface = NULL;
-    SDL_Surface* loadedSurface = IMG_Load( path );
+    SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
     if( loadedSurface == NULL ) {
         return NULL;
     }
     // Convert surface to screen format
     optimizedSurface = SDL_ConvertSurface( loadedSurface, screen->format, 0 );
-    
+
     // Get rid of old loaded surface
     SDL_FreeSurface( loadedSurface );
-    
+
     return optimizedSurface;
 }
 
 void View::show(Model * model) {
 	vector<Tile> tiles = model->getTiles();
 
-    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
-        0x00, 0x00, 0x00));
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
-    // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
-	//cout << "Rendering " << tiles.size() << " tiles" << endl;
-	
-	Tile t;
+	SDL_Surface * tile1 = load("tileset/1.png");
+
 	for(int i = 0; i < tiles.size(); i++)
 	{
-		t = tiles[i];
-	//	cout << t.getID() << endl;
+		Tile t = tiles[i];
+		//render tile
+
+		SDL_Rect source;
+		SDL_Rect destination;
+		source.x = 0;
+		source.y = 0;
+		source.w = 64;
+		source.h = 64;
+		destination.x = t.getX() * 64 + model->getXOffset();
+		destination.y = t.getY() * 64 + model->getYOffset();
+		SDL_BlitSurface( tile1, &source, screen, &destination );
+
+
 	}
 
     SDL_UpdateWindowSurface(window);
+}
+
+void View::write(){
+	// Clear the screen
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
+
+    text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
+
+    SDL_BlitSurface(text, NULL, screen, NULL);
+
+    //rewrite text// this can be done better i think
+      if (Model::getInstance()->check==START){
+        string s = to_string(StartScreen::getInstance()->position);
+        const char *pchar = s.c_str();
+        text=TTF_RenderText_Solid(font,pchar, text_color);
+      }
+      else if (Model::getInstance()->check==LOAD){
+        string s = to_string(LoadScreen::getInstance()->position);
+        const char *pchar = s.c_str();
+        text=TTF_RenderText_Solid(font,pchar, text_color);      }
+      else{
+        string s = to_string(InGameScreen::getInstance()->position);
+        const char *pchar = s.c_str();
+        text=TTF_RenderText_Solid(font,pchar, text_color);      }
+
+	//aply text
+
+  SDL_Rect end;
+  end.x = 0;
+  end.y = 64;
+  SDL_BlitSurface( text, NULL, screen, &end );
+
+
+
+
+
+	SDL_UpdateWindowSurface(window);
 }

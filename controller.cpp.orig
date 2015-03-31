@@ -1,7 +1,7 @@
 #include "controller.h"
 #include <map>
 
-using namespace std;
+using namespace std;///
 
 Controller::Controller() {
     model = new Model(50, 50);
@@ -30,11 +30,11 @@ void Controller::loop() {
 	direction[SDLK_RETURN2] = RETURN;
 	State check = MENU;
 
-	
+
 
 
     while(!model->gameOver()) {
-		
+
         currentTime = SDL_GetTicks();
         // Do stuff here to animate as necessary
         view->show(model);
@@ -75,10 +75,10 @@ void Controller::loop() {
 =======
 								//temp
 								break;
-						}    
+						}
 >>>>>>> 1b087af24434d2723af95a7680956686ff4bfd28
 					}
-					
+
 
                 break;
                 default:
@@ -87,14 +87,14 @@ void Controller::loop() {
                 break;
 <<<<<<< HEAD
             }
-            
+
 =======
-            
+
             }
 >>>>>>> 1b087af24434d2723af95a7680956686ff4bfd28
-          
+
         }
-    
+
     // TODO: show something nice?
     view->show(model);
     SDL_Delay(3000);
