@@ -1,11 +1,20 @@
 #include "model.h"
 #include <iostream>
+#include <vector>
 
 #ifndef _MENU_H
 #define _MENU_H
 
 
 using namespace std;
+
+class MenuItem {
+	public:
+	MenuItem(){}
+	~MenuItem(){}
+	string label;
+	virtual void doThing(){}
+};
 
 
 class Menu{
@@ -17,20 +26,15 @@ class Menu{
 	void down();
 	void enter();
 	void navigate(Direction d);
+	int position;
+	vector<MenuItem> storage ;
 };
 
-class MenuItem {
-	public:
-	MenuItem(){}
-	~MenuItem(){}
-	string label;
-	virtual void doThing(){}
-};
 
 class Load : public MenuItem {
 	public:
 	Load() {
-		label = "LOAD";
+		label = "Load";
 	}
 	virtual void doThing() {
 		Model::getInstance()->check=LOAD;
@@ -40,7 +44,7 @@ class Load : public MenuItem {
 class File : public MenuItem {
 	public:
 	File() {
-		label = "FILE";
+		label = "File";
 	}
 	virtual void doThing() {
 		Model::getInstance()->check=PLAY;
@@ -50,7 +54,7 @@ class File : public MenuItem {
 class NewGame : public MenuItem {
 	public:
 	NewGame() {
-		label = "NEW GAME";
+		label = "New Game";
 	}
 	virtual void doThing() {
 		//start a new file
@@ -60,7 +64,7 @@ class NewGame : public MenuItem {
 class SaveGame : public MenuItem {
 	public:
 	SaveGame() {
-		label = "SAVE GAME";
+		label = "Save Game";
 	}
 	virtual void doThing() {
 		//write current position to text file
@@ -78,6 +82,8 @@ class ExitGame : public MenuItem {
 };
 
 
+
+
 class StartScreen: public Menu{
 	public:
 		static StartScreen* getInstance(){
@@ -86,16 +92,11 @@ class StartScreen: public Menu{
 	}
 
 	StartScreen(){
-		start [0]=load;
-		position=0;
+		storage[0]=load;
 	}
 	~StartScreen(){}
-	void loadfun(){
-		load.doThing();
-	}
+
 	Load load;
-	MenuItem start[1];
-	int position;
 };
 
 class LoadScreen: public Menu{
@@ -106,22 +107,14 @@ class LoadScreen: public Menu{
 	}
 
 	LoadScreen(){
-		start [0]=file;
-		start [1]=new_game;
-		position=0;
+		storage[0]=file;
+		storage[1]=new_game;
 	}
 	~LoadScreen(){}
-	void filefun(){
-		file.doThing();
-	}
-	void new_gamefun(){
-		new_game.doThing();
-	}
+
 
 	File file;
 	NewGame new_game;
-	MenuItem start[2];
-	int position;
 };
 
 class InGameScreen: public Menu{
@@ -131,71 +124,12 @@ class InGameScreen: public Menu{
 		return ingamescreen;
 	}
 	InGameScreen(){
-		ingame[0]=save;
-		ingame[1]=exit;
-		position=0;
+		storage[0]=save;
+		storage[1]=exit;
 	}
 	~InGameScreen(){}
-
-	void savefun(){
-		save.doThing();
-	}
-	void exitfun(){
-		exit.doThing();
-	}
 	SaveGame save;
 	ExitGame exit;
-	MenuItem ingame[2];
-	int position;
 };
-
-
-//////////////////////////////
-/*
-void Menu::up(){
-	//if position value is greater then zero position--
-	if (Model::getInstance()->check==START){
-		if (StartScreen::getInstance()->position>0){
-			StartScreen::getInstance()->position--;
-		}
-	}
-	else if (Model::getInstance()->check==LOAD){
-		if (LoadScreen::getInstance()->position>0){
-			LoadScreen::getInstance()->position--;
-		}
-	}
-	else{
-		if (InGameScreen::getInstance()->position>0){
-			InGameScreen::getInstance()->position--;
-		}
-	}
-}
-void Menu::down(){
-	//if position value is less then array size for
-	//current menu,position++
-	if (Model::getInstance()->check==START){
-		if (StartScreen::getInstance()->position<1){
-			StartScreen::getInstance()->position++;
-		}
-	}
-	else if (Model::getInstance()->check==LOAD){
-		if (LoadScreen::getInstance()->position<2){
-			LoadScreen::getInstance()->position++;
-		}
-	}
-	else{
-		if (InGameScreen::getInstance()->position<2){
-			InGameScreen::getInstance()->position++;
-		}
-	}
-}
-void Menu::enter(){
-	cout << "enter stuff: Return" << endl;
-	Model::getInstance()->check=PLAY;
-}
-
-*/
-
-
 
 #endif

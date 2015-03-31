@@ -1,4 +1,5 @@
 #include "controller.h"
+#include "menu.h"
 #include <map>
 
 using namespace std;
@@ -22,6 +23,7 @@ Controller::Controller() {
 Controller::~Controller() {
   delete model;
   delete view;
+  delete menu;
 	delete startscreen;
 	delete loadscreen;
 	delete ingamescreen;
@@ -61,8 +63,14 @@ void Controller::loop() {
 		if (model->check==PLAY){
         view->show(model);
 		}
-		else{
-		view->write();
+		else if (model->check==START){
+		view->write(startscreen);
+		}
+    else if (model->check==LOAD){
+		view->write(loadscreen);
+		}
+    else {
+		view->write(ingamescreen);
 		}
 
         if (SDL_PollEvent(&e) != 0)
@@ -126,7 +134,7 @@ void Controller::loop() {
 							case SDLK_DOWN:
 							case SDLK_UP:
 							case SDLK_RETURN:
-								loadscreen->navigate(direction[e.key.keysym.sym]);
+								ingamescreen->navigate(direction[e.key.keysym.sym]);
 								break;
 						}
 						break;

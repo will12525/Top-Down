@@ -1,7 +1,7 @@
 #include "view.h"
 #include <iostream>
 #include "Tile.h"
-#include "menu.h"
+
 #include <string>
 
 using namespace std;
@@ -103,7 +103,7 @@ void View::show(Model * model) {
     SDL_UpdateWindowSurface(window);
 }
 
-void View::write(){
+void View::write(Menu * menu){
 	// Clear the screen
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
@@ -111,31 +111,17 @@ void View::write(){
 
     SDL_BlitSurface(text, NULL, screen, NULL);
 
-    //rewrite text// this can be done better i think
-      if (Model::getInstance()->check==START){
-        string s = to_string(StartScreen::getInstance()->position);
-        const char *pchar = s.c_str();
-        text=TTF_RenderText_Solid(font,pchar, text_color);
-      }
-      else if (Model::getInstance()->check==LOAD){
-        string s = to_string(LoadScreen::getInstance()->position);
-        const char *pchar = s.c_str();
-        text=TTF_RenderText_Solid(font,pchar, text_color);      }
-      else{
-        string s = to_string(InGameScreen::getInstance()->position);
-        const char *pchar = s.c_str();
-        text=TTF_RenderText_Solid(font,pchar, text_color);      }
+  //rewrite text// this can be done better i think
+
+    string s = menu->storage[menu->position].label;
+    const char *pchar = s.c_str();
+    text=TTF_RenderText_Solid(font,pchar, text_color);
 
 	//aply text
 
-  SDL_Rect end;
-  end.x = 0;
-  end.y = 64;
-  SDL_BlitSurface( text, NULL, screen, &end );
-
-
-
-
-
-	SDL_UpdateWindowSurface(window);
+    SDL_Rect end;
+    end.x = 0;
+    end.y = 64;
+    SDL_BlitSurface( text, NULL, screen, &end );
+  	SDL_UpdateWindowSurface(window);
 }

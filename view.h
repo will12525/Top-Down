@@ -8,7 +8,7 @@
 #include "model.h"
 #include <map>
 #include <string>
-
+#include "menu.h"
 #ifndef _VIEW_H
 #define _VIEW_H
 
@@ -20,7 +20,7 @@ public:
     ~View();
     // Print out the visible stuff in the grid
     void show(Model * model);
-	void write();
+	  void write(Menu * menu);
 private:
     SDL_Window* window;
     SDL_Surface* screen;
