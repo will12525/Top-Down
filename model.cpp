@@ -36,35 +36,43 @@ Model::~Model() {
 
 void Model::go(Direction d)
 {
+	int speed = 5;
+	
 	if(d == UP)
 	{
-		yOffset--;
+		yOffset += speed;
 		cout << "Debug: Up" << endl;
 	}
-	else if(d == DOWN)
+	
+	if(d == DOWN)
 	{
-		yOffset++;
+		yOffset -= speed;
 		cout << "Debug: Down" << endl;
 	}
-	else if(d == LEFT)
+	
+	if(d == LEFT)
 	{
-		xOffset--;
+		xOffset += speed;
 		cout << "Debug: Left" << endl;
 	}
-	else if(d == RIGHT)
+	
+	if(d == RIGHT)
 	{
-		xOffset++;
+		xOffset -= speed;
 		cout << "Debug: Right" << endl;
 	}
-	else if(d == ESCAPE)
+	
+	if(d == ESCAPE)
 	{
 		cout << "Debug: Escape" << endl;
 	}
-	else if(d == RETURN)
+	
+	if(d == RETURN)
 	{
 		cout << "Debug: Enter" << endl;
 	}
-	else if(d == SPACE)
+	
+	if(d == SPACE)
 	{
 		cout << "Debug: Space" << endl;
 	}
