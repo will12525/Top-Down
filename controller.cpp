@@ -10,11 +10,13 @@ Controller::Controller() {
 	startscreen =StartScreen::getInstance();
 	loadscreen= LoadScreen::getInstance();
 	ingamescreen = InGameScreen::getInstance();
+  /*
 	load=new Load();
 	file=new File();
 	newgame=new NewGame();
 	savegame=new SaveGame();
 	exitgame=new ExitGame();
+  */
 }
 
 Controller::~Controller() {
@@ -23,11 +25,13 @@ Controller::~Controller() {
 	delete startscreen;
 	delete loadscreen;
 	delete ingamescreen;
+  /*
 	delete newgame;
 	delete savegame;
 	delete exitgame;
 	delete load;
 	delete file;
+  */
 }
 /**
 References:

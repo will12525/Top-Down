@@ -26,8 +26,8 @@ private:
     SDL_Surface* screen;
     bool fail;
     SDL_Surface* load(string path);
-	SDL_Surface* text;
-	SDL_Color text_color;
+	  SDL_Surface* text;
+	  SDL_Color text_color;
 //    Mix_Music * music;
 //    Mix_Chunk * food;
     TTF_Font * font;

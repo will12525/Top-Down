@@ -4,7 +4,6 @@
 #include "menu.h"
 #include <string>
 
-
 using namespace std;
 
 // Initialize SDL
@@ -46,8 +45,8 @@ View::View(string title, int width, int height) {
 //    }
 //    food = Mix_LoadWAV("assets/yummy.wav");
     font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 24 );
-	text_color={255,255,255};
-	text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
+	  text_color={255,255,255};
+	  text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
 
 }
 
@@ -112,6 +111,7 @@ void View::write(){
 
     SDL_BlitSurface(text, NULL, screen, NULL);
 
+    //rewrite text// this can be done better i think
       if (Model::getInstance()->check==START){
         string s = to_string(StartScreen::getInstance()->position);
         const char *pchar = s.c_str();
