@@ -3,6 +3,7 @@
 #include "Tile.h"
 #include "menu.h"
 #include <string>
+#include "Entity.h"
 
 using namespace std;
 
@@ -77,10 +78,11 @@ SDL_Surface* View::load(string path) {
 
 void View::show(Model * model) {
 	vector<Tile> tiles = model->getTiles();
-
+	vector<Entity> entities = model->getEntities();
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
 	SDL_Surface * tile1 = load("tileset/1.png");
+	
 
 	for(int i = 0; i < tiles.size(); i++)
 	{
@@ -96,8 +98,23 @@ void View::show(Model * model) {
 		destination.x = t.getX() * 64 + model->getXOffset();
 		destination.y = t.getY() * 64 + model->getYOffset();
 		SDL_BlitSurface( tile1, &source, screen, &destination );
+	}
+	
+	for(int i = 0;i<entities.size();i++)
+	{
+		Entity ent = entities[i];
+		
+		SDL_Surface * image = load(ent.getPath());
+		SDL_Rect source;
+		SDL_Rect destination;
+		source.x=0;
+		source.y=0;
+		source.w=image->w;
+		source.h=image->h;
 
-
+		destination.x=ent.getX();
+		destination.y=ent.getY();
+		SDL_BlitSurface(image,&source,screen,&destination);
 	}
 
     SDL_UpdateWindowSurface(window);

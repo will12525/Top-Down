@@ -5,7 +5,6 @@
 #include <fstream>
 #include "GrassTile.cpp"
 #include "voidTile.cpp"
-#include "PlayerEntity.cpp"
 
 using namespace std;
 
@@ -14,7 +13,7 @@ Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
 	loadTiles("testmap.txt");
-	check = START;
+	check = GAME;
 }
 int Model::getXOffset()
 {
@@ -30,49 +29,69 @@ vector<Tile> Model::getTiles()
 {
 	return tiles;
 }
-vector<Entity> Model::getEntities()
-{
-	return entities;
-}
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
 }
 
 void Model::go(Direction d)
 {
+	int speed = 5;
+	
 	if(d == UP)
 	{
+<<<<<<< HEAD
 		yOffset=yOffset+64;
 		//yOffset++;
+=======
+		yOffset += speed;
+>>>>>>> 120a6431ceb00509ada4f7be82ec2f34da43b1e1
 		cout << "Debug: Up" << endl;
 	}
-	else if(d == DOWN)
+	
+	if(d == DOWN)
 	{
+<<<<<<< HEAD
 		yOffset=yOffset-64;
 		//yOffset--;
+=======
+		yOffset -= speed;
+>>>>>>> 120a6431ceb00509ada4f7be82ec2f34da43b1e1
 		cout << "Debug: Down" << endl;
 	}
-	else if(d == LEFT)
+	
+	if(d == LEFT)
 	{
+<<<<<<< HEAD
 		xOffset=xOffset+64;
 		//xOffset++;
+=======
+		xOffset += speed;
+>>>>>>> 120a6431ceb00509ada4f7be82ec2f34da43b1e1
 		cout << "Debug: Left" << endl;
 	}
-	else if(d == RIGHT)
+	
+	if(d == RIGHT)
 	{
+<<<<<<< HEAD
 		xOffset=xOffset-64;
 		//xOffset--;
+=======
+		xOffset -= speed;
+>>>>>>> 120a6431ceb00509ada4f7be82ec2f34da43b1e1
 		cout << "Debug: Right" << endl;
 	}
-	else if(d == ESCAPE)
+	
+	if(d == ESCAPE)
 	{
 		cout << "Debug: Escape" << endl;
 	}
-	else if(d == RETURN)
+	
+	if(d == RETURN)
 	{
 		cout << "Debug: Enter" << endl;
 	}
-	else if(d == SPACE)
+	
+	if(d == SPACE)
 	{
 		cout << "Debug: Space" << endl;
 	}
@@ -90,8 +109,7 @@ void Model::loadTiles(string path)
 
 	int yCoord=0;
 	int xCoord=0;
-	PlayerEntity * player = new PlayerEntity(200,200,"will");
-	entities.push_back(*player);
+
 	while(tileFile >> nextLine)
 	{
 
@@ -159,6 +177,5 @@ void Model::loadTiles(string path)
 		}
 
 	}
-
 
 }

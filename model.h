@@ -1,4 +1,5 @@
 #include "Tile.h"
+#include "Entity.h"
 
 #include <vector>
 #include <string>
@@ -11,7 +12,7 @@
 using namespace std;
 
 enum Direction { UP, DOWN, LEFT, RIGHT, ESCAPE, SPACE, RETURN};
-enum State {START, LOAD, GAMEM, PLAY};
+enum State {START, LOAD, GAME, PLAY};
 
 // The model manages the state of the game
 class Model {
@@ -30,6 +31,7 @@ public:
 	int getXOffset();
 	int getYOffset();
 	vector<Tile> getTiles();
+	vector<Entity> getEntities();
 	State check;
 private:
     // Constructor (instantiates object)
@@ -37,6 +39,7 @@ private:
 	int xOffset;
 	int yOffset;
 	vector<Tile> tiles;
+	vector<Entity> entities;
 
 	void loadTiles(string path);
 
