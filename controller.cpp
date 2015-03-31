@@ -84,7 +84,7 @@ void Controller::loop() {
 								model->go(direction[e.key.keysym.sym]);
 								break;
 							case SDLK_ESCAPE:
-								model->check=GAMEM;
+								model->check=GAME;
 								break;
 						}
 						break;
@@ -119,7 +119,7 @@ void Controller::loop() {
 						}
 						break;
 					}
-					else if(model->check == GAMEM)
+					else if(model->check == GAME)
 					{
 						switch(e.key.keysym.sym)
 						{
