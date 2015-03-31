@@ -11,28 +11,12 @@ using namespace std;
 class Menu{
 	public:
 	// navigate any list
-
-
+	Menu();
+	~Menu();
 	void up();
 	void down();
 	void enter();
-
-	void navigate (Direction d)
-	{
-		if(d == UP){
-			cout << "Debug: Up" << endl;
-			up();
-		}
-		else if(d == DOWN){
-			cout << "Debug: Down" << endl;
-			down();
-		}
-		else if(d == RETURN){
-			cout << "Debug: Return" << endl;
-			enter();
-		}
-	}
-
+	void navigate(Direction d);
 };
 
 class MenuItem {
@@ -167,7 +151,7 @@ class InGameScreen: public Menu{
 
 
 //////////////////////////////
-
+/*
 void Menu::up(){
 	//if position value is greater then zero position--
 	if (Model::getInstance()->check==START){
@@ -185,7 +169,6 @@ void Menu::up(){
 			InGameScreen::getInstance()->position--;
 		}
 	}
-
 }
 void Menu::down(){
 	//if position value is less then array size for
@@ -211,7 +194,7 @@ void Menu::enter(){
 	Model::getInstance()->check=PLAY;
 }
 
-
+*/
 
 
 

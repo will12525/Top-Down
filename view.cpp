@@ -1,6 +1,7 @@
 #include "view.h"
 #include <iostream>
 #include "Tile.h"
+#include "menu.h"
 #include <string>
 
 
@@ -105,10 +106,34 @@ void View::show(Model * model) {
 
 void View::write(){
 	// Clear the screen
-      SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
+    SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
+
+    text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
+
+    SDL_BlitSurface(text, NULL, screen, NULL);
+
+      if (Model::getInstance()->check==START){
+        string s = to_string(StartScreen::getInstance()->position);
+        const char *pchar = s.c_str();
+        text=TTF_RenderText_Solid(font,pchar, text_color);
+      }
+      else if (Model::getInstance()->check==LOAD){
+        string s = to_string(LoadScreen::getInstance()->position);
+        const char *pchar = s.c_str();
+        text=TTF_RenderText_Solid(font,pchar, text_color);      }
+      else{
+        string s = to_string(InGameScreen::getInstance()->position);
+        const char *pchar = s.c_str();
+        text=TTF_RenderText_Solid(font,pchar, text_color);      }
 
 	//aply text
-	SDL_BlitSurface(text, NULL, screen, NULL);
+
+  SDL_Rect end;
+  end.x = 0;
+  end.y = 64;
+  SDL_BlitSurface( text, NULL, screen, &end );
+
+
 
 
 
