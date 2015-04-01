@@ -11,11 +11,7 @@ Controller::Controller() {
 	startscreen =StartScreen::getInstance();
 	loadscreen= LoadScreen::getInstance();
 	ingamescreen = InGameScreen::getInstance();
-	load=new Load();
-	file=new File();
-	newgame=new NewGame();
-	savegame=new SaveGame();
-	exitgame=new ExitGame();
+
 
   keys[SDLK_UP] = false;
   keys[SDLK_DOWN] = false;
@@ -44,13 +40,6 @@ Controller::~Controller() {
 	delete startscreen;
 	delete loadscreen;
 	delete ingamescreen;
-  /*
-	delete newgame;
-	delete savegame;
-	delete exitgame;
-	delete load;
-	delete file;
-  */
 }
 
 /**
@@ -66,9 +55,6 @@ void Controller::loop(){
 
   while(!model->gameOver())
 	{
-    /*
-    * add for tom: up, down, escape, enter for direction enum
-    */
     currentTime = SDL_GetTicks();
     //Show the view
 		if (model->check==PLAY){
@@ -89,8 +75,7 @@ void Controller::loop(){
       switch (event.type)
 			{
         case SDL_QUIT:
-          //game over
-          break;
+          return;
         case SDL_KEYDOWN:
           //update key status
           if(model->check == PLAY)
@@ -105,10 +90,18 @@ void Controller::loop(){
           else if(model->check == START)
           {
           startscreen->navigate(direction[event.key.keysym.sym]);
+            if(event.key.keysym.sym == SDLK_ESCAPE)
+            {
+              return;
+            }
           }
           else if(model->check == LOAD)
           {
             loadscreen->navigate(direction[event.key.keysym.sym]);
+            if(event.key.keysym.sym == SDLK_ESCAPE)
+            {
+              model->check = START;
+            }
           }
           else
           {

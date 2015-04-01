@@ -16,7 +16,7 @@ Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
 	loadTiles("testmap.txt");
-	check = PLAY;
+	check = START;
 }
 int Model::getXOffset()
 {
