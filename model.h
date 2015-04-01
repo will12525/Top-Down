@@ -1,4 +1,5 @@
 #include "Tile.h"
+#include "Entity.h"
 
 #include <vector>
 #include <string>
@@ -30,6 +31,7 @@ public:
 	int getXOffset();
 	int getYOffset();
 	vector<Tile> getTiles();
+	vector<Entity> getEntities();
 	State check;
 private:
     // Constructor (instantiates object)
@@ -37,6 +39,7 @@ private:
 	int xOffset;
 	int yOffset;
 	vector<Tile> tiles;
+	vector<Entity> entities;
 
 	void loadTiles(string path);
 
