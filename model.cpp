@@ -4,6 +4,7 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
+#include <SDL2/SDL.h>
 #include "GrassTile.cpp"
 #include "voidTile.cpp"
 
@@ -14,7 +15,7 @@ Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
 	loadTiles("testmap.txt");
-	check = GAME;
+	check = START;
 }
 int Model::getXOffset()
 {
@@ -34,45 +35,45 @@ vector<Tile> Model::getTiles()
 Model::~Model() {
 }
 
-void Model::go(Direction d)
+void Model::handleKey(map <int, bool> keys)
 {
 	int speed = 5;
-	
-	if(d == UP)
+
+	if(keys[SDLK_UP])
 	{
 		yOffset += speed;
 		cout << "Debug: Up" << endl;
 	}
-	
-	if(d == DOWN)
+
+	if(keys[SDLK_DOWN])
 	{
 		yOffset -= speed;
 		cout << "Debug: Down" << endl;
 	}
-	
-	if(d == LEFT)
+
+	if(keys[SDLK_LEFT])
 	{
 		xOffset += speed;
 		cout << "Debug: Left" << endl;
 	}
-	
-	if(d == RIGHT)
+
+	if(keys[SDLK_RIGHT])
 	{
 		xOffset -= speed;
 		cout << "Debug: Right" << endl;
 	}
-	
-	if(d == ESCAPE)
+
+	if(keys[SDLK_ESCAPE])
 	{
 		cout << "Debug: Escape" << endl;
 	}
-	
-	if(d == RETURN)
+
+	if(keys[SDLK_RETURN])
 	{
 		cout << "Debug: Enter" << endl;
 	}
-	
-	if(d == SPACE)
+
+	if(keys[SDLK_SPACE])
 	{
 		cout << "Debug: Space" << endl;
 	}
@@ -93,10 +94,10 @@ void Model::loadTiles(string path)
 
 	while(tileFile >> nextLine)
 	{
-		
+
 		if(readTiles)
 		{
-			
+
 			if(nextLine == "[layer]")
 			{
 				cout<<"empty line, creation limited to first layer for now."<<endl;
@@ -106,7 +107,7 @@ void Model::loadTiles(string path)
 				readTiles=false;
 				continue;
 			}
-			
+
 			for(int k=0;k<nextLine.length();k++)
 			{
 				if(nextLine.at(k)==',')
@@ -122,14 +123,14 @@ void Model::loadTiles(string path)
 						k=j;
 						break;
 					}
-					
+
 					holder=holder+nextLine.at(j);
-					
+
 				}
 				tileId=atoi(holder.c_str());
-	
+
 				Tile * tile;
-				
+
 				//to create a new tile, create the class for it by using the GrassTile
 				//or VoidTile class as a template then create a switch with its case
 				//referring to the id number saved on the text document.
@@ -147,17 +148,16 @@ void Model::loadTiles(string path)
 				xCoord++;
 			}
 			xCoord=0;
-		}		
+		}
 		yCoord++;
-	
+
 		if(nextLine == "data=")
 		{
-		
+
 			readTiles=true;
 			yCoord=0;
 		}
-		
-	}
-	
-}
 
+	}
+
+}

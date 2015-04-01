@@ -5,22 +5,22 @@
 #define _MENU_H
 
 
-using namespace std; 
+using namespace std;
 
 
 class Menu{
-	public: 
+	public:
 	// navigate any list
-	
+
 	virtual void up(){
-		//increment the location 
+		//increment the location
 	}
 	virtual void down(){
-		//decrement the location 
+		//decrement the location
 	}
 	virtual void enter(){
 		cout << "enter stuff: Return" << endl;
-		//run code at corrent location 
+		//run code at corrent location
 		Model::getInstance()->check=PLAY;
 	}
 
@@ -38,7 +38,7 @@ class Menu{
 			enter();
 		}
 	}
-	
+
 };
 
 class MenuItem {
@@ -127,7 +127,7 @@ class LoadScreen: public Menu{
 	void new_gamefun(){
 		//newgame begins
 	}
-	
+
 	File file;
 	NewGame new_game;
 	MenuItem start[2];
@@ -140,10 +140,10 @@ class InGameScreen: public Menu{
 		ingame[1]=exit;
 	}
 	void savefun(){
-		
+
 	}
 	void exitfun(){
-		
+
 	}
 	SaveGame save;
 	ExitGame exit;
@@ -151,12 +151,3 @@ class InGameScreen: public Menu{
 };
 
 #endif
-
-
-
-
-
-
-
-
-

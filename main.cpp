@@ -6,4 +6,3 @@ int main(int argc, char** argv) {
     c.loop();
     return 0;
 }
-	
