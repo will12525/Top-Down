@@ -119,7 +119,10 @@ void Controller::loop(){
           //update key status again
           keys[event.key.keysym.sym] = false;
           break;
-        default: break;
+        case SDL_MOUSEBUTTONDOWN:
+          break;
+        default:
+         break;
       }
     }
 

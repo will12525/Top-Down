@@ -7,6 +7,7 @@
 #include <SDL2/SDL.h>
 #include "GrassTile.cpp"
 #include "voidTile.cpp"
+#include "PlayerEntity.cpp"
 
 using namespace std;
 
@@ -95,7 +96,8 @@ void Model::loadTiles(string path)
 
 	int yCoord=0;
 	int xCoord=0;
-
+	PlayerEntity *player = new PlayerEntity(200,200, "will");
+	entities.push_back(*player);
 	while(tileFile >> nextLine)
 	{
 
