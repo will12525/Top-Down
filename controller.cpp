@@ -17,7 +17,25 @@ Controller::Controller() {
 	newgame=new NewGame();
 	savegame=new SaveGame();
 	exitgame=new ExitGame();
-  */
+
+  keys[SDLK_UP] = false;
+  keys[SDLK_DOWN] = false;
+  keys[SDLK_LEFT] = false;
+  keys[SDLK_RIGHT] = false;
+
+  keys[SDLK_ESCAPE] = false;
+  keys[SDLK_RETURN] = false;
+  keys[SDLK_SPACE] = false;
+
+
+  direction[SDLK_UP] = UP;
+  direction[SDLK_DOWN] = DOWN;
+  direction[SDLK_LEFT] = LEFT;
+  direction[SDLK_RIGHT] = RIGHT;
+
+  direction[SDLK_ESCAPE] = ESCAPE;
+  direction[SDLK_SPACE] = SPACE;
+  direction[SDLK_RETURN] = RETURN;
 }
 
 Controller::~Controller() {
@@ -35,33 +53,27 @@ Controller::~Controller() {
 	delete file;
   */
 }
+
 /**
 References:
 https://wiki.libsdl.org/SDL_PollEvent
 https://wiki.libsdl.org/SDL_Event
 */
 void Controller::loop() {
-    SDL_Event e;
-    unsigned int lastTime = 0, currentTime;
-    std::map<SDL_Keycode, Direction> direction;
-    direction[SDLK_UP] = UP;
-    direction[SDLK_DOWN] = DOWN;
-    direction[SDLK_LEFT] = LEFT;
-    direction[SDLK_RIGHT] = RIGHT;
-    direction[SDLK_ESCAPE] = ESCAPE;
-	  direction[SDLK_SPACE] = SPACE;
-  	direction[SDLK_RETURN] = RETURN;
+  unsigned int lastTime = 0, currentTime;
 
 
+  SDL_Event event;
 
-
-
-    while(!model->gameOver())
+  while(!model->gameOver())
 	{
-        currentTime = SDL_GetTicks();
-        // Do stuff here to animate as necessary
+    /*
+    * add for tom: up, down, escape, enter for direction enum
+    */
+    currentTime = SDL_GetTicks();
+    //Show the view
 		if (model->check==PLAY){
-        view->show(model);
+    view->show(model);
 		}
 		else if (model->check==START){
 		view->write(startscreen);
@@ -73,29 +85,58 @@ void Controller::loop() {
 		view->write(ingamescreen);
 		}
 
-        if (SDL_PollEvent(&e) != 0)
+    if (SDL_PollEvent(&event) != 0)
 		{
-            switch (e.type)
+      switch (event.type)
 			{
+        case SDL_QUIT:
+          //game over
+          break;
+        case SDL_KEYDOWN:
+          //update key status
+          if(model->check == PLAY)
+          {
+            keys[event.key.keysym.sym] = true;
+
+            if(event.key.keysym.sym == SDLK_ESCAPE)
+            {
+              model->check=GAME;
+            }
+          }
+          else if(model->check == START)
+          {
+            startscreen->navigate(direction[event.key.keysym.sym]);
+          }
+          else if(model->check == LOAD)
+          {
+            loadscreen->navigate(direction[event.key.keysym.sym]);
+          }
+          else
+          {
+            ingamescreen->navigate(direction[event.key.keysym.sym]);
+          }
+          break;
+        case SDL_KEYUP:
+          //update key status again
+          keys[event.key.keysym.sym] = false;
+          break;
+        default: break;
+      }
+    }
+
+    //call the handlekey method every loop
+    model->handleKey(keys);
+  }
+
+      /*
 				case SDL_QUIT:
 					return;
 				case SDL_KEYDOWN:
-					if (model->check == PLAY){
-						switch(e.key.keysym.sym)
-						{
-							case SDLK_DOWN:
-							case SDLK_UP:
-							case SDLK_LEFT:
-							case SDLK_RIGHT:
-							case SDLK_RETURN:
-							case SDLK_SPACE:
-								model->go(direction[e.key.keysym.sym]);
-								break;
-							case SDLK_ESCAPE:
-								model->check=GAME;
-								break;
-						}
-						break;
+					if (model->check == PLAY)
+          {
+
+
+
 					}
 					else if(model->check == START)
 					{
@@ -110,6 +151,7 @@ void Controller::loop() {
 								return;
 								break;
 						}
+            //break out of keydown
 						break;
 					}
 					else if(model->check == LOAD)
@@ -144,13 +186,9 @@ void Controller::loop() {
 					break;
 				default:
 					break;
-            }
+          */
 
-        }
-
-	}
     // TODO: show something nice?
     view->show(model);
     SDL_Delay(3000);
-
 }

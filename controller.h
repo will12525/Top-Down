@@ -12,6 +12,7 @@ public:
     ~Controller();
     // Event loop
     void loop();
+
 private:
 	StartScreen * startscreen;
 	LoadScreen * loadscreen;
@@ -24,5 +25,10 @@ private:
 	NewGame* newgame;
 	SaveGame *savegame;
 	ExitGame * exitgame;
+
+  //key and bool map for key status
+  map <SDL_Keycode, bool> keys;
+  //key and direction for menu movement
+  map <SDL_Keycode, Direction> direction;
 };
 #endif

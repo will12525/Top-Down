@@ -1,11 +1,12 @@
-#include "model.h"
+#include "Model.h"
+#include "menu.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 #include <fstream>
+#include <SDL2/SDL.h>
 #include "GrassTile.cpp"
 #include "voidTile.cpp"
-#include "PlayerEntity.cpp"
 
 using namespace std;
 
@@ -30,49 +31,49 @@ vector<Tile> Model::getTiles()
 {
 	return tiles;
 }
-vector<Entity> Model::getEntities()
-{
-	return entities;
-}
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
 }
 
-void Model::go(Direction d)
+void Model::handleKey(map <int, bool> keys)
 {
-	if(d == UP)
+	int speed = 5;
+
+	if(keys[SDLK_UP])
 	{
-		yOffset=yOffset+64;
-		//yOffset++;
+		yOffset += speed;
 		cout << "Debug: Up" << endl;
 	}
-	else if(d == DOWN)
+
+	if(keys[SDLK_DOWN])
 	{
-		yOffset=yOffset-64;
-		//yOffset--;
+		yOffset -= speed;
 		cout << "Debug: Down" << endl;
 	}
-	else if(d == LEFT)
+
+	if(keys[SDLK_LEFT])
 	{
-		xOffset=xOffset+64;
-		//xOffset++;
+		xOffset += speed;
 		cout << "Debug: Left" << endl;
 	}
-	else if(d == RIGHT)
+
+	if(keys[SDLK_RIGHT])
 	{
-		xOffset=xOffset-64;
-		//xOffset--;
+		xOffset -= speed;
 		cout << "Debug: Right" << endl;
 	}
-	else if(d == ESCAPE)
+
+	if(keys[SDLK_ESCAPE])
 	{
 		cout << "Debug: Escape" << endl;
 	}
-	else if(d == RETURN)
+
+	if(keys[SDLK_RETURN])
 	{
 		cout << "Debug: Enter" << endl;
 	}
-	else if(d == SPACE)
+
+	if(keys[SDLK_SPACE])
 	{
 		cout << "Debug: Space" << endl;
 	}
@@ -90,8 +91,7 @@ void Model::loadTiles(string path)
 
 	int yCoord=0;
 	int xCoord=0;
-	PlayerEntity * player = new PlayerEntity(200,200,"will");
-	entities.push_back(*player);
+
 	while(tileFile >> nextLine)
 	{
 
@@ -159,6 +159,5 @@ void Model::loadTiles(string path)
 		}
 
 	}
-
 
 }
