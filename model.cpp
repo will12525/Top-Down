@@ -34,6 +34,7 @@ vector<Tile> Model::getTiles()
 vector<Entity> Model::getEntities(){
 	return entities;
 }
+
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
 }
