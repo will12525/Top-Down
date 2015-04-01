@@ -22,7 +22,6 @@ using namespace std;
 				InGameScreen::getInstance()->position--;
 			}
 		}
-
 	}
 	void Menu::down(){
 		//if position value is less then array size for
@@ -44,29 +43,28 @@ using namespace std;
 		}
 	}
 	void Menu::enter(){
-		cout<< position;
 		if (Model::getInstance()->check==START){
-				StartScreen::getInstance()->storage[position];
+			cout<<"here"<<endl;
+				StartScreen::getInstance()->storage[position].doThing();
 		}
 		else if (Model::getInstance()->check==LOAD){
-			//	LoadScreen::getInstance()->storage[position].doThing;
+			cout<<"there"<<endl;
+				LoadScreen::getInstance()->storage[position].doThing();
 		}
 		else{
-		//		InGameScreen::getInstance()->storage[position].doThing;
+				InGameScreen::getInstance()->storage[position].doThing();
+				cout<<"elsewhere"<<endl;
 		}
 
 	}
 	void Menu::navigate (Direction d){
 		if(d == UP){
-			cout << "Debug: Up" << endl;
-			up();
+			this->up();
 		}
 		else if(d == DOWN){
-			cout << "Debug: Down" << endl;
-			down();
+			this->down();
 		}
 		else if(d == RETURN){
-			cout << "Debug: Return" << endl;
-			enter();
+			this->enter();
 		}
 	}

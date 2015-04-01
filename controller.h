@@ -21,7 +21,7 @@ private:
 	Model * model;
 	Load*load;
 	File *file;
-	NewGame*newgame;
+	NewGame* newgame;
 	SaveGame *savegame;
 	ExitGame * exitgame;
 };

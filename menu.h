@@ -37,6 +37,7 @@ class Load : public MenuItem {
 		label = "Load";
 	}
 	virtual void doThing() {
+		cout<<"change start to load";
 		Model::getInstance()->check=LOAD;
 	}
 };
@@ -46,7 +47,7 @@ class File : public MenuItem {
 	File() {
 		label = "File";
 	}
-	virtual void doThing() {
+	void doThing() {
 		Model::getInstance()->check=PLAY;
 	}
 };
@@ -56,7 +57,7 @@ class NewGame : public MenuItem {
 	NewGame() {
 		label = "New Game";
 	}
-	virtual void doThing() {
+	void doThing() {
 		//start a new file
 	}
 };
@@ -66,8 +67,8 @@ class SaveGame : public MenuItem {
 	SaveGame() {
 		label = "Save Game";
 	}
-	virtual void doThing() {
-		//write current position to text file
+	void doThing() {
+		cout<<"savegame"<<endl;
 	}
 };
 
@@ -76,7 +77,7 @@ class ExitGame : public MenuItem {
 	ExitGame() {
 		label = "Exit GAME";
 	}
-	virtual void doThing() {
+	void doThing() {
 		Model::getInstance()->check=START;
 	}
 };
