@@ -11,7 +11,6 @@ Controller::Controller() {
 	startscreen =StartScreen::getInstance();
 	loadscreen= LoadScreen::getInstance();
 	ingamescreen = InGameScreen::getInstance();
-  /*
 	load=new Load();
 	file=new File();
 	newgame=new NewGame();
@@ -59,7 +58,7 @@ References:
 https://wiki.libsdl.org/SDL_PollEvent
 https://wiki.libsdl.org/SDL_Event
 */
-void Controller::loop() {
+void Controller::loop(){
   unsigned int lastTime = 0, currentTime;
 
 
@@ -105,7 +104,7 @@ void Controller::loop() {
           }
           else if(model->check == START)
           {
-            startscreen->navigate(direction[event.key.keysym.sym]);
+          startscreen->navigate(direction[event.key.keysym.sym]);
           }
           else if(model->check == LOAD)
           {
@@ -127,66 +126,6 @@ void Controller::loop() {
     //call the handlekey method every loop
     model->handleKey(keys);
   }
-
-      /*
-				case SDL_QUIT:
-					return;
-				case SDL_KEYDOWN:
-					if (model->check == PLAY)
-          {
-
-
-
-					}
-					else if(model->check == START)
-					{
-						switch(e.key.keysym.sym)
-						{
-							case SDLK_DOWN:
-							case SDLK_UP:
-							case SDLK_RETURN:
-								startscreen->navigate(direction[e.key.keysym.sym]);
-								break;
-							case SDLK_ESCAPE:
-								return;
-								break;
-						}
-            //break out of keydown
-						break;
-					}
-					else if(model->check == LOAD)
-					{
-						switch(e.key.keysym.sym)
-						{
-							case SDLK_DOWN:
-							case SDLK_UP:
-							case SDLK_RETURN:
-								loadscreen->navigate(direction[e.key.keysym.sym]);
-								break;
-							case SDLK_ESCAPE:
-								model->check=START;
-								break;
-						}
-						break;
-					}
-					else if(model->check == GAME)
-					{
-						switch(e.key.keysym.sym)
-						{
-							case SDLK_DOWN:
-							case SDLK_UP:
-							case SDLK_RETURN:
-								ingamescreen->navigate(direction[e.key.keysym.sym]);
-								break;
-						}
-						break;
-					}
-
-				case SDL_MOUSEBUTTONDOWN: //SDL_GetMouseState
-					break;
-				default:
-					break;
-          */
 
     // TODO: show something nice?
     view->show(model);

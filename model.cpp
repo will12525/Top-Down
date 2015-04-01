@@ -15,7 +15,7 @@ Model::Model(int width, int height) {
 	xOffset = 0;
 	yOffset = 0;
 	loadTiles("testmap.txt");
-	check = START;
+	check = PLAY;
 }
 int Model::getXOffset()
 {
@@ -30,6 +30,9 @@ int Model::getYOffset()
 vector<Tile> Model::getTiles()
 {
 	return tiles;
+}
+vector<Entity> Model::getEntities(){
+	return entities;
 }
 // Destructor deletes dynamically allocated memory
 Model::~Model() {
