@@ -1,6 +1,8 @@
 #include "view.h"
+#include "view.h"
 #include <iostream>
 #include "Tile.h"
+
 
 #include <string>
 #include "Entity.h"
@@ -106,6 +108,9 @@ void View::show(Model * model) {
 		Entity ent = entities[i];
 
 		SDL_Surface * image = load(ent.getPath());
+		//SDL_Surface * rotation = rotozoomSurface(image,5,1,1);
+		//image=rotation;
+		//SDL_FreeSurface(rotation);
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x=0;
@@ -113,6 +118,8 @@ void View::show(Model * model) {
 		source.w=image->w;
 		source.h=image->h;
 
+		
+		
 		destination.x=ent.getX();
 		destination.y=ent.getY();
 		SDL_BlitSurface(image,&source,screen,&destination);
