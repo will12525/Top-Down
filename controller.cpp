@@ -42,6 +42,11 @@ Controller::~Controller() {
 	delete ingamescreen;
 }
 
+View* Controller::getView()
+{
+  return view;
+}
+
 /**
 References:
 https://wiki.libsdl.org/SDL_PollEvent

@@ -8,10 +8,17 @@
 // Handle input
 class Controller {
 public:
+  static Controller * getInstance()
+  {
+    static Controller * controller = new Controller();
+    return controller;
+  }
     Controller();
     ~Controller();
     // Event loop
     void loop();
+
+    View* getView();
 
 private:
 	StartScreen * startscreen;

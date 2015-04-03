@@ -4,6 +4,7 @@
 
 #include <string>
 #include "Entity.h"
+#include "library.h"
 
 using namespace std;
 
@@ -81,14 +82,14 @@ void View::show(Model * model) {
 	vector<Entity> entities = model->getEntities();
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
-	SDL_Surface * tile1 = load("tileset/1.png");
-	
+	//SDL_Surface * tile1 = load("tileset/1.png");
+
 
 	for(int i = 0; i < tiles.size(); i++)
 	{
 		Tile t = tiles[i];
 		//render tile
-
+    SDL_Surface * image = Library::getInstance()->getImage(t.getPath());
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x = 0;
@@ -97,13 +98,13 @@ void View::show(Model * model) {
 		source.h = 64;
 		destination.x = t.getX() * 64 + model->getXOffset();
 		destination.y = t.getY() * 64 + model->getYOffset();
-		SDL_BlitSurface( tile1, &source, screen, &destination );
+		SDL_BlitSurface( image, &source, screen, &destination );
 	}
-	
+
 	for(int i = 0;i<entities.size();i++)
 	{
 		Entity ent = entities[i];
-		
+
 		SDL_Surface * image = load(ent.getPath());
 		SDL_Rect source;
 		SDL_Rect destination;
