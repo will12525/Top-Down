@@ -22,10 +22,13 @@ public:
 	{
 		return x;
 	}
-
 	int getY()
 	{
 		return y;
+	}
+	int getRotation()
+	{
+		return rotation;
 	}
 	int setX(int x)
 	{
@@ -35,6 +38,10 @@ public:
 	{
 		this->y=y;
 	}
+	int setRotation(int r)
+	{
+		rotation=r;
+	}
 	
 	bool death()
 	{
@@ -43,7 +50,7 @@ public:
 	void move();
 	
 protected:
-	int x, y;
+	int x, y,rotation;
 	string path,name;
 	bool dead;
 
