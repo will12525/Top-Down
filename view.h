@@ -19,16 +19,17 @@
 // Show (output) the state of the model
 class View {
 public:
+
     View(std::string title, int width, int height);
     ~View();
     // Print out the visible stuff in the grid
     void show(Model * model);
 	  void write(Menu * menu);
+    SDL_Surface* load(string path);
 private:
     SDL_Window* window;
     SDL_Surface* screen;
     bool fail;
-    SDL_Surface* load(string path);
 	  SDL_Surface* text;
 	  SDL_Color text_color;
 //    Mix_Music * music;

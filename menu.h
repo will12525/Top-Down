@@ -78,6 +78,7 @@ class ExitGame : public MenuItem {
 		label = "Exit GAME";
 	}
 	void doThing() {
+		cout<<"Exit game";
 		Model::getInstance()->check=START;
 	}
 };
@@ -88,49 +89,50 @@ class ExitGame : public MenuItem {
 class StartScreen: public Menu{
 	public:
 		static StartScreen* getInstance(){
-		static StartScreen* startscreen= new StartScreen;
+		static StartScreen* startscreen= new StartScreen();
 		return startscreen;
 	}
+	~StartScreen(){}
+	Load load;
 
+private:
 	StartScreen(){
 		storage[0]=load;
 	}
-	~StartScreen(){}
-
-	Load load;
 };
 
 class LoadScreen: public Menu{
 	public:
 		static LoadScreen* getInstance(){
-		static LoadScreen* loadscreen= new LoadScreen;
+		static LoadScreen* loadscreen= new LoadScreen();
 		return loadscreen;
 	}
+	~LoadScreen(){}
+	File file;
+	NewGame new_game;
 
+private:
 	LoadScreen(){
 		storage[0]=file;
 		storage[1]=new_game;
 	}
-	~LoadScreen(){}
-
-
-	File file;
-	NewGame new_game;
 };
 
 class InGameScreen: public Menu{
 	public:
 		static InGameScreen* getInstance(){
-		static InGameScreen*ingamescreen= new InGameScreen;
+		static InGameScreen*ingamescreen= new InGameScreen();
 		return ingamescreen;
-	}
-	InGameScreen(){
-		storage[0]=save;
-		storage[1]=exit;
 	}
 	~InGameScreen(){}
 	SaveGame save;
 	ExitGame exit;
+
+private:
+	InGameScreen(){
+		storage[0]=save;
+		storage[1]=exit;
+	}
 };
 
 #endif

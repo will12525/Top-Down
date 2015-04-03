@@ -44,16 +44,23 @@ using namespace std;
 	}
 	void Menu::enter(){
 		if (Model::getInstance()->check==START){
-			cout<<"here"<<endl;
-				StartScreen::getInstance()->storage[position].doThing();
+				StartScreen::getInstance()->load.doThing();
 		}
 		else if (Model::getInstance()->check==LOAD){
-			cout<<"there"<<endl;
-				LoadScreen::getInstance()->storage[position].doThing();
+			if (position== 0){
+				LoadScreen::getInstance()->file.doThing();
+			}
+			else{
+				LoadScreen::getInstance()->new_game.doThing();
+			}
 		}
 		else{
-				InGameScreen::getInstance()->storage[position].doThing();
-				cout<<"elsewhere"<<endl;
+			if (position== 0){
+				InGameScreen::getInstance()->save.doThing();
+			}
+			else{
+				InGameScreen::getInstance()->exit.doThing();
+			}
 		}
 
 	}

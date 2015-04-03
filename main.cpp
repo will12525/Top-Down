@@ -3,7 +3,7 @@
 
 
 int main(int argc, char** argv) {
-    Controller c;
-    c.loop();
+    Controller* c = Controller::getInstance();
+    c->loop();
     return 0;
 }
