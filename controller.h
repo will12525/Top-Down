@@ -25,7 +25,7 @@ private:
 	LoadScreen * loadscreen;
 	InGameScreen * ingamescreen;
 	Menu * menu;
-  View * view;
+	View * view;
 	Model * model;
 	Load*load;
 	File *file;
