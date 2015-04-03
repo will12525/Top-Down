@@ -90,7 +90,8 @@ void Controller::loop(){
 			{
         case SDL_QUIT:
           //game over
-          break;
+		  return;
+          
         case SDL_KEYDOWN:
           //update key status
           if(model->check == PLAY)
