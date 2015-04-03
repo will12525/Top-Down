@@ -82,7 +82,7 @@ void View::show(Model * model) {
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
 	SDL_Surface * tile1 = load("tileset/1.png");
-	
+
 
 	for(int i = 0; i < tiles.size(); i++)
 	{
@@ -99,11 +99,11 @@ void View::show(Model * model) {
 		destination.y = t.getY() * 64 + model->getYOffset();
 		SDL_BlitSurface( tile1, &source, screen, &destination );
 	}
-	
+
 	for(int i = 0;i<entities.size();i++)
 	{
 		Entity ent = entities[i];
-		
+
 		SDL_Surface * image = load(ent.getPath());
 		SDL_Rect source;
 		SDL_Rect destination;
@@ -125,20 +125,36 @@ void View::write(Menu * menu){
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
     text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
-
     SDL_BlitSurface(text, NULL, screen, NULL);
 
-  //rewrite text// this can be done better i think
+    for (int i=0; i <2; i++){
+    subwrite(menu, i);
+    pointwrite(menu);
+    }
+    SDL_UpdateWindowSurface(window);
+}
 
-    string s = menu->storage[menu->position].label;
+void View::subwrite(Menu * menu, int offset){
+  //rewrite text// this can be done better i think
+    string s = menu->storage[offset].label;
+    offset=(offset*64)+64;
     const char *pchar = s.c_str();
     text=TTF_RenderText_Solid(font,pchar, text_color);
-
 	//aply text
-
     SDL_Rect end;
-    end.x = 0;
-    end.y = 64;
+    end.x = 20;
+    end.y = offset;
     SDL_BlitSurface( text, NULL, screen, &end );
-  	SDL_UpdateWindowSurface(window);
+
+}
+void View::pointwrite(Menu * menu){
+  //rewrite text// this can be done better i think
+    SDL_Surface * s = SDL_CreateRGBSurface(0, 10, 10, 32, 0, 0, 0, 0);
+    SDL_FillRect(s, NULL, SDL_MapRGB(s->format, 255, 0, 0));
+    int offset=((menu->position)*64)+70;
+    SDL_Rect end;
+    end.x = 6;
+    end.y = offset;
+    SDL_BlitSurface( s, NULL, screen, &end );
+
 }

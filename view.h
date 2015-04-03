@@ -22,6 +22,8 @@ public:
     void show(Model * model);
 	  void write(Menu * menu);
 private:
+    void subwrite(Menu * menu, int offset);
+    void pointwrite(Menu * menu);
     SDL_Window* window;
     SDL_Surface* screen;
     bool fail;
