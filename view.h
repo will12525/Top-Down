@@ -28,6 +28,8 @@ public:
 	  void write(Menu * menu);
     SDL_Surface* load(string path);
 private:
+    void subwrite(Menu * menu, int offset);
+    void pointwrite(Menu * menu);
     SDL_Window* window;
     SDL_Surface* screen;
     bool fail;
