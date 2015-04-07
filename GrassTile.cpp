@@ -3,12 +3,12 @@
 class GrassTile : public Tile
 {
 public:
-	GrassTile(int xCoord,int yCoord,int id)
+	GrassTile(int x,int y,int id)
 	{
-		x = xCoord;
-		y=yCoord;
-		this->id=id;
+		this->x = x;
+		this->y = y;
+		this->id = id;
 		path = "tileset/1.png";
 	}
-	
+
 };

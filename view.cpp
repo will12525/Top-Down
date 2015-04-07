@@ -118,8 +118,8 @@ void View::show(Model * model) {
 		source.w=image->w;
 		source.h=image->h;
 
-		
-		
+
+
 		destination.x=ent.getX();
 		destination.y=ent.getY();
 		SDL_BlitSurface(image,&source,screen,&destination);
