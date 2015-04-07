@@ -1,9 +1,15 @@
 #include "view.h"
+<<<<<<< HEAD
 #include "view.h"
 #include <iostream>
 #include "Tile.h"
 
 
+=======
+#include <iostream>
+#include "Tile.h"
+
+>>>>>>> 1ec01bbf4d0abed56fda09df34a14779819f2a8e
 #include <string>
 #include "Entity.h"
 #include "library.h"
@@ -88,7 +94,11 @@ void View::show(Model * model) {
 	//SDL_Surface * tile1 = load("tileset/1.png");
 =======
 	SDL_Surface * tile1 = load("tileset/1.png");
+<<<<<<< HEAD
 >>>>>>> 68ea3ebbb5af55b3dbc075223fd0c5850948a079
+=======
+>>>>>>> c9c08fb8a852c55b605055549a867224364b1316
+>>>>>>> 1ec01bbf4d0abed56fda09df34a14779819f2a8e
 
 
 	for(int i = 0; i < tiles.size(); i++)
@@ -112,9 +122,12 @@ void View::show(Model * model) {
 		Entity ent = entities[i];
 
 		SDL_Surface * image = load(ent.getPath());
+<<<<<<< HEAD
 		//SDL_Surface * rotation = rotozoomSurface(image,5,1,1);
 		//image=rotation;
 		//SDL_FreeSurface(rotation);
+=======
+>>>>>>> 1ec01bbf4d0abed56fda09df34a14779819f2a8e
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x=0;
@@ -122,8 +135,11 @@ void View::show(Model * model) {
 		source.w=image->w;
 		source.h=image->h;
 
+<<<<<<< HEAD
 		
 		
+=======
+>>>>>>> 1ec01bbf4d0abed56fda09df34a14779819f2a8e
 		destination.x=ent.getX();
 		destination.y=ent.getY();
 		SDL_BlitSurface(image,&source,screen,&destination);
