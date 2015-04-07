@@ -14,6 +14,7 @@ public:
 		path="tileset/TankBottom.png";
 		dead=false;
 	}
+	
 
 
 };

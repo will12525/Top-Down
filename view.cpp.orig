@@ -84,7 +84,11 @@ void View::show(Model * model) {
 	vector<Entity> entities = model->getEntities();
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
+<<<<<<< HEAD
 	//SDL_Surface * tile1 = load("tileset/1.png");
+=======
+	SDL_Surface * tile1 = load("tileset/1.png");
+>>>>>>> 68ea3ebbb5af55b3dbc075223fd0c5850948a079
 
 
 	for(int i = 0; i < tiles.size(); i++)
