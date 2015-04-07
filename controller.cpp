@@ -108,6 +108,10 @@ void Controller::loop(){
           else
           {
             ingamescreen->navigate(direction[event.key.keysym.sym]);
+            if(event.key.keysym.sym == SDLK_ESCAPE)
+            {
+              model->check = PLAY;
+            }
           }
           break;
         case SDL_KEYUP:

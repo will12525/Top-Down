@@ -1,6 +1,8 @@
 #include "model.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <string>
 
 #ifndef _MENU_H
 #define _MENU_H
@@ -48,6 +50,23 @@ class File : public MenuItem {
 		label = "File";
 	}
 	void doThing() {
+		ifstream save_read;
+		save_read.open("savefiles/game.txt");
+			if (save_read.is_open()){
+				int count=1;
+				string line;
+		    while ( getline (save_read,line)){
+					int coord = std::stoi(line);
+		      if (count== 1){
+						Model::getInstance()->setXOffset(coord);
+					}
+					else {
+						Model::getInstance()->setYOffset(coord);
+					}
+					count++;
+		    }
+	    save_read.close();
+	    }
 		Model::getInstance()->check=PLAY;
 	}
 };
@@ -58,7 +77,16 @@ class NewGame : public MenuItem {
 		label = "New Game";
 	}
 	void doThing() {
-		//start a new file
+		Model::getInstance()->reset();
+		ofstream save_write;
+		save_write.open("savefiles/game.txt");
+			if (save_write.is_open())
+			{
+				save_write<<Model::getInstance()->getXOffset()<<endl;
+				save_write<<Model::getInstance()->getYOffset()<<endl;
+		  }
+	    save_write.close();
+			Model::getInstance()->check=PLAY;
 	}
 };
 
@@ -67,8 +95,16 @@ class SaveGame : public MenuItem {
 	SaveGame() {
 		label = "Save Game";
 	}
-	void doThing() {
-		cout<<"savegame"<<endl;
+	void doThing()
+	{
+		ofstream save_write;
+		save_write.open("savefiles/game.txt");
+			if (save_write.is_open())
+			{
+				save_write<<Model::getInstance()->getXOffset()<<endl;
+				save_write<<Model::getInstance()->getYOffset()<<endl;
+		  }
+	    save_write.close();
 	}
 };
 
@@ -79,7 +115,8 @@ class ExitGame : public MenuItem {
 	}
 	void doThing() {
 		cout<<"Exit game";
-		Model::getInstance()->check=START;
+		Model::getInstance()->reset();
+		Model::getInstance()->check=LOAD;
 	}
 };
 

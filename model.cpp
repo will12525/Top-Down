@@ -27,6 +27,12 @@ int Model::getYOffset()
 {
 	return yOffset;
 }
+void Model::setXOffset(int x){
+	xOffset=x;
+}
+void Model::setYOffset(int x){
+	yOffset=x;
+}
 
 vector<Tile> Model::getTiles()
 {
@@ -166,4 +172,9 @@ void Model::loadTiles(string path)
 
 	}
 
+}
+void Model::reset(){
+	xOffset = 0;
+	yOffset = 0;
+	loadTiles("testmap.txt");
 }
