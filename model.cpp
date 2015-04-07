@@ -6,6 +6,7 @@
 #include <fstream>
 #include <SDL2/SDL.h>
 #include "GrassTile.cpp"
+#include "DirtTile.cpp"
 #include "voidTile.cpp"
 #include "PlayerEntity.cpp"
 
@@ -96,7 +97,7 @@ void Model::loadTiles(string path)
 
 	int yCoord=0;
 	int xCoord=0;
-	PlayerEntity *player = new PlayerEntity(200,200, "will");
+	PlayerEntity *player = new PlayerEntity(487,359, "will");
 	entities.push_back(*player);
 	while(tileFile >> nextLine)
 	{
@@ -144,6 +145,10 @@ void Model::loadTiles(string path)
 				{
 					case 1:
 						tile = new GrassTile(xCoord,yCoord,1);
+						tiles.push_back(*tile);
+						break;
+					case 10:
+						tile = new DirtTile(xCoord, yCoord, 10);
 						tiles.push_back(*tile);
 						break;
 					default:
