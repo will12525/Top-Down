@@ -117,6 +117,7 @@ class ExitGame : public MenuItem {
 		cout<<"Exit game";
 		Model::getInstance()->reset();
 		Model::getInstance()->check=LOAD;
+		
 	}
 };
 

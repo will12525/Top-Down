@@ -176,5 +176,7 @@ void Model::loadTiles(string path)
 void Model::reset(){
 	xOffset = 0;
 	yOffset = 0;
+	tiles.clear();
+	entities.clear();
 	loadTiles("testmap.txt");
 }
