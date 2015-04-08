@@ -18,7 +18,10 @@ public:
 	{
 		return path;
 	}
-
+	string getGunPath()
+	{
+		return gunPath;
+	}
 	string getName() {
 		return name;
 	}
@@ -37,6 +40,10 @@ public:
 	{
 		return rotation;
 	}
+	double getGunRotation()
+	{
+		return gunRotation;
+	}
 
 	void setX(double x)
 	{
@@ -52,6 +59,10 @@ public:
 	{
 		rotation=r;
 	}
+	void setGunRotation(double r)
+	{
+		gunRotation=r;
+	}
 
 	bool death()
 	{
@@ -62,8 +73,8 @@ public:
 
 protected:
 	//x and y on the screen
-	double x, y,rotation;
-	string path,name;
+	double x, y,rotation,gunRotation;
+	string path,gunPath,name;
 	bool dead;
 
 };

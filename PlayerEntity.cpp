@@ -4,6 +4,9 @@
 #include "Entity.h"
 #include <string>
 #include <iostream>
+#include <math.h>
+
+#define PI 3.14159265
 
 using namespace std;
 
@@ -19,20 +22,22 @@ public:
 		path="tileset/TankBottom.png";
 		dead=false;
 		rotation=0;
+		gunRotation=0;
+		gunPath="tileset/TankTop.png";
 	}
 
-	void move(double dx, double dy)
+	void move(int speed)
 	{
-		cout << "X: " << this->x << "  dx: " << dx << "  Y: " << this->y << "  dy: " << dy << endl;
-
-		this->x += dx;
-		this->y += dy;
+		//cout << "X: " << this->x << "  dx: " << dx << "  Y: " << this->y << "  dy: " << dy << endl;
+	cout<<rotation<<endl;
+		this->x += speed*sin(rotation*(PI)/180);
+		this->y += speed*cos(rotation*(PI)/180);
 	}
 
 	virtual void move()
 	{
 
-	}
+	}	
 
 };
 #endif

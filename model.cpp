@@ -58,32 +58,32 @@ Model::~Model() {
 
 void Model::handleKey(map <int, bool> keys)
 {
-	int speed = 5;
+	int speed = 0;
 
-	double dx, dy;
+	//double dx=0, dy=0;
 
 	cout << player.getX() << "  " << player.getY() << endl;
 
 
 	if(keys[SDLK_UP])
 	{
-		dy = -speed;
+		speed=-5;
 		//cout << "Debug: Up" << endl;
 	}
 	else if(keys[SDLK_DOWN])
 	{
-		dy = speed;
+		speed+=5;
 		//cout << "Debug: Down" << endl;
 	}
 
 	if(keys[SDLK_LEFT])
 	{
-		dx = -speed;
+		player.setRotation(player.getRotation()+1);
 		//cout << "Debug: Left" << endl;
 	}
 	else if(keys[SDLK_RIGHT])
 	{
-		dx = speed;
+		player.setRotation(player.getRotation()-1);
 		//cout << "Debug: Right" << endl;
 	}
 
@@ -103,7 +103,7 @@ void Model::handleKey(map <int, bool> keys)
 	}
 
 	//move player
-	player.move(dx, dy);
+	player.move(speed);
 }
 
 bool Model::gameOver() {
