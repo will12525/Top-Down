@@ -4,11 +4,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
-
 #include <math.h>
-
-
-
 #include "model.h"
 #include <map>
 #include <string>
@@ -35,8 +31,8 @@ private:
     bool fail;
 	  SDL_Surface* text;
 	  SDL_Color text_color;
-//    Mix_Music * music;
-//    Mix_Chunk * food;
+    Mix_Music * music;
+    Mix_Chunk * shoot;
     TTF_Font * font;
 };
 #endif
