@@ -31,8 +31,8 @@ Andreas Schiffler -- aschiffler at ferzkopp dot net
 #include <windows.h>
 #endif
 
-#include <cstdlib>
-#include <string>
+#include <stdlib.h>
+#include <string.h>
 
 #include "SDL2_rotozoom.h"
 

@@ -13,6 +13,7 @@ public:
 		this->name=name;
 		path="tileset/TankBottom.png";
 		dead=false;
+		rotation=0;
 	}
 	
 

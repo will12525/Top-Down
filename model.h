@@ -1,6 +1,7 @@
 #include "Tile.h"
 #include "Entity.h"
 
+
 #include <vector>
 #include <string>
 #include <map>
@@ -44,6 +45,7 @@ private:
 	vector<Tile> tiles;
 	vector<Entity> entities;
 	void loadTiles(string path);
+	//PlayerEntity *player;
 
 
 };

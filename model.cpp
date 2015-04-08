@@ -8,6 +8,7 @@
 #include "GrassTile.cpp"
 #include "DirtTile.cpp"
 #include "voidTile.cpp"
+#include "TreeTile.cpp"
 #include "PlayerEntity.cpp"
 
 using namespace std;
@@ -97,7 +98,7 @@ void Model::loadTiles(string path)
 
 	int yCoord=0;
 	int xCoord=0;
-	PlayerEntity *player = new PlayerEntity(487,359, "will");
+	PlayerEntity* player = new PlayerEntity(487,359, "will");
 	entities.push_back(*player);
 	while(tileFile >> nextLine)
 	{
@@ -145,6 +146,10 @@ void Model::loadTiles(string path)
 				{
 					case 1:
 						tile = new GrassTile(xCoord,yCoord,1);
+						tiles.push_back(*tile);
+						break;
+					case 2:
+						tile = new TreeTile(xCoord,yCoord,1);
 						tiles.push_back(*tile);
 						break;
 					case 10:
