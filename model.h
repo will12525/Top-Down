@@ -33,9 +33,12 @@ public:
 
 	int getXOffset();
 	int getYOffset();
+	void setXOffset(int x);
+	void setYOffset(int x);
 	vector<Tile> getTiles();
 	vector<Entity> getEntities();
 	State check;
+	void reset();
 
 private:
   // Constructor (instantiates object)
