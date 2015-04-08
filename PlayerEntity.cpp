@@ -18,6 +18,7 @@ public:
 		this->name="will";
 		path="tileset/TankBottom.png";
 		dead=false;
+		rotation=0;
 	}
 
 	void move(double dx, double dy)

@@ -7,7 +7,7 @@
 
 #include <math.h>
 
-
+#include "SDL2_rotozoom.h"
 
 #include "model.h"
 #include <map>

@@ -3,7 +3,8 @@
 #include <iostream>
 #include "Tile.h"
 
-
+#include "SDL2_rotozoom.h"
+#include <SDL2/SDL.h>
 #include <string>
 #include "Entity.h"
 #include "library.h"
@@ -124,9 +125,10 @@ void View::show(Model * model) {
     ent.move();
 
 		SDL_Surface * image = load(ent.getPath());
-		//SDL_Surface * rotation = rotozoomSurface(image,5,1,1);
-		//image=rotation;
-		//SDL_FreeSurface(rotation);
+		//image = SDL_DisplayFormatAlpha(image);
+		SDL_Surface * rotation = rotozoomSurface(image,ent.getRotation(),1,1);
+		image=rotation;
+		
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x=0;
@@ -139,6 +141,8 @@ void View::show(Model * model) {
 		destination.x=ent.getX();
 		destination.y=ent.getY();
 		SDL_BlitSurface(image,&source,screen,&destination);
+		
+		//SDL_FreeSurface(rotation);
 	}
 
     SDL_UpdateWindowSurface(window);
