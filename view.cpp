@@ -86,7 +86,6 @@ void View::show(Model * model) {
 
 	//SDL_Surface * tile1 = load("tileset/1.png");
 
-
 	for(int i = 0; i < tiles.size(); i++)
 	{
 		Tile t = tiles[i];
@@ -101,11 +100,28 @@ void View::show(Model * model) {
 		destination.x = t.getX() * 64 + model->getXOffset();
 		destination.y = t.getY() * 64 + model->getYOffset();
 		SDL_BlitSurface( image, &source, screen, &destination );
+
 	}
+
+  //draw player
+  SDL_Surface* image = load(model->getPlayer().getPath());
+
+  SDL_Rect source, destination;
+  source.x = 0;
+  source.y = 0;
+  source.w = image->w;
+  source.h = image->h;
+
+  destination.x = model->getPlayer().getX();
+  destination.y = model->getPlayer().getY();
+  SDL_BlitSurface(image, &source, screen, &destination);
 
 	for(int i = 0;i<entities.size();i++)
 	{
 		Entity ent = entities[i];
+
+    //move the entity before we draw
+    ent.move();
 
 		SDL_Surface * image = load(ent.getPath());
 		//SDL_Surface * rotation = rotozoomSurface(image,5,1,1);

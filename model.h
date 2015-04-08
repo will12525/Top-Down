@@ -1,9 +1,13 @@
 #include "Tile.h"
 #include "Entity.h"
+#include "PlayerEntity.cpp"
 
 #include <vector>
 #include <string>
 #include <map>
+#include <ctime>
+#include <chrono>
+
 
 #ifndef _MODEL_H
 #define _MODEL_H
@@ -35,6 +39,7 @@ public:
 	vector<Tile> getTiles();
 	vector<Entity> getEntities();
 	State check;
+	Entity getPlayer();
 
 private:
   // Constructor (instantiates object)
@@ -44,6 +49,9 @@ private:
 	vector<Tile> tiles;
 	vector<Entity> entities;
 	void loadTiles(string path);
+	PlayerEntity player;
+
+	chrono::time_point<chrono::system_clock> last;
 
 
 };

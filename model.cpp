@@ -1,7 +1,6 @@
 #include "Model.h"
 #include "menu.h"
 #include <cstdlib>
-#include <ctime>
 #include <iostream>
 #include <fstream>
 #include <SDL2/SDL.h>
@@ -18,7 +17,15 @@ Model::Model(int width, int height) {
 	yOffset = 0;
 	loadTiles("testmap.txt");
 	check = START;
+
+	last = chrono::system_clock::now();
 }
+
+Entity Model::getPlayer()
+{
+	return player;
+}
+
 int Model::getXOffset()
 {
 	return xOffset;
@@ -33,6 +40,7 @@ vector<Tile> Model::getTiles()
 {
 	return tiles;
 }
+
 vector<Entity> Model::getEntities(){
 	return entities;
 }
@@ -43,46 +51,53 @@ Model::~Model() {
 
 void Model::handleKey(map <int, bool> keys)
 {
-	int speed = 5;
+	int speed = 50;
+
+	double dx, dy;
+
+	//milliseconds since last loop
+	chrono::duration<double> elapsed = chrono::system_clock::now() - last;
+
 
 	if(keys[SDLK_UP])
 	{
-		yOffset += speed;
-		cout << "Debug: Up" << endl;
+		dy = -speed * (elapsed.count() / 1000);
+		//cout << "Debug: Up" << endl;
 	}
-
-	if(keys[SDLK_DOWN])
+	else if(keys[SDLK_DOWN])
 	{
-		yOffset -= speed;
-		cout << "Debug: Down" << endl;
+		dy = speed * (elapsed.count() / 1000);
+		//cout << "Debug: Down" << endl;
 	}
 
 	if(keys[SDLK_LEFT])
 	{
-		xOffset += speed;
-		cout << "Debug: Left" << endl;
+		dx = -speed * (elapsed.count() / 1000);
+		//cout << "Debug: Left" << endl;
 	}
-
-	if(keys[SDLK_RIGHT])
+	else if(keys[SDLK_RIGHT])
 	{
-		xOffset -= speed;
-		cout << "Debug: Right" << endl;
+		dx = speed * (elapsed.count() / 1000);
+		//cout << "Debug: Right" << endl;
 	}
 
 	if(keys[SDLK_ESCAPE])
 	{
-		cout << "Debug: Escape" << endl;
+		//cout << "Debug: Escape" << endl;
 	}
 
 	if(keys[SDLK_RETURN])
 	{
-		cout << "Debug: Enter" << endl;
+		//cout << "Debug: Enter" << endl;
 	}
 
 	if(keys[SDLK_SPACE])
 	{
-		cout << "Debug: Space" << endl;
+		//cout << "Debug: Space" << endl;
 	}
+
+	//move player
+	player.move(dx, dy);
 }
 
 bool Model::gameOver() {
@@ -97,8 +112,10 @@ void Model::loadTiles(string path)
 
 	int yCoord=0;
 	int xCoord=0;
-	PlayerEntity *player = new PlayerEntity(487,359, "will");
-	entities.push_back(*player);
+
+	//player = new PlayerEntity(487,359, "will");
+
+	//entities.push_back(*player);
 	while(tileFile >> nextLine)
 	{
 

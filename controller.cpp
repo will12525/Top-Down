@@ -128,6 +128,8 @@ void Controller::loop(){
 
     //call the handlekey method every loop
     model->handleKey(keys);
+
+    SDL_Delay(16);
   }
 
     // TODO: show something nice?

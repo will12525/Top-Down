@@ -7,7 +7,12 @@ class Entity
 {
 public:
 	Entity() {}
-	Entity(int xcoord, int ycoord, string name);
+	Entity(double x, double y, string name){
+		this->x = x;
+		this->y = y;
+		this->name = name;
+		rotation=0;
+	}
 
 	string getPath()
 	{
@@ -18,39 +23,46 @@ public:
 		return name;
 	}
 
-	int getX()
+	double getX()
 	{
 		return x;
 	}
-	int getY()
+
+	double getY()
 	{
 		return y;
 	}
-	int getRotation()
+
+	double getRotation()
 	{
 		return rotation;
 	}
-	int setX(int x)
+
+	void setX(double x)
 	{
 		this->x=x;
 	}
-	int setY(int y)
+
+	void setY(double y)
 	{
 		this->y=y;
 	}
-	int setRotation(int r)
+
+	void setRotation(double r)
 	{
 		rotation=r;
 	}
-	
+
 	bool death()
 	{
 		return dead;
 	}
-	void move();
-	
+
+	virtual void move(){}
+
 protected:
-	int x, y,rotation;
+	//x and y on the screen
+	double x, y,rotation;
 	string path,name;
 	bool dead;
 
