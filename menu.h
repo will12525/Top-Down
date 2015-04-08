@@ -47,7 +47,7 @@ class Load : public MenuItem {
 class File : public MenuItem {
 	public:
 	File() {
-		label = "File";
+		label = "Start Saved File";
 	}
 	void doThing() {
 		ifstream save_read;
@@ -74,7 +74,7 @@ class File : public MenuItem {
 class NewGame : public MenuItem {
 	public:
 	NewGame() {
-		label = "New Game";
+		label = "Make a New Game";
 	}
 	void doThing() {
 		Model::getInstance()->reset();
@@ -116,13 +116,9 @@ class ExitGame : public MenuItem {
 	void doThing() {
 		cout<<"Exit game";
 		Model::getInstance()->reset();
-		Model::getInstance()->check=LOAD;
-		
+		Model::getInstance()->check=START;
 	}
 };
-
-
-
 
 class StartScreen: public Menu{
 	public:
