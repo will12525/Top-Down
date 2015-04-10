@@ -119,8 +119,8 @@ void View::show(Model * model) {
 	SDL_BlitSurface(image, &source, screen, &destination);
 	
 	image = load(model->getPlayer().getGunPath());
-	//rotation = rotozoomSurface(image,model->getPlayer().getGunRotation(),1,1);
-	//image=rotation;
+	rotation = rotozoomSurface(image,model->getPlayer().getGunRotation(),1,1);
+	image=rotation;
 	source.x = 0;
 	source.y = 0;
 	source.w = image->w;

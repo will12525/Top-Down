@@ -79,11 +79,13 @@ void Model::handleKey(map <int, bool> keys)
 	if(keys[SDLK_LEFT])
 	{
 		player.setRotation(player.getRotation()+1);
+		player.setGunRotation(player.getGunRotation()+1);
 		//cout << "Debug: Left" << endl;
 	}
 	else if(keys[SDLK_RIGHT])
 	{
 		player.setRotation(player.getRotation()-1);
+		player.setGunRotation(player.getGunRotation()-1);
 		//cout << "Debug: Right" << endl;
 	}
 
