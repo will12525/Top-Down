@@ -1,14 +1,14 @@
 #include "Tile.h"
 #include <string>
-class GrassTile : public Tile
+class TreeTile : public Tile
 {
 public:
-	GrassTile(int x,int y,int id)
+	TreeTile(int x,int y,int id)
 	{
 		this->x = x;
 		this->y = y;
 		this->id = id;
-		path = "tileset/1.png";
+		path = "tileset/2.png";
 	}
 
 };

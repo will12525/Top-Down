@@ -22,7 +22,7 @@ Model::Model(int width, int height) {
 	last = chrono::system_clock::now();
 }
 
-PlayerEntity Model::getPlayer()
+Entity Model::getPlayer()
 {
 	return player;
 }
@@ -58,32 +58,33 @@ Model::~Model() {
 
 void Model::handleKey(map <int, bool> keys)
 {
-	int speed = 0;
+	int speed = 50;
 
-	//double dx=0, dy=0;
+	double dx, dy;
 
-	cout << player.getX() << "  " << player.getY() << endl;
+	//milliseconds since last loop
+	chrono::duration<double> elapsed = chrono::system_clock::now() - last;
 
 
 	if(keys[SDLK_UP])
 	{
-		speed=-5;
+		dy = -speed * (elapsed.count() / 1000);
 		//cout << "Debug: Up" << endl;
 	}
 	else if(keys[SDLK_DOWN])
 	{
-		speed+=5;
+		dy = speed * (elapsed.count() / 1000);
 		//cout << "Debug: Down" << endl;
 	}
 
 	if(keys[SDLK_LEFT])
 	{
-		player.setRotation(player.getRotation()+1);
+		dx = -speed * (elapsed.count() / 1000);
 		//cout << "Debug: Left" << endl;
 	}
 	else if(keys[SDLK_RIGHT])
 	{
-		player.setRotation(player.getRotation()-1);
+		dx = speed * (elapsed.count() / 1000);
 		//cout << "Debug: Right" << endl;
 	}
 
@@ -103,7 +104,7 @@ void Model::handleKey(map <int, bool> keys)
 	}
 
 	//move player
-	player.move(speed);
+	player.move(dx, dy);
 }
 
 bool Model::gameOver() {
@@ -118,10 +119,15 @@ void Model::loadTiles(string path)
 
 	int yCoord=0;
 	int xCoord=0;
+<<<<<<< HEAD
 
 	//player = new PlayerEntity(487,359, "will");
 
 	//entities.push_back(*player);
+=======
+	PlayerEntity* player = new PlayerEntity(487,359, "will");
+	entities.push_back(*player);
+>>>>>>> d983022a63e08767b21166ed8776aff88cfac65b
 	while(tileFile >> nextLine)
 	{
 

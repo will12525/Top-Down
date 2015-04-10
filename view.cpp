@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Tile.h"
 
+#include "SDL2_rotozoom.h"
+#include <SDL2/SDL.h>
 #include <string>
 #include "Entity.h"
 #include "library.h"
@@ -84,7 +86,6 @@ void View::show(Model * model) {
 
 	//SDL_Surface * tile1 = load("tileset/1.png");
 
-
 	for(int i = 0; i < tiles.size(); i++)
 	{
 		Tile t = tiles[i];
@@ -99,16 +100,48 @@ void View::show(Model * model) {
 		destination.x = t.getX() * 64 + model->getXOffset();
 		destination.y = t.getY() * 64 + model->getYOffset();
 		SDL_BlitSurface( image, &source, screen, &destination );
+
 	}
+
+	//draw player
+	SDL_Surface* image = load(model->getPlayer().getPath());
+	SDL_Surface * rotation = rotozoomSurface(image,model->getPlayer().getRotation(),1,1);
+	image=rotation;
+	SDL_Rect source, destination;
+	source.x = 0;
+	source.y = 0;
+	source.w = image->w;
+	source.h = image->h;
+
+	destination.x = model->getPlayer().getX();
+	destination.y = model->getPlayer().getY();
+	SDL_BlitSurface(image, &source, screen, &destination);
+	
+	image = load(model->getPlayer().getGunPath());
+	//rotation = rotozoomSurface(image,model->getPlayer().getGunRotation(),1,1);
+	//image=rotation;
+	source.x = 0;
+	source.y = 0;
+	source.w = image->w;
+	source.h = image->h;
+
+	destination.x = model->getPlayer().getX()+10;
+	destination.y = model->getPlayer().getY()-6;
+	SDL_BlitSurface(image, &source, screen, &destination);
+	
 
 	for(int i = 0;i<entities.size();i++)
 	{
 		Entity ent = entities[i];
 
+		//move the entity before we draw
+		ent.move();
+
 		SDL_Surface * image = load(ent.getPath());
-		//SDL_Surface * rotation = rotozoomSurface(image,5,1,1);
-		//image=rotation;
-		//SDL_FreeSurface(rotation);
+		//image = SDL_DisplayFormatAlpha(image);
+		SDL_Surface * rotation = rotozoomSurface(image,ent.getRotation(),1,1);
+		image=rotation;
+		
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x=0;
@@ -121,6 +154,8 @@ void View::show(Model * model) {
 		destination.x=ent.getX();
 		destination.y=ent.getY();
 		SDL_BlitSurface(image,&source,screen,&destination);
+		
+		//SDL_FreeSurface(rotation);
 	}
 
     SDL_UpdateWindowSurface(window);

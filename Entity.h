@@ -7,51 +7,74 @@ class Entity
 {
 public:
 	Entity() {}
-	Entity(int xcoord, int ycoord, string name);
+	Entity(double x, double y, string name){
+		this->x = x;
+		this->y = y;
+		this->name = name;
+		rotation=0;
+	}
 
 	string getPath()
 	{
 		return path;
 	}
-
+	string getGunPath()
+	{
+		return gunPath;
+	}
 	string getName() {
 		return name;
 	}
 
-	int getX()
+	double getX()
 	{
 		return x;
 	}
-	int getY()
+
+	double getY()
 	{
 		return y;
 	}
-	int getRotation()
+
+	double getRotation()
 	{
 		return rotation;
 	}
-	int setX(int x)
+	double getGunRotation()
+	{
+		return gunRotation;
+	}
+
+	void setX(double x)
 	{
 		this->x=x;
 	}
-	int setY(int y)
+
+	void setY(double y)
 	{
 		this->y=y;
 	}
-	int setRotation(int r)
+
+	void setRotation(double r)
 	{
 		rotation=r;
 	}
-	
+	void setGunRotation(double r)
+	{
+		gunRotation=r;
+	}
+
 	bool death()
 	{
 		return dead;
 	}
-	void move();
-	
+
+	virtual void move(){}
+
 protected:
-	int x, y,rotation;
-	string path,name;
+	//x and y on the screen
+	double x, y,rotation,gunRotation;
+	string path,gunPath,name;
 	bool dead;
 
 };
