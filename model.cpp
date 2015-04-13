@@ -29,13 +29,14 @@ PlayerEntity Model::getPlayer()
 
 int Model::getXOffset()
 {
-	return xOffset;
+	return player.getX();
 }
 
 int Model::getYOffset()
 {
-	return yOffset;
+	return player.getY();
 }
+
 void Model::setXOffset(int x){
 	xOffset=x;
 }

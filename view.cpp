@@ -117,7 +117,7 @@ void View::show(Model * model) {
 	destination.x = model->getPlayer().getX();
 	destination.y = model->getPlayer().getY();
 	SDL_BlitSurface(image, &source, screen, &destination);
-	
+
 	image = load(model->getPlayer().getGunPath());
 	rotation = rotozoomSurface(image,model->getPlayer().getGunRotation(),1,1);
 	image=rotation;
@@ -129,7 +129,7 @@ void View::show(Model * model) {
 	destination.x = model->getPlayer().getX()+10;
 	destination.y = model->getPlayer().getY()-6;
 	SDL_BlitSurface(image, &source, screen, &destination);
-	
+
 
 	for(int i = 0;i<entities.size();i++)
 	{
@@ -142,7 +142,7 @@ void View::show(Model * model) {
 		//image = SDL_DisplayFormatAlpha(image);
 		SDL_Surface * rotation = rotozoomSurface(image,ent.getRotation(),1,1);
 		image=rotation;
-		
+
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x=0;
@@ -155,7 +155,7 @@ void View::show(Model * model) {
 		destination.x=ent.getX();
 		destination.y=ent.getY();
 		SDL_BlitSurface(image,&source,screen,&destination);
-		
+
 		//SDL_FreeSurface(rotation);
 	}
 
