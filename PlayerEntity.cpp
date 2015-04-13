@@ -19,11 +19,10 @@ public:
 		this->x=487;
 		this->y=359;
 		this->name="will";
-		path="tileset/TankBottom.png";
+		path="tileset/PlayerTank.png";
 		dead=false;
 		rotation=0;
-		gunRotation=0;
-		gunPath="tileset/TankTop.png";
+
 	}
 
 	void move(int speed)
