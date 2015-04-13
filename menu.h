@@ -58,10 +58,10 @@ class File : public MenuItem {
 		    while ( getline (save_read,line)){
 					int coord = std::stoi(line);
 		      if (count== 1){
-						Model::getInstance()->setXOffset(coord);
+						Model::getInstance()->getPlayer().setX(coord);
 					}
 					else {
-						Model::getInstance()->setYOffset(coord);
+						Model::getInstance()->getPlayer().setY(coord);
 					}
 					count++;
 		    }
@@ -82,8 +82,8 @@ class NewGame : public MenuItem {
 		save_write.open("savefiles/game.txt");
 			if (save_write.is_open())
 			{
-				save_write<<Model::getInstance()->getXOffset()<<endl;
-				save_write<<Model::getInstance()->getYOffset()<<endl;
+				save_write<<Model::getInstance()->getPlayer().getX()<<endl;
+				save_write<<Model::getInstance()->getPlayer().getY()<<endl;
 		  }
 	    save_write.close();
 			Model::getInstance()->check=PLAY;

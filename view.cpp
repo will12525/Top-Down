@@ -43,11 +43,11 @@ View::View(string title, int width, int height) {
     }
     // Load assets
 //    snake = load("assets/snake.png");
-    music = Mix_LoadMUS("assets/Mr_Kitty.mp3");
-    if (music != NULL) {
-      Mix_PlayMusic( music, -1 );
-    }
-    shoot = Mix_LoadWAV("assets/shoot.wav");
+  //  music = Mix_LoadMUS("assets/Mr_Kitty.mp3");
+  //  if (music != NULL) {
+//      Mix_PlayMusic( music, -1 );
+//    }
+    //shoot = Mix_LoadWAV("assets/shoot.wav");
     font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 24 );
 	  text_color={255,255,255};
 	  text = TTF_RenderText_Solid(font,"..", text_color);
@@ -116,7 +116,7 @@ void View::show(Model * model) {
 	destination.x = model->getPlayer().getX();
 	destination.y = model->getPlayer().getY();
 	SDL_BlitSurface(image, &source, screen, &destination);
-	
+
 	image = load(model->getPlayer().getGunPath());
 	//rotation = rotozoomSurface(image,model->getPlayer().getGunRotation(),1,1);
 	//image=rotation;
@@ -128,7 +128,7 @@ void View::show(Model * model) {
 	destination.x = model->getPlayer().getX()+10;
 	destination.y = model->getPlayer().getY()-6;
 	SDL_BlitSurface(image, &source, screen, &destination);
-	
+
 
 	for(int i = 0;i<entities.size();i++)
 	{
@@ -141,7 +141,7 @@ void View::show(Model * model) {
 		//image = SDL_DisplayFormatAlpha(image);
 		SDL_Surface * rotation = rotozoomSurface(image,ent.getRotation(),1,1);
 		image=rotation;
-		
+
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x=0;
@@ -154,7 +154,7 @@ void View::show(Model * model) {
 		destination.x=ent.getX();
 		destination.y=ent.getY();
 		SDL_BlitSurface(image,&source,screen,&destination);
-		
+
 		//SDL_FreeSurface(rotation);
 	}
 
