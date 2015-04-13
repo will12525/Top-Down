@@ -59,6 +59,7 @@ Model::~Model() {
 void Model::handleKey(map <int, bool> keys)
 {
 	int speed = 0;
+	int gunRot =0;
 
 	//double dx=0, dy=0;
 
@@ -79,11 +80,14 @@ void Model::handleKey(map <int, bool> keys)
 	if(keys[SDLK_LEFT])
 	{
 		player.setRotation(player.getRotation()+1);
+		
 		//cout << "Debug: Left" << endl;
 	}
-	else if(keys[SDLK_RIGHT])
+	if(keys[SDLK_RIGHT])
 	{
 		player.setRotation(player.getRotation()-1);
+	
+
 		//cout << "Debug: Right" << endl;
 	}
 
@@ -101,6 +105,8 @@ void Model::handleKey(map <int, bool> keys)
 	{
 		//cout << "Debug: Space" << endl;
 	}
+	
+	
 
 	//move player
 	player.move(speed);

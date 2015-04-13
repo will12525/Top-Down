@@ -113,21 +113,13 @@ void View::show(Model * model) {
 	source.w = image->w;
 	source.h = image->h;
 
-	destination.x = model->getPlayer().getX();
-	destination.y = model->getPlayer().getY();
+	model->getPlayer().setImageOffset((image->w)/2,(image->h)/2);
+	
+	destination.x = (model->getPlayer().getX())-((image->w)/2);
+	destination.y = (model->getPlayer().getY())-((image->h)/2);
+	SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(screen->format,0x00,0x00,0x00));
 	SDL_BlitSurface(image, &source, screen, &destination);
-
-	image = load(model->getPlayer().getGunPath());
-	//rotation = rotozoomSurface(image,model->getPlayer().getGunRotation(),1,1);
-	//image=rotation;
-	source.x = 0;
-	source.y = 0;
-	source.w = image->w;
-	source.h = image->h;
-
-	destination.x = model->getPlayer().getX()+10;
-	destination.y = model->getPlayer().getY()-6;
-	SDL_BlitSurface(image, &source, screen, &destination);
+	
 
 
 	for(int i = 0;i<entities.size();i++)
