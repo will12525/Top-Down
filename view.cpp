@@ -83,9 +83,25 @@ SDL_Surface* View::load(string path) {
 }
 
 void View::show(Model * model) {
+	int pX=(model->getPlayer().getX());
+	int pY=(model->getPlayer().getY());
 	
-	xOff=(model->getPlayer().getX())-(width/2);
-	yOff=(model->getPlayer().getY())-(height/2);
+	if(pX<=width/2)
+	{
+		xOff=0;
+	}
+	else{
+		xOff=(pX)-(width/2);
+	}
+	if(pY<=height/2)
+	{
+		yOff=0;
+	}
+	else{
+		yOff=(pY)-(height/2);
+	}
+	
+	
 	
 	vector<Tile> tiles = model->getTiles();
 	vector<Entity> entities = model->getEntities();
@@ -137,7 +153,7 @@ void View::show(Model * model) {
 		ent.move();
 
 		SDL_Surface * image = load(ent.getPath());
-		//image = SDL_DisplayFormatAlpha(image);
+		
 		SDL_Surface * rotation = rotozoomSurface(image,ent.getRotation(),1,1);
 		image=rotation;
 		
@@ -150,8 +166,9 @@ void View::show(Model * model) {
 
 
 
-		destination.x=ent.getX();
-		destination.y=ent.getY();
+		destination.x=ent.getX()-((image->w)/2)-xOff;
+		destination.y=ent.getY()-((image->h)/2)-yOff;
+		SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(screen->format,0x00,0x00,0x00));
 		SDL_BlitSurface(image,&source,screen,&destination);
 		
 		//SDL_FreeSurface(rotation);

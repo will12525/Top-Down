@@ -24,6 +24,15 @@ public:
 		rotation=0;
 
 	}
+	PlayerEntity(double x,double y,string name)
+	{
+		this->x=x;
+		this->y=y;
+		this->name=name;
+		path="tileset/PlayerTank.png";
+		dead=false;
+		rotation=0;
+	}
 
 	void move(int speed)
 	{
