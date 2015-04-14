@@ -1,12 +1,15 @@
 #ifndef _ENTITY_H
 #define _ENTITY_H
 #include <string>
+#include <fstream>
 using namespace std;
 
 class Entity
 {
 public:
-	Entity() {}
+	Entity() {
+
+	}
 	Entity(double x, double y, string name){
 		this->x = x;
 		this->y = y;
@@ -51,7 +54,7 @@ public:
 	{
 		rotation=r;
 	}
-	
+
 
 	bool death()
 	{
@@ -63,7 +66,7 @@ public:
 		imageXOffset=xOff;
 		imageYOffset=yOff;
 	}
-	
+
 	virtual void move(){}
 
 protected:

@@ -1,5 +1,4 @@
 #include "view.h"
-#include "view.h"
 #include <iostream>
 #include "Tile.h"
 
@@ -46,14 +45,14 @@ View::View(string title, int width, int height) {
     }
     // Load assets
 //    snake = load("assets/snake.png");
-//    music = Mix_LoadMUS("assets/2Inventions_-_Johaness_Gilther_-_Don_t_leave_me.mp3");
-//    if (music != NULL) {
-//       Mix_PlayMusic( music, -1 );
+  //  music = Mix_LoadMUS("assets/Mr_Kitty.mp3");
+  //  if (music != NULL) {
+//      Mix_PlayMusic( music, -1 );
 //    }
-//    food = Mix_LoadWAV("assets/yummy.wav");
+    //shoot = Mix_LoadWAV("assets/shoot.wav");
     font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 24 );
 	  text_color={255,255,255};
-	  text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
+	  text = TTF_RenderText_Solid(font,"..", text_color);
 
 }
 
@@ -143,7 +142,7 @@ void View::show(Model * model) {
 	SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(screen->format,0x00,0x00,0x00));
 	SDL_BlitSurface(image, &source, screen, &destination);
 	
-	
+
 
 	for(int i = 0;i<entities.size();i++)
 	{
@@ -156,7 +155,7 @@ void View::show(Model * model) {
 		
 		SDL_Surface * rotation = rotozoomSurface(image,ent.getRotation(),1,1);
 		image=rotation;
-		
+
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x=0;
@@ -170,7 +169,7 @@ void View::show(Model * model) {
 		destination.y=ent.getY()-((image->h)/2)-yOff;
 		SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(screen->format,0x00,0x00,0x00));
 		SDL_BlitSurface(image,&source,screen,&destination);
-		
+
 		//SDL_FreeSurface(rotation);
 	}
 

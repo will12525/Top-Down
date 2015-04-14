@@ -21,12 +21,12 @@ public:
     View* getView();
 
 private:
+  Model * model;
 	StartScreen * startscreen;
 	LoadScreen * loadscreen;
 	InGameScreen * ingamescreen;
 	Menu * menu;
 	View * view;
-	Model * model;
 	Load*load;
 	File *file;
 	NewGame* newgame;

@@ -50,23 +50,8 @@ class File : public MenuItem {
 		label = "Start Saved File";
 	}
 	void doThing() {
-		ifstream save_read;
-		save_read.open("savefiles/game.txt");
-			if (save_read.is_open()){
-				int count=1;
-				string line;
-		    while ( getline (save_read,line)){
-					int coord = std::stoi(line);
-		      if (count== 1){
-						Model::getInstance()->setXOffset(coord);
-					}
-					else {
-						Model::getInstance()->setYOffset(coord);
-					}
-					count++;
-		    }
-	    save_read.close();
-	    }
+			cout<<"here"<<endl;
+
 		Model::getInstance()->check=PLAY;
 	}
 };
@@ -77,16 +62,18 @@ class NewGame : public MenuItem {
 		label = "Make a New Game";
 	}
 	void doThing() {
-		Model::getInstance()->reset();
 		ofstream save_write;
 		save_write.open("savefiles/game.txt");
 			if (save_write.is_open())
 			{
-				save_write<<Model::getInstance()->getXOffset()<<endl;
-				save_write<<Model::getInstance()->getYOffset()<<endl;
-		  }
-	    save_write.close();
-			Model::getInstance()->check=PLAY;
+				cout<<"here";
+				save_write<<300<<endl;
+				save_write<<115<<endl;
+				save_write<<0<<endl;
+			}
+			save_write.close();
+		Model::getInstance()->reset();
+		Model::getInstance()->check=PLAY;
 	}
 };
 
@@ -101,8 +88,10 @@ class SaveGame : public MenuItem {
 		save_write.open("savefiles/game.txt");
 			if (save_write.is_open())
 			{
-				save_write<<Model::getInstance()->getXOffset()<<endl;
-				save_write<<Model::getInstance()->getYOffset()<<endl;
+				cout<<"here";
+				save_write<<Model::getInstance()->getPlayer().getX()<<endl;
+				save_write<<Model::getInstance()->getPlayer().getY()<<endl;
+				save_write<<Model::getInstance()->getPlayer().getRotation()<<endl;
 		  }
 	    save_write.close();
 	}
