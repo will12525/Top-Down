@@ -17,7 +17,7 @@ Controller::Controller() {
   keys[SDLK_DOWN] = false;
   keys[SDLK_LEFT] = false;
   keys[SDLK_RIGHT] = false;
-  
+
 
   keys[SDLK_ESCAPE] = false;
   keys[SDLK_RETURN] = false;

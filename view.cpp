@@ -85,7 +85,7 @@ SDL_Surface* View::load(string path) {
 void View::show(Model * model) {
 	int pX=(model->getPlayer().getX());
 	int pY=(model->getPlayer().getY());
-	
+
 	if(pX<=width/2)
 	{
 		xOff=0;
@@ -100,9 +100,9 @@ void View::show(Model * model) {
 	else{
 		yOff=(pY)-(height/2);
 	}
-	
-	
-	
+
+
+
 	vector<Tile> tiles = model->getTiles();
 	vector<Entity> entities = model->getEntities();
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
@@ -137,23 +137,23 @@ void View::show(Model * model) {
 	source.h = image->h;
 
 	model->getPlayer().setImageOffset((image->w)/2,(image->h)/2);
-	
+
 	destination.x = ((model->getPlayer().getX())-((image->w)/2))-xOff;
 	destination.y = ((model->getPlayer().getY())-((image->h)/2))-yOff;
 	SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(screen->format,0x00,0x00,0x00));
 	SDL_BlitSurface(image, &source, screen, &destination);
-	
 
 
+	cout << "Rendering " << entities.size() << " entities" << endl;
 	for(int i = 0;i<entities.size();i++)
 	{
 		Entity ent = entities[i];
 
 		//move the entity before we draw
-		ent.move();
+		ent.move(1);
 
 		SDL_Surface * image = load(ent.getPath());
-		
+
 		SDL_Surface * rotation = rotozoomSurface(image,ent.getRotation(),1,1);
 		image=rotation;
 

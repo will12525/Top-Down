@@ -14,7 +14,6 @@ class PlayerEntity: public Entity
 {
 public:
 	PlayerEntity()
-	//PlayerEntity(double x,double y,string name)
 	{
 		this->x=487;
 		this->y=359;
@@ -22,7 +21,7 @@ public:
 		path="tileset/PlayerTank.png";
 		dead=false;
 		rotation=0;
-
+		speed = 5;
 	}
 	PlayerEntity(double x,double y,string name)
 	{
@@ -32,19 +31,15 @@ public:
 		path="tileset/PlayerTank.png";
 		dead=false;
 		rotation=0;
+		speed = 5;
 	}
 
-	void move(int speed)
+	virtual void move(int direction)
 	{
-		//cout << "X: " << this->x << "  dx: " << dx << "  Y: " << this->y << "  dy: " << dy << endl;
-		cout<<rotation<<endl;
-		this->x += speed*sin(rotation*(PI)/180);
-		this->y += speed*cos(rotation*(PI)/180);
-	}
-
-	virtual void move()
-	{
-
+		//because its backwards
+		direction *= -1;
+		this->x += direction * speed * sin(rotation*(PI)/180);
+		this->y += direction * speed * cos(rotation*(PI)/180);
 	}
 
 };

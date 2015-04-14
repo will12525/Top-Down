@@ -7,10 +7,11 @@ class Entity
 {
 public:
 	Entity() {}
-	Entity(double x, double y, string name){
+	Entity(double x, double y, string name, double speed){
 		this->x = x;
 		this->y = y;
 		this->name = name;
+		this->speed = speed;
 		rotation=0;
 	}
 
@@ -64,11 +65,12 @@ public:
 		imageYOffset=yOff;
 	}
 
-	virtual void move(){}
+	//1 for forward, -1 for backwards
+	virtual void move(int direction){}
 
 protected:
 	//x and y on the screen
-	double x, y,rotation,imageXOffset,imageYOffset;
+	double x, y,rotation,imageXOffset,imageYOffset, speed;
 	string path,name;
 	bool dead;
 
