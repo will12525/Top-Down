@@ -22,7 +22,7 @@ Model::Model(int width, int height) {
 	last = chrono::system_clock::now();
 }
 
-Entity Model::getPlayer()
+PlayerEntity Model::getPlayer()
 {
 	return player;
 }
@@ -58,33 +58,46 @@ Model::~Model() {
 
 void Model::handleKey(map <int, bool> keys)
 {
-	int speed = 50;
+	int speed = 0;
+	int gunRot =0;
 
-	double dx, dy;
+	//double dx=0, dy=0;
 
-	//milliseconds since last loop
-	chrono::duration<double> elapsed = chrono::system_clock::now() - last;
+	//cout << player.getX() << "  " << player.getY() << endl;
 
 
 	if(keys[SDLK_UP])
 	{
-		dy = -speed * (elapsed.count() / 1000);
+		speed=-10;
 		//cout << "Debug: Up" << endl;
 	}
 	else if(keys[SDLK_DOWN])
 	{
-		dy = speed * (elapsed.count() / 1000);
+		speed+=10;
 		//cout << "Debug: Down" << endl;
 	}
 
 	if(keys[SDLK_LEFT])
 	{
-		dx = -speed * (elapsed.count() / 1000);
+<<<<<<< HEAD
+		player.setRotation(player.getRotation()+1);
+
+=======
+		player.setRotation(player.getRotation()+5);
+		
+>>>>>>> 8192e9175104dfd14d059f87b7fddf33c95fe7f2
 		//cout << "Debug: Left" << endl;
 	}
-	else if(keys[SDLK_RIGHT])
+	if(keys[SDLK_RIGHT])
 	{
-		dx = speed * (elapsed.count() / 1000);
+<<<<<<< HEAD
+		player.setRotation(player.getRotation()-1);
+
+=======
+		player.setRotation(player.getRotation()-5);
+	
+>>>>>>> 8192e9175104dfd14d059f87b7fddf33c95fe7f2
+
 		//cout << "Debug: Right" << endl;
 	}
 
@@ -103,8 +116,11 @@ void Model::handleKey(map <int, bool> keys)
 		//cout << "Debug: Space" << endl;
 	}
 
+
+
 	//move player
-	player.move(dx, dy);
+	player.move(speed);
+	
 }
 
 bool Model::gameOver() {
@@ -119,15 +135,10 @@ void Model::loadTiles(string path)
 
 	int yCoord=0;
 	int xCoord=0;
-<<<<<<< HEAD
 
 	//player = new PlayerEntity(487,359, "will");
 
 	//entities.push_back(*player);
-=======
-	PlayerEntity* player = new PlayerEntity(487,359, "will");
-	entities.push_back(*player);
->>>>>>> d983022a63e08767b21166ed8776aff88cfac65b
 	while(tileFile >> nextLine)
 	{
 

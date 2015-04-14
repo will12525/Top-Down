@@ -68,24 +68,24 @@ void Model::handleKey(map <int, bool> keys)
 
 	if(keys[SDLK_UP])
 	{
-		speed=-5;
+		speed=-10;
 		//cout << "Debug: Up" << endl;
 	}
 	else if(keys[SDLK_DOWN])
 	{
-		speed+=5;
+		speed+=10;
 		//cout << "Debug: Down" << endl;
 	}
 
 	if(keys[SDLK_LEFT])
 	{
-		player.setRotation(player.getRotation()+1);
+		player.setRotation(player.getRotation()+5);
 
 		//cout << "Debug: Left" << endl;
 	}
 	if(keys[SDLK_RIGHT])
 	{
-		player.setRotation(player.getRotation()-1);
+		player.setRotation(player.getRotation()-5);
 
 
 		//cout << "Debug: Right" << endl;
