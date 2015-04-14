@@ -51,7 +51,7 @@ public:
 	{
 		rotation=r;
 	}
-	
+
 
 	bool death()
 	{
@@ -63,7 +63,7 @@ public:
 		imageXOffset=xOff;
 		imageYOffset=yOff;
 	}
-	
+
 	virtual void move(){}
 
 protected:

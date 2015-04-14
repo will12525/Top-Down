@@ -11,9 +11,7 @@ class Bullet: public Entity
 public:
   Bullet()
   {
-  //  this->x = Model::getInstance()->getPlayer().getX();
-    //this->y = Model::getInstance()->getPlayer().getY();
-    //this->rotation = Model::getInstance()->getPlayer().getRotation();
+  
   }
 
   virtual void move()

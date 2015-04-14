@@ -19,7 +19,6 @@ Model::Model(int width, int height) {
 	loadTiles("testmap.txt");
 	check = START;
 
-	last = chrono::system_clock::now();
 }
 
 PlayerEntity Model::getPlayer()
@@ -81,13 +80,13 @@ void Model::handleKey(map <int, bool> keys)
 	if(keys[SDLK_LEFT])
 	{
 		player.setRotation(player.getRotation()+1);
-		
+
 		//cout << "Debug: Left" << endl;
 	}
 	if(keys[SDLK_RIGHT])
 	{
 		player.setRotation(player.getRotation()-1);
-	
+
 
 		//cout << "Debug: Right" << endl;
 	}
@@ -105,12 +104,16 @@ void Model::handleKey(map <int, bool> keys)
 	if(keys[SDLK_SPACE])
 	{
 		//cout << "Debug: Space" << endl;
+		shoot();
 	}
-	
-	
 
 	//move player
 	player.move(speed);
+}
+
+void Model::shoot()
+{
+	cout << "shoot" << endl;
 }
 
 bool Model::gameOver() {

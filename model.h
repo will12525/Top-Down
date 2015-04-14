@@ -2,13 +2,10 @@
 #include "Entity.h"
 #include "PlayerEntity.cpp"
 
-
 #include <vector>
 #include <string>
 #include <map>
 #include <ctime>
-#include <chrono>
-
 
 #ifndef _MODEL_H
 #define _MODEL_H
@@ -46,6 +43,8 @@ public:
 
 	void reset();
 
+	void shoot();
+
 private:
   // Constructor (instantiates object)
   Model(int width, int height);
@@ -56,7 +55,6 @@ private:
 	void loadTiles(string path);
 	PlayerEntity player;
 
-	chrono::time_point<chrono::system_clock> last;
 
 
 };
