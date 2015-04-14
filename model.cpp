@@ -9,6 +9,7 @@
 #include "voidTile.cpp"
 #include "TreeTile.cpp"
 #include "PlayerEntity.cpp"
+#include "Bullet.cpp"
 
 using namespace std;
 
@@ -109,12 +110,13 @@ void Model::handleKey(map <int, bool> keys)
 
 	//move player
 	player.move(speed);
-	
+
 }
 
 void Model::shoot()
 {
-	cout << "shoot" << endl;
+	Entity* bullet = new Bullet(player.getX(), player.getY(), "bullet");
+	entities.push_back(*bullet);
 }
 
 bool Model::gameOver() {

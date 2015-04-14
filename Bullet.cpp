@@ -2,17 +2,19 @@
 #define _BULLET_CPP
 
 #include "Entity.h"
-#include "Model.h"
 
 using namespace std;
 
 class Bullet: public Entity
 {
 public:
-  Bullet()
+
+  Bullet(int x, int y, string name)
+  : Entity(x, y, name)
   {
-  
+    path = "tileset/bullet.png";
   }
+
 
   virtual void move()
   {

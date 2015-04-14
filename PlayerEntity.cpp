@@ -28,7 +28,7 @@ public:
 	void move(int speed)
 	{
 		//cout << "X: " << this->x << "  dx: " << dx << "  Y: " << this->y << "  dy: " << dy << endl;
-	cout<<rotation<<endl;
+		cout<<rotation<<endl;
 		this->x += speed*sin(rotation*(PI)/180);
 		this->y += speed*cos(rotation*(PI)/180);
 	}
@@ -36,7 +36,7 @@ public:
 	virtual void move()
 	{
 
-	}	
+	}
 
 };
 #endif
