@@ -20,13 +20,18 @@ public:
 			if (save_read.is_open()){
 				int count=1;
 				string line;
+				int coord;
 				while ( getline (save_read,line)){
-					int coord = std::stoi(line);
+					coord = std::stoi(line);
 					if (count== 1){
 						this->x=coord;
 					}
-					else {
+					else if (count==2) {
 						this->y=coord;
+					}
+					else if (count==3){
+						cout<<coord;
+						this->rotation=coord;
 					}
 					count++;
 				}

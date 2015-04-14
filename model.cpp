@@ -110,7 +110,7 @@ void Model::handleKey(map <int, bool> keys)
 
 	//move player
 	player.move(speed);
-	
+
 }
 
 bool Model::gameOver() {

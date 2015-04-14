@@ -62,16 +62,17 @@ class NewGame : public MenuItem {
 		label = "Make a New Game";
 	}
 	void doThing() {
-		Model::getInstance()->reset();
 		ofstream save_write;
 		save_write.open("savefiles/game.txt");
 			if (save_write.is_open())
 			{
 				cout<<"here";
-				save_write<<0<<endl;
+				save_write<<300<<endl;
+				save_write<<115<<endl;
 				save_write<<0<<endl;
 			}
 			save_write.close();
+		Model::getInstance()->reset();
 		Model::getInstance()->check=PLAY;
 	}
 };
@@ -90,6 +91,7 @@ class SaveGame : public MenuItem {
 				cout<<"here";
 				save_write<<Model::getInstance()->getPlayer().getX()<<endl;
 				save_write<<Model::getInstance()->getPlayer().getY()<<endl;
+				save_write<<Model::getInstance()->getPlayer().getRotation()<<endl;
 		  }
 	    save_write.close();
 	}

@@ -19,7 +19,7 @@ Form small groups of 2-3 people (no more than 4, please) to create some
 program with a cool demo.
 
 Examples: connect 4, minesweeper, checkers, asteroids, paint program, hangman,
-simulator, solitaire, side scroller. 
+simulator, solitaire, side scroller.
 
 == Questions to answer
 
