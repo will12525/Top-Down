@@ -9,6 +9,7 @@
 #include "voidTile.cpp"
 #include "TreeTile.cpp"
 #include "PlayerEntity.cpp"
+#include "EnemyEntity.cpp"
 
 using namespace std;
 
@@ -126,6 +127,8 @@ void Model::loadTiles(string path)
 	int yCoord=0;
 	int xCoord=0;
 
+	EnemyEntity * enm = new EnemyEntity(600,600,"enemy");
+	entities.push_back(*enm);
 	//player = new PlayerEntity(487,359, "will");
 
 	//entities.push_back(*player);

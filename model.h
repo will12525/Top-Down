@@ -1,7 +1,7 @@
 #include "Tile.h"
 #include "Entity.h"
 #include "PlayerEntity.cpp"
-
+#include "EnemyEntity.cpp"
 
 #include <vector>
 #include <string>
@@ -55,6 +55,7 @@ private:
 	vector<Entity> entities;
 	void loadTiles(string path);
 	PlayerEntity player;
+	//EnemyEntity enm;
 
 	chrono::time_point<chrono::system_clock> last;
 
