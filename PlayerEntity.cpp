@@ -15,8 +15,23 @@ public:
 	PlayerEntity()
 	//PlayerEntity(double x,double y,string name)
 	{
-		this->x=487;
-		this->y=359;
+		ifstream save_read;
+		save_read.open("savefiles/game.txt");
+			if (save_read.is_open()){
+				int count=1;
+				string line;
+				while ( getline (save_read,line)){
+					int coord = std::stoi(line);
+					if (count== 1){
+						this->x=coord;
+					}
+					else {
+						this->y=coord;
+					}
+					count++;
+				}
+			save_read.close();
+			}
 		this->name="will";
 		path="tileset/PlayerTank.png";
 		dead=false;
@@ -35,26 +50,6 @@ public:
 	virtual void move()
 	{
 
-	}
-	void load(){
-		cout<<"here"<<endl;
-		ifstream save_read;
-		save_read.open("savefiles/game.txt");
-			if (save_read.is_open()){
-				int count=1;
-				string line;
-				while ( getline (save_read,line)){
-					int coord = std::stoi(line);
-					if (count== 1){
-						this->x=coord;
-					}
-					else {
-						this->x=coord;
-					}
-					count++;
-				}
-			save_read.close();
-			}
 	}
 
 

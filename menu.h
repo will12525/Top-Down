@@ -50,8 +50,8 @@ class File : public MenuItem {
 		label = "Start Saved File";
 	}
 	void doThing() {
-		cout<<"hello";
-		Model::getInstance()->getPlayer().load();
+			cout<<"here"<<endl;
+
 		Model::getInstance()->check=PLAY;
 	}
 };
@@ -67,11 +67,12 @@ class NewGame : public MenuItem {
 		save_write.open("savefiles/game.txt");
 			if (save_write.is_open())
 			{
-				save_write<<Model::getInstance()->getPlayer().getX()<<endl;
-				save_write<<Model::getInstance()->getPlayer().getY()<<endl;
-		  }
-	    save_write.close();
-			Model::getInstance()->check=PLAY;
+				cout<<"here";
+				save_write<<0<<endl;
+				save_write<<0<<endl;
+			}
+			save_write.close();
+		Model::getInstance()->check=PLAY;
 	}
 };
 
@@ -86,8 +87,9 @@ class SaveGame : public MenuItem {
 		save_write.open("savefiles/game.txt");
 			if (save_write.is_open())
 			{
-				save_write<<Model::getInstance()->getXOffset()<<endl;
-				save_write<<Model::getInstance()->getYOffset()<<endl;
+				cout<<"here";
+				save_write<<Model::getInstance()->getPlayer().getX()<<endl;
+				save_write<<Model::getInstance()->getPlayer().getY()<<endl;
 		  }
 	    save_write.close();
 	}
