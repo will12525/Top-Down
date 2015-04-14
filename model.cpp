@@ -63,7 +63,7 @@ void Model::handleKey(map <int, bool> keys)
 
 	//double dx=0, dy=0;
 
-	cout << player.getX() << "  " << player.getY() << endl;
+	//cout << player.getX() << "  " << player.getY() << endl;
 
 
 	if(keys[SDLK_UP])
@@ -80,13 +80,13 @@ void Model::handleKey(map <int, bool> keys)
 	if(keys[SDLK_LEFT])
 	{
 		player.setRotation(player.getRotation()+1);
-		
+
 		//cout << "Debug: Left" << endl;
 	}
 	if(keys[SDLK_RIGHT])
 	{
 		player.setRotation(player.getRotation()-1);
-	
+
 
 		//cout << "Debug: Right" << endl;
 	}
@@ -105,8 +105,8 @@ void Model::handleKey(map <int, bool> keys)
 	{
 		//cout << "Debug: Space" << endl;
 	}
-	
-	
+
+
 
 	//move player
 	player.move(speed);

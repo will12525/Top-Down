@@ -50,23 +50,8 @@ class File : public MenuItem {
 		label = "Start Saved File";
 	}
 	void doThing() {
-		ifstream save_read;
-		save_read.open("savefiles/game.txt");
-			if (save_read.is_open()){
-				int count=1;
-				string line;
-		    while ( getline (save_read,line)){
-					int coord = std::stoi(line);
-		      if (count== 1){
-						Model::getInstance()->getPlayer().setX(coord);
-					}
-					else {
-						Model::getInstance()->getPlayer().setY(coord);
-					}
-					count++;
-		    }
-	    save_read.close();
-	    }
+		cout<<"hello";
+		Model::getInstance()->getPlayer().load();
 		Model::getInstance()->check=PLAY;
 	}
 };
