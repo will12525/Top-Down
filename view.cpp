@@ -12,6 +12,8 @@ using namespace std;
 
 // Initialize SDL
 View::View(string title, int width, int height) {
+	this->width=width;
+	this->height=height;
     fail = false;
     SDL_SetMainReady();
     if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) < 0) {
@@ -80,6 +82,10 @@ SDL_Surface* View::load(string path) {
 }
 
 void View::show(Model * model) {
+	
+	xOff=(model->getPlayer().getX())-(width/2);
+	yOff=(model->getPlayer().getY())-(height/2);
+	
 	vector<Tile> tiles = model->getTiles();
 	vector<Entity> entities = model->getEntities();
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
@@ -97,8 +103,8 @@ void View::show(Model * model) {
 		source.y = 0;
 		source.w = 64;
 		source.h = 64;
-		destination.x = t.getX() * 64 + model->getXOffset();
-		destination.y = t.getY() * 64 + model->getYOffset();
+		destination.x = (t.getX() * 64)-xOff;
+		destination.y = (t.getY() * 64)-yOff;
 		SDL_BlitSurface( image, &source, screen, &destination );
 
 	}
@@ -115,8 +121,8 @@ void View::show(Model * model) {
 
 	model->getPlayer().setImageOffset((image->w)/2,(image->h)/2);
 	
-	destination.x = (model->getPlayer().getX())-((image->w)/2);
-	destination.y = (model->getPlayer().getY())-((image->h)/2);
+	destination.x = ((model->getPlayer().getX())-((image->w)/2))-xOff;
+	destination.y = ((model->getPlayer().getY())-((image->h)/2))-yOff;
 	SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(screen->format,0x00,0x00,0x00));
 	SDL_BlitSurface(image, &source, screen, &destination);
 	
@@ -152,6 +158,7 @@ void View::show(Model * model) {
 
     SDL_UpdateWindowSurface(window);
 }
+
 
 void View::write(Menu * menu){
 	// Clear the screen
