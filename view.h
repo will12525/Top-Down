@@ -27,6 +27,7 @@ public:
     void show(Model * model);
 	  void write(Menu * menu);
     SDL_Surface* load(string path);
+	void setOffset(int xOff,int yOff);
 private:
     void subwrite(Menu * menu, int offset);
     void pointwrite(Menu * menu);
@@ -38,5 +39,6 @@ private:
 //    Mix_Music * music;
 //    Mix_Chunk * food;
     TTF_Font * font;
+	int width,height,xOff,yOff;
 };
 #endif

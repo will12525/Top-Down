@@ -109,6 +109,7 @@ void Model::handleKey(map <int, bool> keys)
 
 	//move player
 	player.move(speed);
+	
 }
 
 void Model::shoot()
