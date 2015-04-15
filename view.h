@@ -31,6 +31,7 @@ private:
     SDL_Window* window;
     SDL_Surface* screen;
     bool fail;
+    SDL_Surface *splash;
 	  SDL_Surface* text;
 	  SDL_Color text_color;
     Mix_Music * music;

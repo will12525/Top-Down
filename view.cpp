@@ -53,6 +53,8 @@ View::View(string title, int width, int height) {
     font = TTF_OpenFont( "assets/LiberationSans-Regular.ttf", 24 );
 	  text_color={255,255,255};
 	  text = TTF_RenderText_Solid(font,"..", text_color);
+		splash=IMG_Load("tileset/startscreen.png");
+
 
 }
 
@@ -84,7 +86,7 @@ SDL_Surface* View::load(string path) {
 void View::show(Model * model) {
 	int pX=(model->getPlayer().getX());
 	int pY=(model->getPlayer().getY());
-	
+
 	if(pX<=width/2)
 	{
 		xOff=0;
@@ -99,9 +101,9 @@ void View::show(Model * model) {
 	else{
 		yOff=(pY)-(height/2);
 	}
-	
-	
-	
+
+
+
 	vector<Tile> tiles = model->getTiles();
 	vector<Entity> entities = model->getEntities();
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
@@ -136,12 +138,12 @@ void View::show(Model * model) {
 	source.h = image->h;
 
 	model->getPlayer().setImageOffset((image->w)/2,(image->h)/2);
-	
+
 	destination.x = ((model->getPlayer().getX())-((image->w)/2))-xOff;
 	destination.y = ((model->getPlayer().getY())-((image->h)/2))-yOff;
 	SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(screen->format,0x00,0x00,0x00));
 	SDL_BlitSurface(image, &source, screen, &destination);
-	
+
 
 
 	for(int i = 0;i<entities.size();i++)
@@ -152,7 +154,7 @@ void View::show(Model * model) {
 		ent.move();
 
 		SDL_Surface * image = load(ent.getPath());
-		
+
 		SDL_Surface * rotation = rotozoomSurface(image,ent.getRotation(),1,1);
 		image=rotation;
 
@@ -181,8 +183,8 @@ void View::write(Menu * menu){
 	// Clear the screen
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
-    text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
-    SDL_BlitSurface(text, NULL, screen, NULL);
+    //text = TTF_RenderText_Solid(font,"Menu, comming soon. Press enter to go to the game, and Esc for the game to come back here", text_color);
+    SDL_BlitSurface(splash, NULL, screen, NULL);
 
     for (int i=0; i <2; i++){
     subwrite(menu, i);
