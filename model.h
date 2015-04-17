@@ -48,7 +48,7 @@ public:
 
 
 	void reset();
-
+	void collision();
 	void shoot();
 	void enemyShot(EnemyEntity enemy);
 	void updateEntitys();

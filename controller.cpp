@@ -134,6 +134,7 @@ void Controller::loop(){
     //call the handlekey method every loop
     model->handleKey(keys);
 	model->updateEntitys();
+	model->collision();
 
     //SDL_Delay(16);
   }

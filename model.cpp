@@ -113,7 +113,38 @@ void Model::handleKey(map <int, bool> keys)
 	player.move(direction);
 
 }
-
+void Model::collision()
+{
+	for(int i=0;i<bullets.size();i++)
+	{
+		Bullet shot =bullets[i];
+		
+			if(!shot.playersShot())
+			{
+			if(shot.getX()>=player.getX()&&shot.getX()<=player.getX())
+			{
+				if(shot.getY()>=player.getY()&&shot.getY()<=player.getY())
+				{
+					cout<<"player died"<<endl;
+					player.dying(true);
+					shot.dying(true);
+				}
+			}
+			}
+		else{
+		if(shot.getX()>=enemys[0].getX()&&shot.getX()<=enemys[0].getX())
+			{
+				if(shot.getY()>=enemys[0].getY()&&shot.getY()<=enemys[0].getY())
+				{
+					enemys[0].dying(true);
+					shot.dying(true);
+				}
+		}
+	
+	}
+	}
+	
+}
 void Model::updateEntitys()
 {
 	for(int i=0;i<enemys.size();i++)
@@ -134,6 +165,7 @@ void Model::enemyShot(EnemyEntity enemy)
 	
 	Bullet* bullet = new Bullet(enemy.getX(), enemy.getY(), "bullet", 10);
 	bullet->setRotation(enemy.getRotation());
+	bullet->setPlayerShot(false);
 	bullets.push_back(*bullet);
 
 }
@@ -143,7 +175,7 @@ void Model::shoot()
 	{
 		Bullet* bullet = new Bullet(player.getX(), player.getY(), "bullet", 10);
 		bullet->setRotation(player.getRotation());
-
+		bullet->setPlayerShot(true);
 		bullets.push_back(*bullet);
 
 		lastShot = SDL_GetTicks();
@@ -151,6 +183,18 @@ void Model::shoot()
 }
 
 bool Model::gameOver() {
+		if(player.death())
+		{
+			cout<<"You loose!"<<endl;
+			return player.death();
+		}
+		
+		if(enemys[0].death())
+		{
+			cout<<"you win!"<<endl;
+			return true;
+		}
+		
     return false;
 }
 void Model::loadTiles(string path)

@@ -56,11 +56,22 @@ public:
 	{
 		rotation=r;
 	}
-
-
+	
+	void dying(bool death)
+	{
+		dead=death;
+	}
 	bool death()
 	{
 		return dead;
+	}
+	void setPlayerShot(bool fire)
+	{
+		playerShot=fire;
+	}
+	bool playersShot()
+	{
+		return playerShot;
 	}
 
 	void setImageOffset(int xOff,int yOff)
@@ -73,7 +84,7 @@ protected:
 	//x and y on the screen
 	double x, y,rotation,imageXOffset,imageYOffset, speed;
 	string path,name;
-	bool dead;
+	bool dead,playerShot;
 
 };
 #endif
