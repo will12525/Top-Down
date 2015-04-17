@@ -1,14 +1,16 @@
 #include "Tile.h"
 #include "Entity.h"
 #include "PlayerEntity.cpp"
-
+<<<<<<< HEAD
+#include "EnemyEntity.cpp"
+=======
+#include "Bullet.cpp"
+>>>>>>> b0013f138a9d9e4e393f7e4aacbe178a9127eb90
 
 #include <vector>
 #include <string>
 #include <map>
 #include <ctime>
-#include <chrono>
-
 
 #ifndef _MODEL_H
 #define _MODEL_H
@@ -40,13 +42,16 @@ public:
 	void setXOffset(int x);
 	void setYOffset(int x);
 	vector<Tile> getTiles();
-	vector<Entity> getEntities();
+	vector<EnemyEntity> getEnemys();
 	State check;
-<<<<<<< HEAD
-	Entity getPlayer();
-=======
+	PlayerEntity getPlayer();
+
+	vector<Bullet> bullets;
+
+
 	void reset();
->>>>>>> d983022a63e08767b21166ed8776aff88cfac65b
+
+	void shoot();
 
 private:
   // Constructor (instantiates object)
@@ -54,15 +59,20 @@ private:
 	int xOffset;
 	int yOffset;
 	vector<Tile> tiles;
-	vector<Entity> entities;
-	void loadTiles(string path);
 <<<<<<< HEAD
-	PlayerEntity player;
-
-	chrono::time_point<chrono::system_clock> last;
+	vector<EnemyEntity> enemys;
 =======
-	//PlayerEntity *player;
->>>>>>> d983022a63e08767b21166ed8776aff88cfac65b
+	vector<Entity> entities;
+
+
+>>>>>>> b0013f138a9d9e4e393f7e4aacbe178a9127eb90
+	void loadTiles(string path);
+	PlayerEntity player;
+	//EnemyEntity enm;
+
+	unsigned int lastShot = 0;
+
+
 
 
 };

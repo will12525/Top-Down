@@ -20,7 +20,6 @@ Model::Model(int width, int height) {
 	loadTiles("testmap.txt");
 	check = START;
 
-	last = chrono::system_clock::now();
 }
 
 PlayerEntity Model::getPlayer()
@@ -30,13 +29,14 @@ PlayerEntity Model::getPlayer()
 
 int Model::getXOffset()
 {
-	return xOffset;
+	return player.getX();
 }
 
 int Model::getYOffset()
 {
-	return yOffset;
+	return player.getY();
 }
+
 void Model::setXOffset(int x){
 	xOffset=x;
 }
@@ -57,9 +57,10 @@ vector<EnemyEntity> Model::getEnemys(){
 Model::~Model() {
 }
 
+
 void Model::handleKey(map <int, bool> keys)
 {
-	int speed = 0;
+	int direction = 0;
 	int gunRot =0;
 
 	//double dx=0, dy=0;
@@ -69,24 +70,24 @@ void Model::handleKey(map <int, bool> keys)
 
 	if(keys[SDLK_UP])
 	{
-		speed=-10;
+		direction = 2;
 		//cout << "Debug: Up" << endl;
 	}
 	else if(keys[SDLK_DOWN])
 	{
-		speed+=10;
+		direction = -2;
 		//cout << "Debug: Down" << endl;
 	}
 
 	if(keys[SDLK_LEFT])
 	{
-		player.setRotation(player.getRotation()+5);
+		player.setRotation(player.getRotation()+2);
 
 		//cout << "Debug: Left" << endl;
 	}
 	if(keys[SDLK_RIGHT])
 	{
-		player.setRotation(player.getRotation()-5);
+		player.setRotation(player.getRotation()-2);
 
 
 		//cout << "Debug: Right" << endl;
@@ -105,13 +106,48 @@ void Model::handleKey(map <int, bool> keys)
 	if(keys[SDLK_SPACE])
 	{
 		//cout << "Debug: Space" << endl;
+		shoot();
 	}
 
-
-
 	//move player
-	player.move(speed);
+	player.move(direction);
 
+}
+
+void Model::updateEntitys()
+{
+	for(int i=0;i<enemys.size();i++)
+	{
+		enemys[i].update(player);
+		
+		if((SDL_GetTicks() - enemys[i].getLastShot()) > (1000*5))
+		{
+			enemyShot(enemys[i]);
+			enemys[i].setShot(SDL_GetTicks());
+		}
+	}
+	
+	
+}
+void Model::enemyShot(EnemyEntity enemy)
+{
+	
+	Bullet* bullet = new Bullet(enemy.getX(), enemy.getY(), "bullet", 10);
+	bullet->setRotation(enemy.getRotation());
+	bullets.push_back(*bullet);
+
+}
+void Model::shoot()
+{
+	if( (SDL_GetTicks() - lastShot) > 1000 )
+	{
+		Bullet* bullet = new Bullet(player.getX(), player.getY(), "bullet", 10);
+		bullet->setRotation(player.getRotation());
+
+		bullets.push_back(*bullet);
+
+		lastShot = SDL_GetTicks();
+	}
 }
 
 bool Model::gameOver() {

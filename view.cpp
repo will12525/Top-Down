@@ -8,6 +8,7 @@
 #include "Entity.h"
 #include "library.h"
 #include "EnemyEntity.cpp"
+#include "Bullet.cpp"
 
 using namespace std;
 
@@ -146,11 +147,42 @@ void View::show(Model * model) {
 	SDL_BlitSurface(image, &source, screen, &destination);
 
 
+	//bullets
+	//cout << "Rendering " << model->bullets.size() << " bullets" << endl;
 
-	for(int i = 0;i<enemys.size();i++)
+	for(int i = 0; i < model->bullets.size(); i++)
 	{
-		EnemyEntity ent = enemys[i];
-		ent.move(10);
+		Bullet bullet = model->bullets[i];
+
+		bullet.move(-1);
+
+		SDL_Surface * image = load(bullet.getPath());
+
+		SDL_Surface * rotation = rotozoomSurface(image,bullet.getRotation(),1,1);
+		image=rotation;
+
+		SDL_Rect source;
+		SDL_Rect destination;
+		source.x=0;
+		source.y=0;
+		source.w=image->w;
+		source.h=image->h;
+
+
+		destination.x=bullet.getX()-((image->w)/2)-xOff;
+		destination.y=bullet.getY()-((image->h)/2)-yOff;
+		SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(screen->format,0x00,0x00,0x00));
+		SDL_BlitSurface(image,&source,screen,&destination);
+
+		model->bullets[i] = bullet;
+
+	}
+
+	
+	for(int i=0;i<model->enemys.size();i++)
+	{
+		EnemyEntity ent = model->enemys[i];
+		//ent.move(10);
 		//move the entity before we draw
 		
 
@@ -174,6 +206,7 @@ void View::show(Model * model) {
 		SDL_BlitSurface(image,&source,screen,&destination);
 
 		//SDL_FreeSurface(rotation);
+		model->enemys[i]=ent;
 	}
 
     SDL_UpdateWindowSurface(window);

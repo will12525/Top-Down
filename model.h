@@ -2,13 +2,12 @@
 #include "Entity.h"
 #include "PlayerEntity.cpp"
 #include "EnemyEntity.cpp"
+#include "Bullet.cpp"
 
 #include <vector>
 #include <string>
 #include <map>
 #include <ctime>
-#include <chrono>
-
 
 #ifndef _MODEL_H
 #define _MODEL_H
@@ -41,10 +40,18 @@ public:
 	void setYOffset(int x);
 	vector<Tile> getTiles();
 	vector<EnemyEntity> getEnemys();
+	vector<EnemyEntity> enemys;
 	State check;
 	PlayerEntity getPlayer();
 
+	vector<Bullet> bullets;
+
+
 	void reset();
+
+	void shoot();
+	void enemyShot(EnemyEntity enemy);
+	void updateEntitys();
 
 private:
   // Constructor (instantiates object)
@@ -52,12 +59,16 @@ private:
 	int xOffset;
 	int yOffset;
 	vector<Tile> tiles;
-	vector<EnemyEntity> enemys;
+	
+
+
 	void loadTiles(string path);
 	PlayerEntity player;
 	//EnemyEntity enm;
 
-	chrono::time_point<chrono::system_clock> last;
+	unsigned int lastShot = 0;
+
+
 
 
 };

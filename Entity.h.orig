@@ -1,17 +1,26 @@
 #ifndef _ENTITY_H
 #define _ENTITY_H
 #include <string>
+<<<<<<< HEAD
 #include <fstream>
+=======
 #include <iostream>
 
+>>>>>>> b0013f138a9d9e4e393f7e4aacbe178a9127eb90
 using namespace std;
 
 class Entity
 {
 public:
+<<<<<<< HEAD
+	Entity() {
+
+	}
+	Entity(double x, double y, string name){
+=======
 	Entity() {}
 	Entity(double x, double y, string name, double speed){
-	
+>>>>>>> b0013f138a9d9e4e393f7e4aacbe178a9127eb90
 		this->x = x;
 		this->y = y;
 		this->name = name;
@@ -68,6 +77,11 @@ public:
 		imageXOffset=xOff;
 		imageYOffset=yOff;
 	}
+<<<<<<< HEAD
+
+	virtual void move(){}
+=======
+>>>>>>> b0013f138a9d9e4e393f7e4aacbe178a9127eb90
 
 protected:
 	//x and y on the screen

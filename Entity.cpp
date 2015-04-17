@@ -4,15 +4,10 @@ using namespace std;
 
 
 
-Entity::Entity(int xcoord, int ycoord, string name)
+Entity::Entity(int xcoord, int ycoord, string name,)
 {
 	x = xcoord;
 	y = ycoord;
 	this->name = name;
 	rotation=0;
-}
-
-void Entity::move()
-{
-
 }
