@@ -7,6 +7,7 @@
 #include <string>
 #include "Entity.h"
 #include "library.h"
+#include "EnemyEntity.cpp"
 
 using namespace std;
 
@@ -103,7 +104,7 @@ void View::show(Model * model) {
 	
 	
 	vector<Tile> tiles = model->getTiles();
-	vector<Entity> entities = model->getEntities();
+	vector<EnemyEntity> enemys = model->getEnemys();
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 
 	//SDL_Surface * tile1 = load("tileset/1.png");
@@ -112,7 +113,7 @@ void View::show(Model * model) {
 	{
 		Tile t = tiles[i];
 		//render tile
-    SDL_Surface * image = Library::getInstance()->getImage(t.getPath());
+		SDL_Surface * image = Library::getInstance()->getImage(t.getPath());
 		SDL_Rect source;
 		SDL_Rect destination;
 		source.x = 0;
@@ -144,12 +145,12 @@ void View::show(Model * model) {
 	
 
 
-	for(int i = 0;i<entities.size();i++)
+	for(int i = 0;i<enemys.size();i++)
 	{
-		Entity ent = entities[i];
-
+		EnemyEntity ent = enemys[i];
+		ent.move(10);
 		//move the entity before we draw
-		ent.move();
+		
 
 		SDL_Surface * image = load(ent.getPath());
 		

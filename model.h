@@ -40,7 +40,7 @@ public:
 	void setXOffset(int x);
 	void setYOffset(int x);
 	vector<Tile> getTiles();
-	vector<Entity> getEntities();
+	vector<EnemyEntity> getEnemys();
 	State check;
 	PlayerEntity getPlayer();
 
@@ -52,7 +52,7 @@ private:
 	int xOffset;
 	int yOffset;
 	vector<Tile> tiles;
-	vector<Entity> entities;
+	vector<EnemyEntity> enemys;
 	void loadTiles(string path);
 	PlayerEntity player;
 	//EnemyEntity enm;

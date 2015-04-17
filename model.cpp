@@ -49,8 +49,8 @@ vector<Tile> Model::getTiles()
 	return tiles;
 }
 
-vector<Entity> Model::getEntities(){
-	return entities;
+vector<EnemyEntity> Model::getEnemys(){
+	return enemys;
 }
 
 // Destructor deletes dynamically allocated memory
@@ -127,8 +127,8 @@ void Model::loadTiles(string path)
 	int yCoord=0;
 	int xCoord=0;
 
-	EnemyEntity * enm = new EnemyEntity(600,600,"enemy");
-	entities.push_back(*enm);
+	EnemyEntity * enm = new EnemyEntity(500,500,"enemy");
+	enemys.push_back(*enm);
 	//player = new PlayerEntity(487,359, "will");
 
 	//entities.push_back(*player);
@@ -213,6 +213,7 @@ void Model::reset(){
 	xOffset = 0;
 	yOffset = 0;
 	tiles.clear();
-	entities.clear();
+	enemys.clear();
+	//player.clear();
 	loadTiles("testmap.txt");
 }

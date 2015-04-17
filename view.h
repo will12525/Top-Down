@@ -10,6 +10,7 @@
 #include <map>
 #include <string>
 #include "menu.h"
+#include "EnemyEntity.cpp"
 #ifndef _VIEW_H
 #define _VIEW_H
 
