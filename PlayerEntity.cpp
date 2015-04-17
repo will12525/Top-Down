@@ -34,8 +34,9 @@ public:
 		speed = 5;
 	}
 
-	virtual void move(int direction)
+	void move(int direction)
 	{
+	//	cout << "playerentity move" << endl;
 		//because its backwards
 		direction *= -1;
 		this->x += direction * speed * sin(rotation*(PI)/180);

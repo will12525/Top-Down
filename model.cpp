@@ -9,7 +9,6 @@
 #include "voidTile.cpp"
 #include "TreeTile.cpp"
 #include "PlayerEntity.cpp"
-#include "Bullet.cpp"
 
 using namespace std;
 
@@ -115,10 +114,15 @@ void Model::handleKey(map <int, bool> keys)
 
 void Model::shoot()
 {
-	Entity* bullet = new Bullet(player.getX(), player.getY(), "bullet", 10);
-	bullet->setRotation(player.getRotation());
-	
-	entities.push_back(*bullet);
+	if( (SDL_GetTicks() - lastShot) > 1000 )
+	{
+		Bullet* bullet = new Bullet(player.getX(), player.getY(), "bullet", 10);
+		bullet->setRotation(player.getRotation());
+
+		bullets.push_back(*bullet);
+
+		lastShot = SDL_GetTicks();
+	}
 }
 
 bool Model::gameOver() {

@@ -1,6 +1,8 @@
 #ifndef _ENTITY_H
 #define _ENTITY_H
 #include <string>
+#include <iostream>
+
 using namespace std;
 
 class Entity
@@ -64,9 +66,6 @@ public:
 		imageXOffset=xOff;
 		imageYOffset=yOff;
 	}
-
-	//1 for forward, -1 for backwards
-	virtual void move(int direction){}
 
 protected:
 	//x and y on the screen

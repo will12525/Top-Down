@@ -1,6 +1,7 @@
 #include "Tile.h"
 #include "Entity.h"
 #include "PlayerEntity.cpp"
+#include "Bullet.cpp"
 
 #include <vector>
 #include <string>
@@ -41,6 +42,9 @@ public:
 	State check;
 	PlayerEntity getPlayer();
 
+	vector<Bullet> bullets;
+
+
 	void reset();
 
 	void shoot();
@@ -52,8 +56,13 @@ private:
 	int yOffset;
 	vector<Tile> tiles;
 	vector<Entity> entities;
+
+
 	void loadTiles(string path);
 	PlayerEntity player;
+
+	unsigned int lastShot = 0;
+
 
 
 

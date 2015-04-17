@@ -11,8 +11,3 @@ Entity::Entity(int xcoord, int ycoord, string name,)
 	this->name = name;
 	rotation=0;
 }
-
-void Entity::move()
-{
-
-}
